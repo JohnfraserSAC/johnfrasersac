@@ -1,10 +1,9 @@
-import Image from "next/image";
+import React from 'react'
 
-export default function Home() {
+const page = () => {
   return (
-   <body>
-      <h1>Hello, world!</h1>
-      <Image src="/logo.png" alt="Logo" width={200} height={200} />
-   </body>
-  );
+    <div>this should not be at the top</div>
+  )
 }
+
+export default page
