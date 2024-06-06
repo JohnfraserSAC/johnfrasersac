@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .border {
     border: 3px black solid;
 }
@@ -33,6 +38,7 @@
 
   h1 {
     font-size: 6vh;
+    font-weight: bold;
   }
 
   h2 {
