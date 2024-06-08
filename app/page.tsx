@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
+
 const page = () => {
   return (
     <main className='max-w-8xl mx-auto'>
@@ -61,6 +62,7 @@ const page = () => {
       </div>
 
       {/* UPCOMING EVENTS SECTION */}
+      <hr></hr>
 
       <div>
         <Image

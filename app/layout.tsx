@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { AOSInitializer } from '@/components/AOSInitializer';
+import Header from "@/components/Testnavbar";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -25,7 +26,7 @@ export default function RootLayout({
       
       <body className={inter.className}>
       <AOSInitializer />
-      <Navbar />
+      <Header />
         {children}
       <Footer />
       </body>

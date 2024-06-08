@@ -48,3 +48,9 @@
   p {
     font-size: 2vh;
   }
+
+  hr {
+    border: 1px solid black;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
