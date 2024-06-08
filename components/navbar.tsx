@@ -4,7 +4,7 @@ import Image from 'next/image'
 const Navbar = () => {
   return (
     <main className='absolute top-0 z-50 bg-transparent w-full'>
-       <div className='flex justify-between mx-60'>
+       <div className='flex justify-between mx-4 sm:mx-10 md:mx-60'>
         <div className='text-left'>
           <div>
             <a href='/'>
@@ -16,7 +16,7 @@ const Navbar = () => {
             </a>
           </div>
         </div>
-        <div className='flex text-right gap-8  justify-center items-center'>
+        <div className='flex text-right gap-2 sm:gap-4 md:gap-8 justify-center items-center text-xs sm:text-sm md:text-base'>
           <div>
             <a href='/anouncements'>Anouncements</a>
           </div>

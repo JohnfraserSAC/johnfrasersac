@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const page = () => {
   return (
-    <main>
+    <main className='max-w-8xl mx-auto'>
 
       {/* HERO SECTION */}
       <div className='relative h-screen custom-background-1'>
@@ -35,9 +35,86 @@ const page = () => {
 
       {/* WHO WE ARE SECTION */}
 
+      <div className='flex flex-col justify-center items-center mx-40 my-32'>
+        <h1 className='text-center'>WHO WE ARE</h1>
+        <div className='flex'>
+        <Image
+              className='rounded-xl'
+              src='/hero.jpg' 
+              width={500}
+              height={1}
+              alt='hero image' />
+          <div className=' flex flex-col  justify-center items-center'>
+            <p className='text-center w-9/12 my-10'>SAC stands for "Student Activity Council". We are a team of John Fraser students committed to enahncing your high school experience throguh a diverse array of events! learn more about what we do and how you can get involvedo n this page</p>
+            <div className='w-full flex text-center  items-center justify-evenly'>
+              <div className=''>
+                <p>Thoa Le</p>
+                <p>Preseident</p>
+              </div>
+              <div className=''>
+                <p>Akshat Chopra</p>
+                <p>Vice President</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* UPCOMING EVENTS SECTION */}
 
+      <div>
+        <Image
+                className='rounded-xl'
+                src='/hero.jpg' 
+                width={500}
+                height={1}
+                alt='hero image' />
+        <div>
+          <h1>Upcoming Events</h1>
+          <p>Learn more about being involved with SAC, or infromation about our events!</p>
+          <div>
+            <div>
+              <div>
+                <Image
+                  src="/checkmark.jpg"
+                  width={20}
+                  height={1}
+                  alt='checkmark'
+                />
+                <p>Updated Monthly</p>
+                <Image
+                  src="/checkmark.jpg"
+                  width={20}
+                  height={1}
+                  alt='checkmark'
+                />
+                <p>SAC Application News</p>
+              </div>
+            </div>
+            <div>
+              <div>
+              <Image
+                  src="/checkmark.jpg"
+                  width={20}
+                  height={1}
+                  alt='checkmark'
+                />
+                <p>Lots of Oppurtunities!</p>
+                <Image
+                  src="/checkmark.jpg"
+                  width={20}
+                  height={1}
+                  alt='checkmark'
+                />
+                <p>Anouncements</p>
+              </div>
+            </div>
+          </div>
+          <a href='/anouncements'>
+            <button>View Anouncements</button>
+          </a>
+        </div>
+      </div>
 
       {/* MEET OUR TEAM + SOCIALS SECTION */}
 
