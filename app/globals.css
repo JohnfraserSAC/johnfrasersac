@@ -5,6 +5,13 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .border {
@@ -17,36 +24,23 @@
 }
 
 .button-1 {
-    background-color: white;
-    border: none;
-    color: black;
-    padding: 12px 30px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 12px;
-    transition: background-color 0.3s ease;
-  }
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 12px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
   
   .button-1:hover {
     background-color: rgb(255, 215, 0);
     color: white;
-  }
-
-  h1 {
-    font-size: 6vh;
-    font-weight: bold;
-  }
-
-  h2 {
-    font-size: 4vh;
-  }
-
-  p {
-    font-size: 2vh;
   }
 
   hr {

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/navbar";
 import Footer from "@/components/Footer";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -24,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       
-      <body className={inter.className}>
+      <body className='{inter.className}'>
       <AOSInitializer />
       <Header />
         {children}

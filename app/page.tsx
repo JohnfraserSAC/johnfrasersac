@@ -1,54 +1,52 @@
-import React from 'react'
 import Image from 'next/image'
-
+import React from 'react'
 
 const page = () => {
   return (
-    <main className='max-w-8xl mx-auto'>
+    <main className='w-screen'>
 
       {/* HERO SECTION */}
-      <div className='relative h-screen custom-background-1'>
-        <div className='flex flex-col items-center justify-center text-center h-full w-full'>
-          <div className='flex justify-between text-left gap-40'>
-            <div className='w-4/12'>
-              <h1 className='text-white'>John Fraser Student Council</h1>
-              <p className='text-white'>Run By Students, For Students. I removed the election results!</p>
-              <div className='flex text-center items-center justify-start mt-8 gap-8'>
-                <a href='/oppurtunities'>
-                  <button className='button-1'>
-                    <p className='text-bold'>Get Involved</p>
-                  </button>
-                </a>
-                <a href='/anouncements'>
-                  <p className='text-white transition-colors duration-200 ease-in-out hover:text-yellow-500'>View Anouncements &rarr;</p>
-                </a>
-              </div>
+      <div className='relative h-screen w-screen custom-background-1 flex flex-col justify-center items-center'>
+        <div className='mx-12 flex flex-col justify-center items-center'>
+          <div className=''>
+            <h1 className='text-white font-bold text-4xl mb-12'>John Fraser Student Council</h1>
+            <p className='text-white mb-10'>Run By Students, For Students. I removed the election results!</p>
+            <div className='flex flex-col justify-center items-center text-center w-full'>
+                <div className=' w-full'>
+                  <a href='/oppurtunities'>
+                    <button className='button-1  w-full'>
+                      <p className='text-center'>Get Involved</p>
+                    </button>
+                  </a>
+                </div>
+              <a href='/anouncements' className='my-10'>
+                <p className='text-white'>View Anouncements &rarr;</p>
+              </a>
             </div>
+          </div>
             <Image
               className='rounded-xl'
               src='/hero.jpg' 
-              width={500}
+              width={300}
               height={1}
               alt='hero image' />
-          </div>
         </div>
       </div>
 
       {/* WHO WE ARE SECTION */}
-
-      <div className='flex flex-col justify-center items-center mx-40 my-32'>
-        <h1 className='text-center'>WHO WE ARE</h1>
-        <div className='flex'>
+      <div className='flex flex-col justify-center items-center text-center'>
         <Image
               className='rounded-xl'
               src='/hero.jpg' 
-              width={500}
+              width={300}
               height={1}
               alt='hero image' />
-          <div className=' flex flex-col  justify-center items-center'>
-            <p className='text-center w-9/12 my-10'>SAC stands for "Student Activity Council". We are a team of John Fraser students committed to enahncing your high school experience throguh a diverse array of events! learn more about what we do and how you can get involvedo n this page</p>
+        <h1 className='text-center font-bold my-10'>WHO WE ARE</h1>
+        <div className='flex'>
+          <div className=' flex flex-col justify-center items-center'>
+            <p className='text-center w-10/12'>SAC stands for "Student Activity Council". We are a team of John Fraser students committed to enahncing your high school experience throguh a diverse array of events! learn more about what we do and how you can get involvedo n this page</p>
             <div className='w-full flex text-center  items-center justify-evenly'>
-              <div className=''>
+              <div className='my-10'>
                 <p>Thoa Le</p>
                 <p>Preseident</p>
               </div>
@@ -68,7 +66,7 @@ const page = () => {
         <Image
                 className='rounded-xl'
                 src='/hero.jpg' 
-                width={500}
+                width={300}
                 height={1}
                 alt='hero image' />
         <div>

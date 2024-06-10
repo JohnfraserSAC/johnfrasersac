@@ -67,14 +67,35 @@ export default function Header({ home }: HeaderProps) {
         }
     })
 
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    const handleScroll = () => {
+        const offset = window.scrollY;
+        if (offset > 10) {
+        setIsScrolled(true);
+        } else {
+        setIsScrolled(false);
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll)
+        return () => {
+        window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
     return (
         <div className="fixed z-50 w-screen">
             <TopBanner showBanner={false} />
-            <nav className="flex flex-col items-center py-2 lg:py-4 w-full transition-colors duration-75" style={{ background: `rgba(33, 59, 34, ${showDropdown ? 1 : opacity})`}}>
+            <nav 
+                className={`${isScrolled ? 'bg-blue' : 'bg-transparent'} flex flex-col items-center py-2 lg:py-4 w-full transition-colors duration-500 ease-in-out`} 
+                style={(isScrolled || showDropdown) ? { backgroundColor: 'rgb(0,0,255)' } : {}}
+                >
                 <div className="container px-4 lg:flex lg:items-center lg:justify-around w-full">
                     <div className="flex justify-around items-center">
                             <a href="/#home" className="flex flex-row items-center gap-4 font-bold text-xl text-teal">
-                                <Image src='/WSAC-Logo.png' alt="logo" width={125} height={64} quality={100}/>
+                                <Image src='/WSAC-Logo.png' alt="logo" width={200} height={64} quality={100}/>
                             </a>
 
                         <button
@@ -86,7 +107,7 @@ export default function Header({ home }: HeaderProps) {
                                     setShowDropdown(!showDropdown);
                                 }}
                         >
-                            <FaBars />
+                            <FaBars/>
                         </button>
                     </div>
 
@@ -94,7 +115,7 @@ export default function Header({ home }: HeaderProps) {
                         {
                             links.map(({ name, link, priority, id }) =>
                                 <Link key={name} href={link}>
-                                    <div onClick={() => setShowDropdown(false)} className={`${priority ? "text-emerald-300 hover:bg-emerald-900 hover:text-white text-center border border-solid border-emerald-900 mt-1 lg:mt-0 lg:ml-1" : "text-gray-300 hover:bg-gray-200/25 hover:text-white"} p-2 lg:px-4 lg:mx-2 rounded duration-300 transition-colors`}>
+                                    <div onClick={() => setShowDropdown(false)} className={`${priority ? "text-emerald-300 hover:bg-emerald-900 hover:text-white text-center border border-solid border-emerald-900 mt-1 lg:mt-0 lg:ml-1 " : "text-gray-300 hover:bg-gray-200/25 hover:text-white"} text-base p-2 lg:px-4 lg:mx-2 rounded duration-300 transition-colors`}>
                                         {name}
                                     </div>
                                 </Link>
