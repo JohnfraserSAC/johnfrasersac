@@ -44,7 +44,7 @@ const page = () => {
         <h1 className='text-center font-bold my-10'>WHO WE ARE</h1>
         <div className='flex'>
           <div className=' flex flex-col justify-center items-center'>
-            <p className='text-center w-10/12'>SAC stands for "Student Activity Council". We are a team of John Fraser students committed to enahncing your high school experience throguh a diverse array of events! learn more about what we do and how you can get involvedo n this page</p>
+            <p className='text-center w-10/12'>SAC stands for &quot;Student Activity Council&quot;. We are a team of John Fraser students committed to enahncing your high school experience through a diverse array of events! learn more about what we do and how you can get involved this page</p>
             <div className='w-full flex text-center  items-center justify-evenly'>
               <div className='my-10'>
                 <p>Thoa Le</p>

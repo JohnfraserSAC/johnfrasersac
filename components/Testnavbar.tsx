@@ -54,7 +54,7 @@ const scrollPosToPercentage = (scrollPos: number) => {
 }
 
 interface HeaderProps {
-    home: boolean;
+    home?: boolean;
 }
 
 export default function Header({ home }: HeaderProps) {
