@@ -10,8 +10,14 @@
     overflow-wrap: break-word;
 }
 
-body {
-  overflow-x: hidden;
+main {
+  padding-top: 64px; /* For desktop screens */
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-top: 48px; /* For mobile screens */
+  }
 }
 
 .border {

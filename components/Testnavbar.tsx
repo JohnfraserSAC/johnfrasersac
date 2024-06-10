@@ -127,4 +127,3 @@ export default function Header({ home }: HeaderProps) {
         </div>
     )
 }
-
