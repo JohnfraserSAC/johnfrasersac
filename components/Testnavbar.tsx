@@ -89,7 +89,7 @@ export default function Header({ home }: HeaderProps) {
         <div className="fixed z-50 w-screen">
             <TopBanner showBanner={false} />
             <nav 
-                className={`${isScrolled ? 'bg-blue' : 'bg-transparent'} flex flex-col items-center py-2 lg:py-4 w-full transition-colors duration-500 ease-in-out`} 
+                className={`${isScrolled ? 'bg-blue' : 'bg-blue'} flex flex-col items-center py-2 lg:py-4 w-full transition-colors duration-500 ease-in-out`} 
                 style={(isScrolled || showDropdown) ? { backgroundColor: 'rgb(0,0,255)' } : {}}
                 >
                 <div className="container px-4 lg:flex lg:items-center lg:justify-around w-full">
