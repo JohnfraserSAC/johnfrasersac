@@ -90,8 +90,8 @@ export default function Header({ home }: HeaderProps) {
             <TopBanner showBanner={false} />
             <nav 
                 className={`${isScrolled ? 'bg-blue' : 'bg-blue'} flex flex-col items-center py-2 lg:py-4 w-full transition-colors duration-500 ease-in-out`} 
-                style={(isScrolled || showDropdown) ? { backgroundColor: 'rgb(0,0,255)' } : {}}
-                >
+                style={{ backgroundColor: 'rgb(0,0,255)' }}
+            >
                 <div className="container px-4 lg:flex lg:items-center lg:justify-around w-full">
                     <div className="flex justify-around items-center">
                             <a href="/#home" className="flex flex-row items-center gap-4 font-bold text-xl text-teal">

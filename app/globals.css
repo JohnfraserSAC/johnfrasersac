@@ -10,10 +10,6 @@
     overflow-wrap: break-word;
 }
 
-main {
-  padding-top: 64px; /* For desktop screens */
-}
-
 @media (max-width: 768px) {
   main {
     padding-top: 48px; /* For mobile screens */
@@ -44,13 +40,59 @@ main {
   transition: background-color 0.3s ease;
 }
   
-  .button-1:hover {
-    background-color: rgb(255, 215, 0);
-    color: white;
-  }
+.button-1:hover {
+  background-color: rgb(255, 215, 0);
+  color: white;
+}
 
-  hr {
-    border: 1px solid black;
-    margin-top: 100px;
-    margin-bottom: 100px;
-  }
+.button-2:hover {
+  background-color: rgb(255, 215, 0);
+  color: white;
+}
+
+.button-2 {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+hr {
+  border: 1px solid black;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.container-box {
+  background-color: white;
+  border: 1px solid #f4f4f4;
+  padding-bottom: 250px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 15px;
+  position: relative;
+  margin-top: 100px;
+}
+
+.container-image {
+  z-index: 50;
+  top: -75px; /* half of the image height to stick out */
+  left: 25%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+}
