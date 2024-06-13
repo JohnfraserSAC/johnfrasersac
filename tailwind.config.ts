@@ -17,6 +17,7 @@ const config: Config = {
         '4xl': ['2rem', { lineHeight: '1' }],  // default
         '5xl': ['2.5rem', { lineHeight: '1' }], // large screens
         '6xl': ['3rem', { lineHeight: '1' }],   // extra large screens
+        'custom-text-size-1': ['4.125rem', { lineHeight: '1' }], 
       },
       screens: {
         'lg': '1024px',

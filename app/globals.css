@@ -29,12 +29,12 @@
   background-color: white;
   border: none;
   color: black;
-  padding: 12px 30px;
+  padding: 13.5px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 4px;
   cursor: pointer;
   border-radius: 12px;
   transition: background-color 0.3s ease;
@@ -54,7 +54,7 @@
   background-color: rgba(40,129,244,255);
   border: none;
   color: white;
-  padding: 12px 30px;
+  padding: 12.5px 30px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -109,4 +109,18 @@ hr {
   border-color: white; /* White outline on hover */
   color: white; /* White text on hover */
   background-color: rgb(255, 215, 0); /* Yellow background on hover */
+}
+
+.custom-text-size-1 {
+  font-size: 4.125rem;
+}
+
+.title {
+  font-size: 2.25rem; /* 4xl */
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 3.97rem; /* custom size */
+  }
 }

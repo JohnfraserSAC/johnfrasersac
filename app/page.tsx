@@ -8,18 +8,18 @@ const page = () => {
       {/* HERO SECTION */}
       <div className='relative h-screen w-screen custom-background-1 flex flex-col justify-center items-center'>
         <div className=' mx-12 flex flex-col lg:flex-row justify-evenly items-center'>
-          <div className=' lg:w-5/12'>
-            <h1 className=' text-white font-bold text-4xl lg:text-7xl  mb-12'>John Fraser Student Council</h1>
-            <p className=' text-white mb-10 lg:text-xl'>Run By Students, For Students. I removed the election results!</p>
+          <div className=' lg:w-6/12'>
+            <h1 className=' title font-semibold text-white font-bold-size-1 mb-12 lg:ml-2'>John Fraser Student Council</h1>
+            <p className=' text-white mb-10 lg:text-lg lg:ml-2 lg:w-8/12'>Run By Students, For Students. Made with passion and heart</p>
             <div className=' flex flex-col lg:justify-start items-center w-full'>
               <div className=' w-full'>
                 <a href='/oppurtunities' className=''>
                   <button className='button-1 w-full lg:w-4/12'>
-                    <p className='text-center'>Get Involved</p>
+                    Get Involved
                   </button>
                 </a>
               </div>
-              <a href='/anouncements' className='my-10  lg:self-start'>
+              <a href='/anouncements' className='my-5 lg:self-start lg:ml-2'>
                 <p className='text-white'>View Anouncements &rarr;</p>
               </a>
             </div>
