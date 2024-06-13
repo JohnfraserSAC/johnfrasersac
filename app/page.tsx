@@ -37,14 +37,14 @@ const page = () => {
       <div className='flex flex-col justify-center items-center text-center my-12'>
         <Image
               className='rounded-xl'
-              src='/hero.jpg' 
+              src='/who-we-are.jpg' 
               width={300}
               height={1}
               alt='hero image' />
-        <h1 className='text-center font-bold my-10'>WHO WE ARE</h1>
+        <h1 className='text-center text-5xl font-bold my-10'>WHO WE ARE</h1>
         <div className='flex'>
           <div className=' flex flex-col justify-center items-center'>
-            <p className='text-center w-10/12'>SAC stands for &quot;Student Activity Council&quot;. We are a team of John Fraser students committed to enahncing your high school experience through a diverse array of events! learn more about what we do and how you can get involved this page</p>
+            <p className='text-center w-10/12 text-xl'>SAC stands for &quot;Student Activity Council&quot;. We are a team of John Fraser students committed to enahncing your high school experience through a diverse array of events! learn more about what we do and how you can get involved this page</p>
             <div className='w-full flex text-center  items-center justify-evenly'>
               <div className='my-10'>
                 <p><b>President</b></p>
@@ -70,7 +70,7 @@ const page = () => {
                 height={1}
                 alt='hero image' />
         <div className=''>
-          <h1 className='my-6 text-left'><b>Upcoming Events</b></h1>
+          <h1 className='my-6 text-4xl text-left'><b>Upcoming Events</b></h1>
           <p className='text-left'><b>Learn more about being involved with SAC, or infromation about our events!</b></p>
           <div className='my-6'>
             <div>
@@ -131,23 +131,44 @@ const page = () => {
       </div>
 
       {/* MEET OUR TEAM + SOCIALS SECTION */}
+      <div className='my-40'></div>
 
-      <div className='flex flex-col justify-center items-center text-center mx-4'>
-        <h1>Meet Our Team</h1>
-          <div className='flex w-full h-full'>
+      <div className='flex flex-col justify-center items-center text-center mx-4 my-12'>
+        <h1 className='font-bold text-4xl'>Meet Our Team</h1>
+        <button className='button-3 my-6'>
+          <a>
+            <p>Learn More</p>
+          </a>
+        </button>
+          <div className='flex flex-col w-full h-full justify-center item-center'>
             <div className='container-box w-full h-full'>
               <Image
-                className='container-image'
+                className='container-image rounded-xl'
                 src='/thoa-le.jpg' 
                 width={175}
                 height={175}
                 alt='hero image' />
-              <p>Thoa Le</p>
+              <p className='relative text-left ml-4' style={{top: '180px'}}><b>Thoa Le</b></p>
+              <p className='relative text-left ml-4' style={{top: '190px'}}><b>President</b></p>
+            </div>
+            <div className='container-box w-full h-full'>
+              <Image
+                className='container-image rounded-xl'
+                src='/akshat-chopra.jpg' 
+                width={175}
+                height={175}
+                alt='hero image' />
+              <p className='relative text-left ml-4' style={{top: '180px'}}><b>Akshat Chopra</b></p>
+              <p className='relative text-left ml-4' style={{top: '190px'}}><b>Vice-President</b></p>
             </div>
           </div>
       </div>
 
       {/* LINKS SECTION */}
+
+      <div>
+
+      </div>
     </main>
   )
 }

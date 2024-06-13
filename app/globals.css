@@ -51,7 +51,7 @@
 }
 
 .button-2 {
-  background-color: blue;
+  background-color: rgba(40,129,244,255);
   border: none;
   color: white;
   padding: 12px 30px;
@@ -79,20 +79,34 @@ hr {
   padding-bottom: 250px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.1);
   text-align: center;
-  width: 100%;
-  max-width: 600px;
+  max-width: 70%;
   border-radius: 15px;
   position: relative;
   margin-top: 100px;
 }
 
 .container-image {
-  z-index: 50;
-  top: -75px; /* half of the image height to stick out */
+  z-index: 2;
   left: 25%;
   position: absolute;
-  top: 10px;
+  top: -50px;
   right: 10px;
   bottom: 10px;
   left: 10px;
+}
+
+.button-3 {
+  border: 2px solid rgba(40,129,244,255); /* Blue outline */
+  color: rgba(40,129,244,255); /* Blue text */
+  background-color: white; /* White background */
+  border-radius: 50px; /* Completely rounded corners */
+  padding: 10px 30px; /* Padding to increase button size */
+  text-decoration: none; /* Remove underline if it's a link */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.button-3:hover {
+  border-color: white; /* White outline on hover */
+  color: white; /* White text on hover */
+  background-color: rgb(255, 215, 0); /* Yellow background on hover */
 }
