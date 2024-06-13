@@ -7,29 +7,29 @@ const page = () => {
 
       {/* HERO SECTION */}
       <div className='relative h-screen w-screen custom-background-1 flex flex-col justify-center items-center'>
-        <div className='mx-12 flex flex-col justify-center items-center'>
-          <div className=''>
-            <h1 className='text-white font-bold text-4xl mb-12'>John Fraser Student Council</h1>
-            <p className='text-white mb-10'>Run By Students, For Students. I removed the election results!</p>
-            <div className='flex flex-col justify-center items-center text-center w-full'>
-                <div className=' w-full'>
-                  <a href='/oppurtunities'>
-                    <button className='button-1 w-full'>
-                      <p className='text-center'>Get Involved</p>
-                    </button>
-                  </a>
-                </div>
-              <a href='/anouncements' className='my-10'>
+        <div className=' mx-12 flex flex-col lg:flex-row justify-evenly items-center'>
+          <div className=' lg:w-5/12'>
+            <h1 className=' text-white font-bold text-4xl lg:text-7xl  mb-12'>John Fraser Student Council</h1>
+            <p className=' text-white mb-10 lg:text-xl'>Run By Students, For Students. I removed the election results!</p>
+            <div className=' flex flex-col lg:justify-start items-center w-full'>
+              <div className=' w-full'>
+                <a href='/oppurtunities' className=''>
+                  <button className='button-1 w-full lg:w-4/12'>
+                    <p className='text-center'>Get Involved</p>
+                  </button>
+                </a>
+              </div>
+              <a href='/anouncements' className='my-10  lg:self-start'>
                 <p className='text-white'>View Anouncements &rarr;</p>
               </a>
             </div>
           </div>
-            <Image
-              className='rounded-xl'
-              src='/hero.jpg' 
-              width={300}
-              height={1}
-              alt='hero image' />
+          <Image
+            className='rounded-xl'
+            src='/hero.jpg' 
+            width={500}
+            height={1}
+            alt='hero image' />
         </div>
       </div>
 
