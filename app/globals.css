@@ -10,18 +10,13 @@
     overflow-wrap: break-word;
 }
 
-@media (max-width: 768px) {
-  main {
-    padding-top: 48px; /* For mobile screens */
-  }
-}
-
 .border {
     border: 3px black solid;
 }
 
 .custom-background-1 {
-    background-color: blue;
+    background-image: url('/hero-bg.png');
+    background-repeat: no-repeat;
     position: relative;
 }
 
@@ -69,8 +64,8 @@ hr {
   border: 1px solid black;
   margin-top: 100px;
   margin-bottom: 100px;
-  margin-right: 30px;
-  margin-left: 30px;
+  margin-right: 12%;
+  margin-left: 12%;
 }
 
 .container-box {
@@ -123,4 +118,8 @@ hr {
   .title {
     font-size: 3.97rem; /* custom size */
   }
+}
+
+.navbar-bg {
+  background-color: rgba(0,0,255,255);
 }

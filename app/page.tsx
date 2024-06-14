@@ -34,91 +34,88 @@ const page = () => {
       </div>
 
       {/* WHO WE ARE SECTION */}
-      <div className='flex flex-col justify-center items-center text-center my-12'>
+      <div className='flex flex-col lg:flex-row justify-center items-center text-center my-12 lg:mx-32' data-aos='fade-up'>
         <Image
-              className='rounded-xl'
+              className=''
               src='/who-we-are.jpg' 
               width={300}
-              height={1}
+              height={400}
               alt='hero image' />
-        <h1 className='text-center text-5xl font-bold my-10'>WHO WE ARE</h1>
-        <div className='flex'>
-          <div className=' flex flex-col justify-center items-center'>
-            <p className='text-center w-10/12 text-xl'>SAC stands for &quot;Student Activity Council&quot;. We are a team of John Fraser students committed to enahncing your high school experience through a diverse array of events! learn more about what we do and how you can get involved this page</p>
-            <div className='w-full flex text-center  items-center justify-evenly'>
-              <div className='my-10'>
-                <p><b>President</b></p>
-                <p>Thoa Le</p>
-              </div>
-              <div>
-                <p><b>Vice President</b></p>
-                <p>Akshat Chopra</p>
+        <div className=' lg:flex lg:flex-col lg:w-6/12'>
+          <h1 className=' text-center text-5xl font-bold my-10 lg:text-left lg:ml-16'>WHO WE ARE</h1>
+          <div className='flex '>
+            <div className=' flex flex-col justify-center items-center '>
+              <p className=' text-center w-10/12 text-xl lg:text-left'><b>SAC stands for &quot;Student Activity Council&quot;. We are a team of John Fraser students committed to enahncing your high school experience through a diverse array of events! learn more about what we do and how you can get involved this page.</b></p>
+              <div className=' w-full flex text-center  items-center justify-evenly lg:ml-28'>
+                <div className='lg:w-6/12 lg:text-left my-10'>
+                  <p><b>President</b></p>
+                  <p className='lg:my-5'>Thoa Le</p>
+                </div>
+                <div className=' lg:w-6/12 lg:text-left'>
+                  <p><b>Vice President</b></p>
+                  <p className='lg:my-5'>Akshat Chopra</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* UPCOMING EVENTS SECTION */}
-      <hr></hr>
 
-      <div className='flex flex-col justify-center items-center text-center mx-4'>
+      <hr></hr>
+      {/* UPCOMING EVENTS SECTION */}
+
+      <div className='flex flex-col lg:flex-row lg:gap-12 justify-center items-center text-center mx-4'>
         <Image
                 className='rounded-xl'
                 src='/hero.jpg' 
-                width={300}
+                width={400}
                 height={1}
                 alt='hero image' />
         <div className=''>
           <h1 className='my-6 text-4xl text-left'><b>Upcoming Events</b></h1>
-          <p className='text-left'><b>Learn more about being involved with SAC, or infromation about our events!</b></p>
-          <div className='my-6'>
-            <div>
-              <div className=''>
-                <div className='flex mb-4 gap-4'>
-                  <Image
-                    className=''
-                    src="/checkmark.jpg"
-                    width={25}
-                    height={20}
-                    alt='checkmark'
-                  />
-                  <p>Updated Monthly</p>
-                </div>
-                <div className='flex gap-4 mb-4'>
-                  <Image
-                    className=''
-                    src="/checkmark.jpg"
-                    width={25}
-                    height={20}
-                    alt='checkmark'
-                  />
-                  <p>SAC Application News</p>
-                </div>
+          <p className='text-left lg:w-7/12'><b>Learn more about being involved with SAC, or infromation about our events!</b></p>
+          <div className='my-6 lg:w-9/12'>
+            <div className='lg:grid lg:grid-cols-2 gap-4'>
+              <div className='flex lg:items-center gap-2 mb-4'>
+                <Image
+                  className=''
+                  src="/checkmark.jpg"
+                  width={25}
+                  height={25}
+                  alt='checkmark'
+                />
+                <p>Updated Monthly</p>
               </div>
-            </div>
-            <div>
-              <div>
-                <div className='flex gap-4 mb-4'>
-                  <Image
-                    className=''
-                    src="/checkmark.jpg"
-                    width={25}
-                    height={15}
-                    alt='checkmark'
-                  />
-                  <p>Lots of Oppurtunities</p>
-                </div>
-                <div className='flex gap-4'>
-                  <Image
-                    className=''
-                    src="/checkmark.jpg"
-                    width={25}
-                    height={20}
-                    alt='checkmark'
-                  />
-                  <p>Anouncements</p>
-                </div>
+              <div className='flex items-center gap-2 mb-4'>
+                <Image
+                  className=''
+                  src="/checkmark.jpg"
+                  width={25}
+                  height={25}
+                  alt='checkmark'
+                />
+                <p>SAC Application News</p>
+              </div>
+              <div className='flex items-center gap-2 mb-4'>
+                <Image
+                  className=''
+                  src="/checkmark.jpg"
+                  width={25}
+                  height={25}
+                  alt='checkmark'
+                />
+                <p>Lots of Opportunities</p>
+              </div>
+              <div className='flex items-center gap-2 mb-4'>
+                <Image
+                  className=''
+                  src="/checkmark.jpg"
+                  width={25}
+                  height={25}
+                  alt='checkmark'
+                />
+                <p>Announcements</p>
               </div>
             </div>
           </div>

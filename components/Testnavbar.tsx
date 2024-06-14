@@ -71,7 +71,7 @@ export default function Header({ home }: HeaderProps) {
 
     const handleScroll = () => {
         const offset = window.scrollY;
-        if (offset > 10) {
+        if (offset > 200) {
         setIsScrolled(true);
         } else {
         setIsScrolled(false);
@@ -89,8 +89,7 @@ export default function Header({ home }: HeaderProps) {
         <div className="fixed z-50 w-screen">
             <TopBanner showBanner={false} />
             <nav 
-                className={`${isScrolled ? 'bg-blue' : 'bg-blue'} flex flex-col items-center py-2 lg:py-4 w-full transition-colors duration-500 ease-in-out`} 
-                style={{ backgroundColor: 'rgb(0,0,255)' }}
+                className={`${isScrolled ? 'navbar-bg' : 'bg-transparent'} flex flex-col items-center py-2 lg:py-4 w-full transition-colors duration-500 ease-in-out`}
             >
                 <div className="container px-4 lg:flex lg:items-center lg:justify-around w-full">
                     <div className="flex justify-around items-center">

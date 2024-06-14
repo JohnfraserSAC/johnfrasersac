@@ -23,11 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       
-      <body className='{inter.className}'>
-      <AOSInitializer />
-      <Header />
-        {children}
-      <Footer />
+      <body>
+        <Header />
+        <AOSInitializer />
+          {children}
+        <Footer />
       </body>
     </html>
   );
