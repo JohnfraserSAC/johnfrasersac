@@ -20,6 +20,13 @@
     position: relative;
 }
 
+.custom-background-2 {
+  background-image: url('/footer-bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+}
+
 .button-1 {
   background-color: white;
   border: none;
@@ -118,6 +125,26 @@ hr {
   border-color: white; /* White outline on hover */
   color: white; /* White text on hover */
   background-color: rgb(255, 215, 0); /* Yellow background on hover */
+}
+
+.button-4 {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 13.5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+}
+  
+.button-4:hover {
+  background-color: rgb(255, 215, 0);
+  color: white;
 }
 
 .custom-text-size-1 {
