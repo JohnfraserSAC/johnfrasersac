@@ -130,33 +130,43 @@ const page = () => {
       {/* MEET OUR TEAM + SOCIALS SECTION */}
       <div className='my-40'></div>
 
-      <div className='flex flex-col justify-center items-center text-center mx-4 my-12'>
-        <h1 className='font-bold text-4xl'>Meet Our Team</h1>
-        <button className='button-3 my-6'>
-          <a>
-            <p>Learn More</p>
-          </a>
-        </button>
-          <div className='flex flex-col w-full h-full justify-center item-center'>
-            <div className='container-box w-full h-full'>
-              <Image
-                className='container-image rounded-xl'
-                src='/thoa-le.jpg' 
-                width={175}
-                height={175}
-                alt='hero image' />
-              <p className='relative text-left ml-4' style={{top: '180px'}}><b>Thoa Le</b></p>
-              <p className='relative text-left ml-4' style={{top: '190px'}}><b>President</b></p>
+        <div className='flex flex-col justify-center items-center text-center mx-4 my-12 lg:mx-40 h-screen '>
+          <div className=' lg:w-11/12'>
+            <div className=' lg:flex lg:justify-between lg:w-full'>
+              <div className='lg:flex lg:items-center lg:justify-center'>
+                <h1 className='font-bold text-4xl'>Meet Our Team</h1>
+              </div>
+              <button className='button-3 my-6'>
+                <a>
+                  <p>Learn More</p>
+                </a>
+              </button>
             </div>
-            <div className='container-box w-full h-full'>
-              <Image
-                className='container-image rounded-xl'
-                src='/akshat-chopra.jpg' 
-                width={175}
-                height={175}
-                alt='hero image' />
-              <p className='relative text-left ml-4' style={{top: '180px'}}><b>Akshat Chopra</b></p>
-              <p className='relative text-left ml-4' style={{top: '190px'}}><b>Vice-President</b></p>
+          </div>
+          <div className='flex flex-col w-full h-full lg:h-96  justify-center lg:flex-row items-center mx-12 lg:justify-start lg:space-x-16'>
+            <div className='container-box  lg:w-6/12 w-full'>
+              <div className='lg:flex-1'>
+                <Image
+                  className='container-image rounded-xl'
+                  src='/thoa-le.jpg' 
+                  width={175}
+                  height={175}
+                  alt='hero image' />
+                <p className='relative text-left ml-4' style={{top: '180px'}}><b>Thoa Le</b></p>
+                <p className='relative text-left ml-4' style={{top: '190px'}}><b>President</b></p>
+              </div>
+            </div>
+            <div className='container-box lg:w-6/12 w-full '>
+              <div className='lg:flex-1'>
+                <Image
+                  className='container-image rounded-xl'
+                  src='/akshat-chopra.jpg' 
+                  width={175}
+                  height={175}
+                  alt='hero image' />
+                <p className='relative text-left ml-4' style={{top: '180px'}}><b>Akshat Chopra</b></p>
+                <p className='relative text-left ml-4' style={{top: '190px'}}><b>Vice-President</b></p>
+              </div>
             </div>
           </div>
       </div>
