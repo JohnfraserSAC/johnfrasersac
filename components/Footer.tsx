@@ -1,11 +1,12 @@
 import React from 'react'
+import Image from 'next/image'
 
 const Footer = () => {
   return (
-    <main className='h-screen w-screen'>
-      <div className='custom-background-2 w-full h-3/6 justify-center items-center flex flex-col'>
+    <main className='h-screen w-screen flex flex-col'>
+      <div className='custom-background-2 w-full justify-center items-center flex flex-col'>
         <p className='text-amber-400 tracking-widest'>SUBSCRIBE</p>
-        <p className='text-white text-5xl font-bold my-10 text-center'>John Fraser SAC Google Classroom</p>
+        <p className='text-white text-5xl font-semibold my-4 text-center leading-tight'>John Fraser SAC Google Classroom</p>
         <p className='text-white text-xl text-center font-light'>Receive monthly updates and pictures of our events!</p>
         <a href='https://classroom.google.com/u/0/c/NDQ0MDU4NTQxNDBa?cjc=i725i36' target='_blank' className='my-10'>
           <button className='button-4'>
@@ -13,8 +14,25 @@ const Footer = () => {
           </button>
         </a>
       </div>
-      <div className='bg-black h-full'>
-
+      <div className='bg-black flex flex-col justify-center items-center text-center w-full h-7/12'>
+        <div className=''>
+          <div className='w-full flex justify-center items-center text-center'>
+            <Image
+                  className=''
+                  src='/WSAC-Logo.png' 
+                  alt='logo' 
+                  width={200}
+                  height={366} />
+          </div>
+            <p className='text-white'>Questions? Shoot us an email at johnfraserstudentcouncil@gmail.com or message @johnfrasersac on Instagram. For questions or inquiries about clubs, please email info@johnfrasersac.com</p>
+        </div>
+        <div className="w-full">
+          <hr className='hr-2'></hr>
+        </div>
+        <div className=''>
+          <p className='text-white'>John Fraser Student Activity Council</p>
+          <p className='text-white'>Made and Maintained By John Fraser Students</p>
+        </div>
       </div>
     </main>
   )

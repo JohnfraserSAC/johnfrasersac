@@ -62,7 +62,7 @@ const page = () => {
       </div>
 
 
-      <hr></hr>
+      <hr className='hr-1'></hr>
       {/* UPCOMING EVENTS SECTION */}
 
       <div className='flex flex-col lg:flex-row lg:gap-12 justify-center items-center text-center mx-4'>
