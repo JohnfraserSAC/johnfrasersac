@@ -4,7 +4,7 @@ import Image from 'next/image'
 const Footer = () => {
   return (
     <main className='h-screen w-screen flex flex-col'>
-      <div className='custom-background-2 w-full justify-center items-center flex flex-col'>
+      <div className='custom-background-2 flex justify-center items-center flex-col border-2 h-5/12'>
         <p className='text-amber-400 tracking-widest'>SUBSCRIBE</p>
         <p className='text-white text-5xl font-semibold my-4 text-center leading-tight'>John Fraser SAC Google Classroom</p>
         <p className='text-white text-xl text-center font-light'>Receive monthly updates and pictures of our events!</p>
@@ -14,7 +14,7 @@ const Footer = () => {
           </button>
         </a>
       </div>
-      <div className='bg-black flex flex-col justify-center items-center text-center w-full h-7/12'>
+      <div className='bg-black flex flex-col justify-center items-center text-center border-2 h-full overflow '>
         <div className=''>
           <div className='w-full flex justify-center items-center text-center'>
             <Image
