@@ -24,7 +24,6 @@
   background-image: url('/footer-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  position: absolute;
 }
 
 .button-1 {
@@ -77,8 +76,8 @@
 
 .hr-2 {
   border: 1px solid white;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 60px;
+  margin-bottom: 60px;
   margin-right: 12%;
   margin-left: 12%;
 }
