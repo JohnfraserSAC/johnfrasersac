@@ -62,7 +62,7 @@
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 12px;
+  border-radius: 50px;
   transition: background-color 0.3s ease;
 }
 
@@ -174,4 +174,12 @@
 
 .border-2 {
   border: 2px white solid;
+}
+
+.hr-3 {
+  border: 1px solid black;
+  margin-top: 120px;
+  margin-bottom: 60px;
+  margin-left: 2%;
+  margin-right: 8%;
 }

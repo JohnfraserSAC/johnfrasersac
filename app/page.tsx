@@ -8,9 +8,9 @@ const page = () => {
 
   // Array of images
   const images = [
-    { id: 'twitter', colored: '/links/twitter-colored.jpg', grayscale: '/links/twitter-grayscale.png', height: 165, width: 165, alt: 'instagram' },
-    { id: 'instagram', colored: '/links/instagram-colored.jpg', grayscale: '/links/instagram-grayscale.png', height: 165, width: 165, alt: 'instagram' },
-    { id: 'facebook', colored: '/links/facebook-colored.png', grayscale: '/links/facebook-grayscale.png', height: 175, width: 175, alt: 'facebook' },
+    { id: 'twitter', colored: '/links/twitter-colored.jpg', grayscale: '/links/twitter-grayscale.png', alt: 'instagram' },
+    { id: 'instagram', colored: '/links/instagram-colored.jpg', grayscale: '/links/instagram-grayscale.png', alt: 'instagram' },
+    { id: 'facebook', colored: '/links/facebook-colored.png', grayscale: '/links/facebook-grayscale.png', alt: 'facebook' },
   ];
 
   return (
@@ -194,14 +194,34 @@ const page = () => {
             >
               <Image
                 src={hoveredImage === image.id ? image.colored : image.grayscale}
-                height={image.height}
-                width={image.width}
+                height={140}
+                width={140}
                 alt={image.alt}
                 className='transition-opacity duration-300'
               />
             </div>
           ))}
         </div>
+      </div>
+
+      <div className='mx-8'>
+        <h1 className='font-bold text-3xl mb-5'>Say Cheese!</h1>
+        <p className='text-lg mb-7'>You can now see any photos taken by John Fraser's SAC on our website.</p>
+        <a href='https://johnfrasersac.com/photos/'>
+          <button className='button-2'>
+            <p className='font-bold'>See Photos</p>
+          </button>
+        </a>
+      </div>
+      <hr className='hr-3'></hr>
+      <div className='mx-8 mb-12'>
+        <h1 className='font-bold text-3xl mb-5'>We'd love to hear from you</h1>
+        <p className='text-lg mb-7'>Let us know how we're doing, if you have any ideas for new events, or feedback on existing ones!</p>
+        <a href='https://docs.google.com/forms/d/e/1FAIpQLSdJO3rFBZiyOMEVoZYRCxcfUwLlQCmgo8LuJfxssci0tHlsew/viewform'>
+          <button className='button-2'>
+            <p className='font-bold'>Give Us Feedback</p>
+          </button>
+        </a>
       </div>
     </main>
   )
