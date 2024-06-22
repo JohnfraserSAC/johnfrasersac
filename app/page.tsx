@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import Image from 'next/image'
 
 const page = () => {
-  const [hoveredImage, setHoveredImage] = useState(null);
+  const [hoveredImage, setHoveredImage] = useState<string | null>(null);
 
   // Array of images
   const images = [
-    { id: 'twitter', colored: '/links/twitter-colored.jpg', grayscale: '/links/twitter-grayscale.png', alt: 'instagram' },
+    { id: 'twitter', colored: '/links/twitter-colored.png', grayscale: '/links/twitter-grayscale.png', alt: 'instagram' },
     { id: 'instagram', colored: '/links/instagram-colored.jpg', grayscale: '/links/instagram-grayscale.png', alt: 'instagram' },
     { id: 'facebook', colored: '/links/facebook-colored.png', grayscale: '/links/facebook-grayscale.png', alt: 'facebook' },
   ];
@@ -184,14 +184,14 @@ const page = () => {
 
       {/* LINKS SECTION */}
       <div className='w-full flex justify-center items center mb-12'>
-        <div className='w-10/12 border flex flex-col items-center gap-8 justify-evenly'>
+        <div className='w-10/12 flex flex-col lg:flex-row items-center gap-8 justify-evenly lg:my-12'>
           {images.map((image) => (
             <div
-              key={image.id}
-              onMouseEnter={() => setHoveredImage(image.id)}
-              onMouseLeave={() => setHoveredImage(null)}
-              className='hover:scale-110 transition-transform duration-300'
-            >
+            key={image.id}
+            onMouseEnter={() => setHoveredImage(image.id)} // Correctly wrapped in an arrow function
+            onMouseLeave={() => setHoveredImage(null)} // Correctly wrapped in an arrow function
+            className='hover:scale-110 transition-transform duration-300'
+          >
               <Image
                 src={hoveredImage === image.id ? image.colored : image.grayscale}
                 height={140}
