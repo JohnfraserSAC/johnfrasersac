@@ -1,7 +1,18 @@
+"use client"
+
+import React, { useState } from 'react';
 import Image from 'next/image'
-import React from 'react'
 
 const page = () => {
+  const [hoveredImage, setHoveredImage] = useState(null);
+
+  // Array of images
+  const images = [
+    { id: 'twitter', colored: '/links/twitter-colored.jpg', grayscale: '/links/twitter-grayscale.png', height: 165, width: 165, alt: 'instagram' },
+    { id: 'instagram', colored: '/links/instagram-colored.jpg', grayscale: '/links/instagram-grayscale.png', height: 165, width: 165, alt: 'instagram' },
+    { id: 'facebook', colored: '/links/facebook-colored.png', grayscale: '/links/facebook-grayscale.png', height: 175, width: 175, alt: 'facebook' },
+  ];
+
   return (
     <main className='w-screen'>
 
@@ -172,9 +183,25 @@ const page = () => {
       </div>
 
       {/* LINKS SECTION */}
-
-      <div>
-
+      <div className='w-full flex justify-center items center mb-12'>
+        <div className='w-10/12 border flex flex-col items-center gap-8 justify-evenly'>
+          {images.map((image) => (
+            <div
+              key={image.id}
+              onMouseEnter={() => setHoveredImage(image.id)}
+              onMouseLeave={() => setHoveredImage(null)}
+              className='hover:scale-110 transition-transform duration-300'
+            >
+              <Image
+                src={hoveredImage === image.id ? image.colored : image.grayscale}
+                height={image.height}
+                width={image.width}
+                alt={image.alt}
+                className='transition-opacity duration-300'
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </main>
   )
