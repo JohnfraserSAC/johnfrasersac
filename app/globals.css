@@ -15,13 +15,13 @@
 }
 
 .custom-background-1 {
-    background-image: url('/hero-bg.png');
+    background-image: url('/backgrounds/hero-bg.png');
     background-repeat: no-repeat;
     position: relative;
 }
 
 .custom-background-2 {
-  background-image: url('/footer-bg.jpg');
+  background-image: url('/backgrounds/footer-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -182,4 +182,11 @@
   margin-bottom: 60px;
   margin-left: 2%;
   margin-right: 8%;
+}
+
+.custom-background-3 {
+  background-image: url('/backgrounds/anouncements-bg.png');
+  background-repeat: no-repeat;
+  position: relative;
+  background-size: cover;
 }
