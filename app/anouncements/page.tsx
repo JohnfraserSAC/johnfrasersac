@@ -12,7 +12,12 @@ const page = () => {
           alt='placeholder'
           />
         <h1>Anouncements</h1>
-        <p></p>
+        <p>CLick here for daily anouncements and events to come</p>
+      </div>
+      <div>
+        <a>
+          <p></p>
+        </a>
       </div>
     </main>
   )

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image'
 
-const page = () => {
+const Page = () => {
   const [hoveredImage, setHoveredImage] = useState<string | null>(null);
 
   // Array of images
@@ -206,7 +206,7 @@ const page = () => {
 
       <div className='mx-8'>
         <h1 className='font-bold text-3xl mb-5'>Say Cheese!</h1>
-        <p className='text-lg mb-7'>You can now see any photos taken by John Fraser's SAC on our website.</p>
+        <p className='text-lg mb-7'>You can now see any photos taken by John Fraser%apos;s SAC on our website.</p>
         <a href='https://johnfrasersac.com/photos/'>
           <button className='button-2'>
             <p className='font-bold'>See Photos</p>
@@ -215,8 +215,8 @@ const page = () => {
       </div>
       <hr className='hr-3'></hr>
       <div className='mx-8 mb-12'>
-        <h1 className='font-bold text-3xl mb-5'>We'd love to hear from you</h1>
-        <p className='text-lg mb-7'>Let us know how we're doing, if you have any ideas for new events, or feedback on existing ones!</p>
+        <h1 className='font-bold text-3xl mb-5'>We&apos;d love to hear from you</h1>
+        <p className='text-lg mb-7'>Let us know how we&apos;re doing, if you have any ideas for new events, or feedback on existing ones!</p>
         <a href='https://docs.google.com/forms/d/e/1FAIpQLSdJO3rFBZiyOMEVoZYRCxcfUwLlQCmgo8LuJfxssci0tHlsew/viewform'>
           <button className='button-2'>
             <p className='font-bold'>Give Us Feedback</p>
@@ -227,4 +227,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
