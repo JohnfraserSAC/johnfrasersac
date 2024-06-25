@@ -13,6 +13,7 @@
     "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
     "embla-carousel": "^8.1.5",
+    "embla-carousel-autoplay": "^8.1.5",
     "embla-carousel-react": "^8.1.5",
     "next": "^14.2.4",
     "react": "^18",

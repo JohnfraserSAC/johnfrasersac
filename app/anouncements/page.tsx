@@ -1,21 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import AnouncementHeroBackground from '@/components/anouncements-bg'; // Assuming the correct component name is 'AnouncementHeroBackground'
-import { EmblaOptionsType } from 'embla-carousel';
-import EmblaCarousel from './EmblaCarousel'; // Assuming EmblaCarousel is in the same directory
-import '../css/base.css';
-import '../css/sandbox.css';
-import '../css/embla.css';
+import AnouncementHeroBackground from '@/components/anouncements-bg'; 
 
-const OPTIONS: EmblaOptionsType = { dragFree: true, loop: true };
-const SLIDE_COUNT = 5;
-const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
-
-type PropType = {
-  options?: EmblaOptionsType;
-};
-
-const page: React.FC<PropType> = () => {
+const page = () => {
   return (
     <main>
       {/* HERO */}
@@ -28,7 +15,8 @@ const page: React.FC<PropType> = () => {
       </div>
 
       {/* ACKNOWLEDGEMENT + CAROUSEL + ALL ANNOUNCEMENTS */}
-      <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+
+      
     </main>
   );
 };
