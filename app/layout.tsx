@@ -7,6 +7,7 @@ import 'aos/dist/aos.css';
 import { AOSInitializer } from '@/components/AOSInitializer';
 import Header from "@/components/Testnavbar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { BootstrapClient } from "@/components/BootstrapClient";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,8 +25,9 @@ export default function RootLayout({
     <html lang="en">
       
       <body>
-        <Header />
+        {/* <Header /> */}
         <AOSInitializer />
+        <BootstrapClient />
           {children}
         <Footer />
       </body>
