@@ -59,37 +59,39 @@ interface HeaderProps {
 
 export default function Header({ home }: HeaderProps) {
     const [showDropdown, setShowDropdown] = useState(false);
-    const [opacity, setOpacity] = useState(home ? 0 : 1); // Fully transparent on home screen, otherwise normal
+    // Initialize opacity based on whether it's the home page
+    const initialOpacity = home ? 0 : 1;
+    const [opacity, setOpacity] = useState(initialOpacity);
 
     useScrollPosition(({ currPos }) => {
         if (home && !showDropdown) {
-            setOpacity(scrollPosToPercentage(currPos.y));
+            const newOpacity = scrollPosToPercentage(currPos.y);
+            setOpacity(newOpacity);
         }
-    })
-
-    const [isScrolled, setIsScrolled] = useState(false);
-
-    const handleScroll = () => {
-        const offset = window.scrollY;
-        if (offset > 200) {
-        setIsScrolled(true);
-        } else {
-        setIsScrolled(false);
-        }
-    }
+    });
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll)
+        const handleScroll = () => {
+            const offset = window.scrollY;
+            if (offset > 200) {
+                setOpacity(0); // Set opacity to 0 after 200px scroll
+            } else {
+                // Calculate opacity based on scroll position for a smooth transition
+                const newOpacity = 1 - offset / 200;
+                setOpacity(home ? newOpacity : 1);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
         return () => {
-        window.removeEventListener('scroll', handleScroll)
-        }
-    }, [])
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [home]);
 
     return (
-        <div className="fixed z-50 w-screen">
-            <TopBanner showBanner={false} />
+        <div className="fixed z-50 w-screen transition-opacity duration-500 ease-in-out" style={{ opacity: opacity }}>
             <nav 
-                className={`${isScrolled ? 'navbar-bg' : 'bg-transparent'} flex flex-col items-center py-2 lg:py-4 w-full transition-colors duration-500 ease-in-out`}
+                className={`bg-transparent flex flex-col items-center py-2 lg:py-4 w-full transition-colors duration-500 ease-in-out`}
             >
                 <div className="container px-4 lg:flex lg:items-center lg:justify-around w-full">
                     <div className="flex justify-around items-center">

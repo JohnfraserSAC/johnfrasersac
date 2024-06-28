@@ -1,5 +1,5 @@
 import React from 'react';
-import announcements from '../announcementData'; // Adjust the import path as necessary
+import announcements from '@/components/announcementData';
 
 export default function Page({ params }: { params: { slug: string } }) {
   // Find the announcement that matches the slug
@@ -9,10 +9,12 @@ export default function Page({ params }: { params: { slug: string } }) {
   return (
     <div>
       {announcement ? (
-        <div>
-          <h1>{announcement.title}</h1>
-          <p>{announcement.content}</p>
-          <small>Posted on: {announcement.date}</small>
+        <div className=' flex flex-col justify-center items-center' style={{ height: '50.3333vh' /* 5/6 of the viewport height */ }}>
+            <h1 className=''>{announcement.title}</h1>
+            <p>{announcement.content}</p>
+            <div className='w-full text-left'>
+                <p className=''>Posted on: {announcement.date}</p>
+            </div>
         </div>
       ) : (
         <p>Announcement not found.</p>

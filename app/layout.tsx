@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       
       <body>
-        {/* <Header /> */}
+        <Header />
         <AOSInitializer />
         <BootstrapClient />
           {children}
