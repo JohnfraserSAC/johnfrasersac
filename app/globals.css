@@ -190,3 +190,23 @@
   position: relative;
   background-size: cover;
 }
+
+.button-5 {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 13.5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+  
+.button-5:hover {
+  background-color: rgb(255, 215, 0);
+  color: white;
+}
