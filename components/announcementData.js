@@ -1,30 +1,57 @@
-// format is yyyy/mm/dd
+// const fetchAnnouncements = async () => {
+//   const sheetDBAPI = 'API_ENDPOINT_URL'; // Replace with your actual SheetDB API endpoint
 
-const announcements = [
-  {
-    id: 1,
-    slug: "welcome-to-our-website",
-    title: "Welcome to Our Website",
-    content: "We are excited to launch our new website. Stay tuned for more updates!",
-    date: "2023-04-01",
-    image: null,
-  },
-  {
-    id: 2,
-    slug: "new-features-coming-soon",
-    title: "New Features Coming Soon",
-    content: "We are working on some exciting new features that we can't wait to share with you.",
-    date: "2023-04-10",
-    image: null,
-  },
-  {
-    id: 3,
-    slug: "annual-general-meeting",
-    title: "Annual General Meeting",
-    content: "Our Annual General Meeting will be held on May 5th, 2023. All are welcome to attend.",
-    date: "2023-05-05",
-    image: null,
-  },
-];
+//   try {
+//     const response = await fetch(sheetDBAPI);
+//     if (!response.ok) throw new Error('Network response was not ok.');
 
-export default announcements;
+//     const data = await response.json();
+//     const announcements = data.map(item => ({
+//       id: item.id,
+//       slug: item.slug,
+//       title: item.title,
+//       content: item.content,
+//       date: item.date,
+//     }));
+
+//     console.log(announcements);
+//     return announcements; // Return the announcements array for use elsewhere
+//   } catch (error) {
+//     console.error('Failed to fetch announcements:', error);
+//     return []; // Return an empty array in case of error
+//   }
+// };
+
+// export { fetchAnnouncements };
+
+
+const fetchAnnouncementsMock = async () => {
+  // Simulated delay to mimic network request
+  const simulateDelay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+  // Mock data structure that resembles the expected API response
+  const mockData = [
+    { id: 1, slug: 'announcement-1', title: 'Announcement 1', content: 'Content for announcement 1', date: '2023-04-01' },
+    { id: 2, slug: 'announcement-2', title: 'Announcement 2', content: 'Content for announcement 2', date: '2023-04-02' },
+    // Add more mock announcements as needed
+  ];
+
+  try {
+    await simulateDelay(500); // Simulate network delay
+    const announcements = mockData.map(item => ({
+      id: item.id,
+      slug: item.slug,
+      title: item.title,
+      content: item.content,
+      date: item.date,
+    }));
+
+    console.log(announcements);
+    return announcements; // Return the mock announcements array for use elsewhere
+  } catch (error) {
+    console.error('Failed to fetch announcements:', error);
+    return []; // Return an empty array in case of error
+  }
+};
+
+export { fetchAnnouncementsMock as fetchAnnouncements };

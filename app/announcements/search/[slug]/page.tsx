@@ -1,22 +1,42 @@
+"use client"
+
 import React from 'react';
-import announcements from '@/components/announcementData';
+import { fetchAnnouncements } from '@/components/announcementData';
+
+// Define an interface for the announcement data
+interface Announcement {
+  id: number;
+  slug: string;
+  title: string;
+  content: string;
+  date: string;
+}
 
 export default function Page({ params }: { params: { slug: string } }) {
-  // Find the announcement that matches the slug
+  // Type the state with the Announcement interface
+  const [announcements, setAnnouncements] = React.useState<Announcement[]>([]);
+
+  React.useEffect(() => {
+    const fetchAndSetAnnouncements = async () => {
+      const data = await fetchAnnouncements();
+      setAnnouncements(data);
+    };
+
+    fetchAndSetAnnouncements();
+  }, []);
+
+  // The rest of your component remains unchanged
   const announcement = announcements.find(announcement => announcement.slug === params.slug);
 
-  // Render the announcement or a not found message
   return (
     <div>
-
       {announcement ? (
-        <div className=' flex flex-col justify-center items-center' style={{ height: '50.3333vh' /* 5/6 of the viewport height */ }}>
-            <h1 className=''>{announcement.title}</h1>
-            <p>{announcement.content}</p>
-
-            <div className='w-full text-left'>
-                <p className=''>Posted on: {announcement.date}</p>
-            </div>
+        <div className='flex flex-col justify-center items-center' style={{ height: '50.3333vh' }}>
+          <h1>{announcement.title}</h1>
+          <p>{announcement.content}</p>
+          <div className='w-full text-left'>
+            <p>Posted on: {announcement.date}</p>
+          </div>
         </div>
       ) : (
         <p>Announcement not found.</p>
