@@ -8,6 +8,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   // Render the announcement or a not found message
   return (
     <div>
+      
       {announcement ? (
         <div className=' flex flex-col justify-center items-center' style={{ height: '50.3333vh' /* 5/6 of the viewport height */ }}>
             <h1 className=''>{announcement.title}</h1>

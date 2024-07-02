@@ -16,7 +16,7 @@ const clamp = (num: number, min: number, max: number) => Math.min(Math.max(num, 
 const links = [
     {
         name: "Anouncements",
-        link: "/anouncements",
+        link: "/announcements",
         id: "anouncements",
         priority: false
     },

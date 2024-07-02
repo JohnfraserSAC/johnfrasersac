@@ -1,3 +1,5 @@
+// format is yyyy/mm/dd
+
 const announcements = [
   {
     id: 1,

@@ -89,7 +89,7 @@ const page = () => {
             </button>
           </div>
         </div>
-        <a href='/anouncements/search'>
+        <a href='/announcements/search'>
             <button className='button-5'>View All Anouncements</button>
         </a>
       </div>
