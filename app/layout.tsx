@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { AOSInitializer } from '@/components/AOSInitializer';
-import Header from "@/components/Testnavbar";
+import DisplayNavbar from "@/components/displayNavbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BootstrapClient } from "@/components/BootstrapClient";
 
@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       
       <body>
-        <Header />
+        <DisplayNavbar />
         <AOSInitializer />
         <BootstrapClient />
           {children}

@@ -53,11 +53,11 @@ const scrollPosToPercentage = (scrollPos: number) => {
     return currScroll / 100; // Convert to percentage
 }
 
-interface HeaderProps {
+interface NavbarProps {
     home?: boolean;
 }
 
-export default function Header({ home }: HeaderProps) {
+export default function Navbar({ home }: NavbarProps) {
     const [showDropdown, setShowDropdown] = useState(false);
     // Initialize opacity based on whether it's the home page
     const initialOpacity = home ? 0 : 1;
