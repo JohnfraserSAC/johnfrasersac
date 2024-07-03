@@ -210,3 +210,12 @@
   background-color: rgb(255, 215, 0);
   color: white;
 }
+
+.asd123 {
+  border: 2px black solid;
+  border-radius: 23px;
+  text-align: center;
+  width: 300px;
+  padding-bottom: 120px;
+  margin-bottom: 12px;
+}
