@@ -14,7 +14,7 @@ export default async function NotFound() {
                 width={400}
                 alt='dog slipping'
                     />
-            <p className='text-lg'>Here's the way <a href='/' style={{ color: 'blue', textDecoration: 'underline' }}>home</a></p>
+            <p className='text-lg'>Here&apos;s the way <a href='/' style={{ color: 'blue', textDecoration: 'underline' }}>home</a></p>
         </div>
     </main>
   )
