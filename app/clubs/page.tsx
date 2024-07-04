@@ -58,7 +58,7 @@ const Page = () => {
         </div>
       </div>
       <div className='w-full flex justify-center items-center mb-24'>
-        <div className='justify-center items-center flex-col lg:grid lg:grid-cols-3 lg:w-7/12'>
+        <div className='justify-center items-center flex-col lg:grid lg:grid-cols-3 lg:w-7/12 lg:gap-x-24'>
           <AnimatePresence>
             {sortedAnnouncements.map((club, index) => (
               <motion.div
