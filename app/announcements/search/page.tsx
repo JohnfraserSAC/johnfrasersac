@@ -57,21 +57,21 @@ export default function AnnouncementList() {
   });
 
   return (
-    <div className='flex justify-center items-center flex-col text-center' style={{height: '50.3333vh'}}>
-      <h1>Announcements</h1>
-      <div className='w-full flex justify-center items-center mt-12'>
-        <div id='filter' className='flex flex-col justify-center items-center  w-5/12'>
+    <div className='flex justify-center items-center flex-col text-center' style={{height: '90.3333vh'}}>
+      <h1 className='text-5xl font-bold '> JFSS Announcements</h1>
+      <div className='w-full flex justify-center items-center mt-12 lg:mt-40 lg:flex-row flex-col'>
+        <div id='filter' className='flex flex-col justify-center items-center mb-12 w-5/12 '>
           <button className='button-2' onClick={() => setSortOrder('descending')}>Most Recent to Least Recent</button>
           <button className='button-2' onClick={() => setSortOrder('ascending')}>Least Recent to Most Recent</button>
         </div>
-        <ul className='w-7/12 text-center'>
+        <ul className='w-7/12 text-center overflow-y-auto' style={{height: '20vh'}}>
           {sortedAnnouncements.map((announcement) => (
             <li key={announcement.id}>
-              <div className='flex justify-between'>
+              <div className='flex justify-evenly mb-4'>
                 <Link href={`/announcements/search/${announcement.slug}`}>
-                  <p className=''>{announcement.title}</p>
+                  <p className='font-bold underline'>{announcement.title}</p>
                 </Link>
-                <p className=''>{announcement.date}</p>
+                <p className='text-blue-500'>{announcement.date}</p>
               </div>
             </li>
           ))}

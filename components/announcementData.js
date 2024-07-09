@@ -33,6 +33,11 @@ const fetchAnnouncementsMock = async () => {
   const mockData = [
     { id: 1, slug: 'announcement-1', title: 'Announcement 1', content: 'Content for announcement 1', date: '2023-04-01' },
     { id: 2, slug: 'announcement-2', title: 'Announcement 2', content: 'Content for announcement 2', date: '2023-04-02' },
+    { id: 3, slug: 'announcement-3', title: 'Announcement 3', content: 'Content for announcement 3', date: '2023-04-03' },
+    { id: 4, slug: 'announcement-4', title: 'Announcement 4', content: 'Content for announcement 4', date: '2023-04-04' },
+    { id: 5, slug: 'announcement-5', title: 'Announcement 5', content: 'Content for announcement 5', date: '2023-04-05' },
+    { id: 6, slug: 'announcement-6', title: 'Announcement 6', content: 'Content for announcement 6', date: '2023-04-06' },
+    { id: 7, slug: 'announcement-7', title: 'Announcement 7', content: 'Content for announcement 7', date: '2023-04-07' },
     // Add more mock announcements as needed
   ];
 
