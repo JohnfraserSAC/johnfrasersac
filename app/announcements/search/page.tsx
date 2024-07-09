@@ -2,12 +2,20 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { fetchAnnouncements } from '@/components/announcementData';
+import { fetchAnnouncements } from '@/utils/announcementData';
+import { useBgCondition } from '@/components/BgConditionContext';
 
 export default function AnnouncementList() {
   const [announcements, setAnnouncements] = useState<{ id: string, title: string, slug: string, date: string }[]>([]);
   const [sortOrder, setSortOrder] = useState('descending'); // Default to 'descending'
 
+  const { setBgCondition } = useBgCondition();
+
+  useEffect(() => {
+	setBgCondition("blackbg");
+
+	return () => setBgCondition("");
+  }, []);
 
   // with api enabled
   // useEffect(() => {

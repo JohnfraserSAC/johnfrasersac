@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useMemo, useState, useEffect } from 'react';
-import clubs from '@/components/clubs';
+import clubs from '@/utils/clubs';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 

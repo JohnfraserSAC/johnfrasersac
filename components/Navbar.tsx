@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
+import { useBgCondition } from "./BgConditionContext";
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 import { devpostLink, name, registrationLink } from "@util/config";
@@ -58,6 +58,17 @@ interface NavbarProps {
 }
 
 export default function Navbar({ home }: NavbarProps) {
+    const { bgCondition } = useBgCondition();
+    const [logoSrc, setLogoSrc] = useState('/WSAC-Logo.png');
+
+    useEffect(() => {
+        if (bgCondition === "blackbg") {
+            setLogoSrc('/BSAC-Logo.png');
+        } else {
+            setLogoSrc('/WSAC-Logo.png');
+        }
+    }, [bgCondition]);
+
     const [showDropdown, setShowDropdown] = useState(false);
     // Initialize opacity based on whether it's the home page
     const initialOpacity = home ? 0 : 1;
@@ -96,7 +107,7 @@ export default function Navbar({ home }: NavbarProps) {
                 <div className="container px-4 lg:flex lg:items-center lg:justify-around w-full">
                     <div className="flex justify-around items-center">
                             <a href="/#home" className="flex flex-row items-center gap-4 font-bold text-xl text-teal">
-                                <Image src='/WSAC-Logo.png' alt="logo" width={200} height={64} quality={100}/>
+                                <Image src={logoSrc} alt="logo" width={200} height={64} quality={100}/>
                             </a>
 
                         <button
