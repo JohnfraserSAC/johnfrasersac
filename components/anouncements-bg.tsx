@@ -3,8 +3,8 @@ import Image from 'next/image'
 
 const anouncementHeroBackground = () => {
   return (
-    <div className="absolute custom-background-3 h-5/6"> {/* Adjust the height as needed */}
-        <div className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10">
+    <div className="absolute custom-background-3" style={{height: '83.333vh'}}> {/* Adjust the height as needed */}
+        <div className="absolute top-1/2 left-0 transform -translate-y-1/2 z-auto">
           <Image
             src="/cw-1.png"
             alt="Left Image"
@@ -22,13 +22,17 @@ const anouncementHeroBackground = () => {
             objectFit="cover" 
           />
         </div>
-        <div className='h-full flex justify-center items-center'>
-          <div className='border text-center flex justify-center items-center flex-col h-2/6 z-20 absolute bg-translucent-gray'>
-            <div className='z-40'>
-              <h1>Anouncements</h1>
-              <p>Check here for all the up to date news at John Fraser! Join our Google Classroom if you never want to miss an event.</p>
-            </div>  
+        <div className='h-full'>
+          <div className='translate-y-1/3 h-full z-20'>
+            <div className='absolute inset-0 bg-translucent-gray h-2/6'></div>
           </div>
+        </div>
+        
+        <div className='absolute inset-0 flex justify-center items-center z-30'>
+            <div className='z-40 flex flex-col justify-center items-center'>
+              <h1 className='text-4xl'>Anouncements</h1>
+              <p className='w-9/12 text-center'>Check here for all the up to date news at John Fraser! Join our Google Classroom if you never want to miss an event.</p>
+            </div>  
         </div> 
       </div>
   )

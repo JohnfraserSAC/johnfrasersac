@@ -1,8 +1,19 @@
+'use client'
+
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useBgCondition } from '@/components/BgConditionContext';
+import { useEffect } from 'react';
  
 export default async function NotFound() {
+  const { setBgCondition } = useBgCondition();
+
+  useEffect(() => {
+  setBgCondition("blackbg");
+
+  return () => setBgCondition("");
+  }, []);
+
   return (
     <main className='h-screen'>
         <div className='h-full flex justify-center items-center flex-col text-center'>

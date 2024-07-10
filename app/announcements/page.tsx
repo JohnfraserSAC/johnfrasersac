@@ -54,13 +54,11 @@ const page = () => {
     <main>
       <BootstrapClient />
       {/* HERO */}
-      <div className='h-screen'>
-        <AnouncementHeroBackground />
-      </div>
+      <AnouncementHeroBackground />
 
       {/* ACKNOWLEDGEMENT + CAROUSEL + ALL ANNOUNCEMENTS */}
-      <div className='w-full flex flex-col justify-center items-center'>
-        <div className='w-7/12'>
+      <div className='w-full flex flex-col justify-center items-center border my-20'>
+        <div className='w-7/12 my-7'>
           <div id="carouselExampleIndicators" className="carousel slide border" data-bs-ride="carousel">
             <div className="carousel-indicators">
               {slides.map((slide, index) => (

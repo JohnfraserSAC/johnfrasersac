@@ -1,15 +1,14 @@
-import { useBgCondition } from './BgConditionContext';
+import { useBgCondition } from '@/components/BgConditionContext';
+import { useEffect } from 'react';
 
-const PageComponent = () => {
-  const { setBgCondition } = useBgCondition();
+const { setBgCondition } = useBgCondition();
 
-  useEffect(() => {
-	setBgCondition("blackbg");
+useEffect(() => {
+setBgCondition("blackbg");
 
-	return () => setBgCondition("");
-  }, []);
+return () => setBgCondition("");
+}, []);
 
-  return (
-	// Page content
-  );
-};
+return (
+// Page content
+);
