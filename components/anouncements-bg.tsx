@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const anouncementHeroBackground = () => {
   return (
-    <div className="absolute custom-background-3" style={{height: '83.333vh'}}> {/* Adjust the height as needed */}
+    <div className="absolute custom-background-3" style={{height: '83.333vh'}}>
         <div className="absolute top-1/2 left-0 transform -translate-y-1/2 z-auto">
           <Image
             src="/cw-1.png"

@@ -1,12 +1,9 @@
-require('dotenv').config(); // Step 3: Load environment variables at the top of your file
-
 const fetchAnnouncements = async () => {
-  // Step 4: Access the environment variable
   const sheetDBAPI = process.env.NEXT_PUBLIC_SHEETDB_ENDPOINT_URL; 
 
   if (!sheetDBAPI) {
     console.error('SHEETDB_ENDPOINT_URL environment variable is not set.');
-    return []; // Step 5: Check for undefined variables and handle it
+    return []; 
   }
 
   try {

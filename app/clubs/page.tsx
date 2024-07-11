@@ -7,10 +7,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Page = () => {
   const [sortOrder, setSortOrder] = useState('ascending');
-  const [windowWidth, setWindowWidth] = useState(0); // Initialize with a default value
+  const [windowWidth, setWindowWidth] = useState(0); 
 
   useEffect(() => {
-    // Ensure window object is accessed only on the client side
     if (typeof window !== 'undefined') {
       setWindowWidth(window.innerWidth);
 
@@ -20,7 +19,6 @@ const Page = () => {
 
       window.addEventListener('resize', handleResize);
 
-      // Cleanup the event listener on component unmount
       return () => window.removeEventListener('resize', handleResize);
     }
   }, []);
@@ -40,7 +38,6 @@ const Page = () => {
 
     window.addEventListener('resize', handleResize);
 
-    // Cleanup the event listener on component unmount
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 

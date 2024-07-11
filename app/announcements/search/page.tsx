@@ -20,37 +20,30 @@ export default function AnnouncementList() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchAnnouncements();
-      // Map over the data to convert id from number to string
       const formattedData = data.map((announcement: { id: { toString: () => any; }; }) => ({
         ...announcement,
-        id: announcement.id.toString(), // Convert id to string
+        id: announcement.id.toString(),
       }));
       setAnnouncements(formattedData);
     };
     fetchData();
   }, []);
   
-
-  // Function to sort announcements
   const sortedAnnouncements = announcements.sort((a, b) => {
-    // Check if either date is undefined and handle accordingly
     if (!a.date || !b.date) {
-      // Assume undefined dates are "less" than defined dates
       if (!a.date && b.date) {
         return sortOrder === 'descending' ? 1 : -1;
       }
       if (a.date && !b.date) {
         return sortOrder === 'descending' ? -1 : 1;
       }
-      // If both dates are undefined, consider them equal
       return 0;
     }
   
-    // If both dates are defined, proceed with localeCompare
     if (sortOrder === 'descending') {
-      return b.date.localeCompare(a.date); // Most recent to least recent
+      return b.date.localeCompare(a.date); // most to least recent
     } else {
-      return a.date.localeCompare(b.date); // Least recent to most recent
+      return a.date.localeCompare(b.date); // least to most recent
     }
   });
 

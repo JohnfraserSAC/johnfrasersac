@@ -70,7 +70,6 @@ export default function Navbar({ home }: NavbarProps) {
     }, [bgCondition]);
 
     const [showDropdown, setShowDropdown] = useState(false);
-    // Initialize opacity based on whether it's the home page
     const initialOpacity = home ? 0 : 1;
     const [opacity, setOpacity] = useState(initialOpacity);
 
@@ -85,9 +84,8 @@ export default function Navbar({ home }: NavbarProps) {
         const handleScroll = () => {
             const offset = window.scrollY;
             if (offset > 200) {
-                setOpacity(0); // Set opacity to 0 after 200px scroll
+                setOpacity(0); 
             } else {
-                // Calculate opacity based on scroll position for a smooth transition
                 const newOpacity = 1 - offset / 200;
                 setOpacity(home ? newOpacity : 1);
             }

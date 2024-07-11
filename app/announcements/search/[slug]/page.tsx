@@ -3,7 +3,6 @@
 import React from 'react';
 import { fetchAnnouncements } from '@/utils/announcementData';
 
-// Define an interface for the announcement data
 interface Announcement {
   id: number;
   slug: string;
@@ -13,7 +12,6 @@ interface Announcement {
 }
 
 export default function Page({ params }: { params: { slug: string } }) {
-  // Type the state with the Announcement interface
   const [announcements, setAnnouncements] = React.useState<Announcement[]>([]);
 
   React.useEffect(() => {
@@ -25,7 +23,6 @@ export default function Page({ params }: { params: { slug: string } }) {
     fetchAndSetAnnouncements();
   }, []);
 
-  // The rest of your component remains unchanged
   const announcement = announcements.find(announcement => announcement.slug === params.slug);
 
   return (
