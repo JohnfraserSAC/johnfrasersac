@@ -4,6 +4,9 @@ import AnouncementHeroBackground from '@/components/anouncements-bg';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BootstrapClient } from "@/components/BootstrapClient";
 
+
+
+
 const page = () => {
   const imageWidth = 1000;
   const slides = [

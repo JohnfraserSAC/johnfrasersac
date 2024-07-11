@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { fetchAnnouncements } from '@/utils/announcementData';
 import { useBgCondition } from '@/components/BgConditionContext';
 
-export default function AnnouncementList() {
+export default async function AnnouncementList() {
   const [announcements, setAnnouncements] = useState<{ id: string, title: string, slug: string, date: string }[]>([]);
+  const [sortedAnnouncements, setSortedAnnouncements] = useState<{id: string, title: string, slug: string, date: string }[]>([]);
   const [sortOrder, setSortOrder] = useState('descending'); // Default to 'descending'
 
   const { setBgCondition } = useBgCondition();
@@ -28,24 +29,29 @@ export default function AnnouncementList() {
     };
     fetchData();
   }, []);
+
+
   
-  const sortedAnnouncements = announcements.sort((a, b) => {
-    if (!a.date || !b.date) {
-      if (!a.date && b.date) {
-        return sortOrder === 'descending' ? 1 : -1;
+  useEffect(() => {
+    const sortAnnouncements = announcements.sort((a, b) => {
+      if (!a.date || !b.date) {
+        if (!a.date && b.date) {
+          return sortOrder === 'descending' ? 1 : -1;
+        }
+        if (a.date && !b.date) {
+          return sortOrder === 'descending' ? -1 : 1;
+        }
+        return 0;
       }
-      if (a.date && !b.date) {
-        return sortOrder === 'descending' ? -1 : 1;
+    
+      if (sortOrder === 'descending') {
+        return b.date.localeCompare(a.date); // most to least recent
+      } else {
+        return a.date.localeCompare(b.date); // least to most recent
       }
-      return 0;
-    }
-  
-    if (sortOrder === 'descending') {
-      return b.date.localeCompare(a.date); // most to least recent
-    } else {
-      return a.date.localeCompare(b.date); // least to most recent
-    }
-  });
+    });
+      setSortedAnnouncements(sortAnnouncements);
+    }, [announcements, sortOrder]);
 
   return (
     <div className='flex justify-center items-center flex-col text-center' style={{height: '90.3333vh'}}>
