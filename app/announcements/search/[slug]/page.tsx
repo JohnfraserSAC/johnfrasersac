@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import { fetchAnnouncements } from '@/components/announcementData';
+import { fetchAnnouncements } from '@/utils/announcementData';
 
 // Define an interface for the announcement data
 interface Announcement {

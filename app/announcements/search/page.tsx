@@ -17,21 +17,11 @@ export default function AnnouncementList() {
 	return () => setBgCondition("");
   }, []);
 
-  // with api enabled
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const data = await fetchAnnouncements();
-  //     setAnnouncements(data);
-  //   };
-  //   fetchData();
-  // }, []);
-
-  // for mock tests
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchAnnouncements();
       // Map over the data to convert id from number to string
-      const formattedData = data.map(announcement => ({
+      const formattedData = data.map((announcement: { id: { toString: () => any; }; }) => ({
         ...announcement,
         id: announcement.id.toString(), // Convert id to string
       }));

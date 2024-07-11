@@ -7,6 +7,9 @@ import 'aos/dist/aos.css';
 import { AOSInitializer } from '@/components/AOSInitializer';
 import DisplayNavbar from "@/components/displayNavbar";
 import { BgConditionProvider } from "@/components/BgConditionContext";
+import 'dotenv/config';
+
+require('dotenv').config()
 
 const inter = Inter({ subsets: ["latin"] });
 

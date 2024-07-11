@@ -12,6 +12,8 @@
     "@n8tb1t/use-scroll-position": "^2.0.3",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
+    "dotenv": "^16.4.5",
+    "dotenv-webpack": "^8.1.0",
     "embla-carousel": "^8.1.5",
     "embla-carousel-autoplay": "^8.1.5",
     "embla-carousel-react": "^8.1.5",
