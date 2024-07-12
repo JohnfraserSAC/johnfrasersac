@@ -5,7 +5,14 @@ import Link from 'next/link';
 import { fetchAnnouncements } from '@/utils/announcementData';
 import { useBgCondition } from '@/components/BgConditionContext';
 
-export default async function AnnouncementList() {
+interface Announcement {
+  id: string;
+  title: string;
+  slug: string;
+  date: string;
+}
+
+export default function AnnouncementList() {
   const [announcements, setAnnouncements] = useState<{ id: string, title: string, slug: string, date: string }[]>([]);
   const [sortedAnnouncements, setSortedAnnouncements] = useState<{id: string, title: string, slug: string, date: string }[]>([]);
   const [sortOrder, setSortOrder] = useState('descending'); // Default to 'descending'
@@ -52,6 +59,13 @@ export default async function AnnouncementList() {
     });
       setSortedAnnouncements(sortAnnouncements);
     }, [announcements, sortOrder]);
+
+    console.log(sortedAnnouncements)
+
+    const res = await fetch('@/utils/announcementData', {
+      next: { revalidate: 10 }.
+    });
+    const finalAnnouncements = (await res.json()) as Announcement[];
 
   return (
     <div className='flex justify-center items-center flex-col text-center' style={{height: '90.3333vh'}}>
