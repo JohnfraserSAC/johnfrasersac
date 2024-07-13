@@ -4,10 +4,19 @@ import React, { useMemo, useState, useEffect } from 'react';
 import clubs from '@/utils/clubs';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useBgCondition } from '@/components/BgConditionContext';
 
 const Page = () => {
   const [sortOrder, setSortOrder] = useState('ascending');
   const [windowWidth, setWindowWidth] = useState(0); 
+
+  const { setBgCondition } = useBgCondition();
+
+  useEffect(() => {
+  setBgCondition("blackbg");
+
+  return () => setBgCondition("");
+  }, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -55,7 +64,7 @@ const Page = () => {
         </div>
       </div>
       <div className='w-full flex justify-center items-center mb-24'>
-        <div className='justify-center items-center flex-col lg:grid lg:grid-cols-3 lg:w-7/12 lg:gap-x-24'>
+        <div className='justify-center items-center flex-col lg:grid lg:grid-cols-3 lg:w-10/12 lg:gap-x-32'>
           <AnimatePresence>
             {sortedAnnouncements.map((club, index) => (
               <motion.div

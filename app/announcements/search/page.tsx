@@ -62,10 +62,10 @@ export default function AnnouncementList() {
 
     console.log(sortedAnnouncements)
 
-    const res = await fetch('@/utils/announcementData', {
-      next: { revalidate: 10 }.
-    });
-    const finalAnnouncements = (await res.json()) as Announcement[];
+    // const res = await fetch('@/utils/announcementData', {
+    //   next: { revalidate: 10 }.
+    // });
+    // const finalAnnouncements = (await res.json()) as Announcement[];
 
   return (
     <div className='flex justify-center items-center flex-col text-center' style={{height: '90.3333vh'}}>

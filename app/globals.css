@@ -23,6 +23,10 @@
   background-repeat: no-repeat;
 }
 
+.custom-background-4 {
+  background-image: url('/backgrounds/hero-bg.png');
+}
+
 .button-1 {
   background-color: white;
   border: none;
