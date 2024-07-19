@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 const easeOutQuint = (t: number) => 1 + (--t) * t * t * t * t;
 const frameDuration = 1000 / 60;
 
-const CountUpAnimation = ( { children, duration = 2000 } ) => {
-	const countTo = parseInt( children, 10 );
+const CountUpAnimation = ( { children, duration = 2000 }: { children: React.ReactNode, duration?: number } ) => {
+	const countTo = parseInt( String(children), 10 );
 	const [ count, setCount ] = useState( 0 );
 
 	useEffect( () => {
