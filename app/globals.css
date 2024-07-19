@@ -230,3 +230,25 @@
   background-color: rgb(148 163 184);
   opacity: 0.75;
 }
+
+.hr-4 {
+  border: 1px solid black;
+  margin-right: 75%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.images-line {
+  display: flex;
+  justify-content: space-around;
+  width: 20%;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.image {
+  width: 16px; /* Adjust based on your preference */
+  height: 8px; /* Adjust based on your preference */
+  background-size: cover;
+  background-position: center;
+}
