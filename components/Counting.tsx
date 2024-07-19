@@ -1,10 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 
 const easeOutQuint = (t: number) => 1 + (--t) * t * t * t * t;
 const frameDuration = 1000 / 60;
 
-const CountUpAnimation = ( { children, duration = 2000 }: { children: React.ReactNode, duration?: number } ) => {
-	const countTo = parseInt( String(children), 10 );
+interface CountUpAnimationProps {
+	duration?: number;
+	children: ReactNode;
+}
+
+const CountUpAnimation: React.FC<CountUpAnimationProps> = ( { children, duration = 2000 }: { children: React.ReactNode, duration?: number } ) => {
+	let countTo = 0;
+	if (typeof children === 'string') {
+		countTo = parseInt(children, 10);
+	}
 	const [ count, setCount ] = useState( 0 );
 
 	useEffect( () => {
@@ -19,9 +27,11 @@ const CountUpAnimation = ( { children, duration = 2000 }: { children: React.Reac
 				clearInterval( counter );
 			}
 		}, frameDuration );
-	}, [] );
 
-	return Math.floor( count );
+		return () => clearInterval(counter);
+    }, [countTo, duration] );
+
+	return <span>{Math.floor( count )}</span>;
 };
 
 export default CountUpAnimation;

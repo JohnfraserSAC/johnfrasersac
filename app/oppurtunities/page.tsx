@@ -75,15 +75,15 @@ const page = () => {
       <div className='flex flex-col justify-center items-center text-center gap-y-5 mb-16'>
         <p className='text-5xl font-semibold'>Let Numbers Talk</p>
         <div className='text-5xl font-bold'>
-          <p><CountingAnimation duration={2000} children={100}/>+</p>
+          <p><CountingAnimation duration={2000}>100</CountingAnimation>+</p>
         </div>
         <p>Clubs</p>
         <div className='text-5xl font-bold'>
-          <p><CountingAnimation duration={2000} children={1000}/>+</p>
+          <p><CountingAnimation duration={2000}>1000</CountingAnimation>+</p>
         </div>
         <p>Voters Last Year</p>
         <div className='text-5xl font-bold'>
-          <p><CountingAnimation duration={2000} children={25}/>+</p>
+          <p><CountingAnimation duration={2000}>25</CountingAnimation>+</p>
         </div>
         <p>Major Events</p>
       </div>
