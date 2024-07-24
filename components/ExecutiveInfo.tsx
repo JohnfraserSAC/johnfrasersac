@@ -23,7 +23,7 @@ const ExecutiveInfo: React.FC<ExecutiveInfoProps> = ({ name, role, image, descri
       opacity: 1,
       duration: 0.3,
       ease: 'power2.out'
-    }).to(infoBoxRef.current?.querySelectorAll('h3, p'), {
+    }).to(infoBoxRef.current?.querySelectorAll('h3, p') || [], {
       opacity: 1,
       duration: 0.3,
       ease: 'power2.out'
@@ -32,7 +32,7 @@ const ExecutiveInfo: React.FC<ExecutiveInfoProps> = ({ name, role, image, descri
 
   const handleMouseLeave = () => {
     const tl = gsap.timeline();
-    tl.to(infoBoxRef.current?.querySelectorAll('h3, p'), {
+    tl.to(infoBoxRef.current?.querySelectorAll('h3, p') ?? [], {
       opacity: 0,
       duration: 0.3,
       ease: 'power2.in'
