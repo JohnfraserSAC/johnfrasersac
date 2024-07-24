@@ -31,8 +31,8 @@ const anouncementHeroBackground = () => {
         </div>
           <div className='absolute inset-0 flex justify-center items-center z-30 lg:w-full'>
               <div className='z-40 flex flex-col justify-center items-center lg:w-4/12'>
-                <h1 className='text-4xl'>Anouncements</h1>
-                <p className='w-9/12 text-center'>Check here for all the up to date news at John Fraser! Join our Google Classroom if you never want to miss an event.</p>
+                <h1 className='text-7xl'>Anouncements</h1>
+                <p className='w-9/12 text-center text-xl'>Check here for all the up to date news at John Fraser! Join our Google Classroom if you never want to miss an event.</p>
               </div>  
           </div> 
 

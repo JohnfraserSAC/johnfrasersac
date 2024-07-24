@@ -14,8 +14,8 @@ const page = () => {
     <main>
       <div className='custom-background-4 flex flex-col justify-center items-center text-center' style={{height: "40.3333vh"}}>
         <div className='w-11/12 text-white'>
-          <h1 className='font-semibold text-3xl mb-4'>SAC Oppurtunities</h1>
-          <p className='font-thin'>SAC has many oppurtunities throughout the school year for you to volunteer, attend events, and apply to be a part of the team!</p>
+          <h1 className='font-semibold text-7xl mb-4'>SAC Oppurtunities</h1>
+          <p className='font-thin text-xl'>SAC has many oppurtunities throughout the school year for you to volunteer, attend events, and apply to be a part of the team!</p>
         </div>
       </div>
       
