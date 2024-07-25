@@ -144,7 +144,7 @@ const page = () => {
             <p className='tracking-widest font-light'>MEET THE...</p>
             <h1 className='font-medium text-4xl mt-4'>Executive Team</h1>
           </div>
-          <div className='lg:grid lg:grid-cols-5 lg:gap-x-32 lg:gap-y-12 flex flex-col justify-center items-center gap-y-8 my-8'>
+          <div className='lg:grid lg:grid-cols-4 lg:gap-x-32 lg:gap-y-12 flex flex-col justify-center items-center gap-y-8 my-8'>
           {teamMembers.map(member => (
             <ExecutiveInfo
               key={member.id}
