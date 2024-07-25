@@ -2,11 +2,95 @@ import React from 'react'
 import Image from 'next/image'
 import ExecutiveInfo from '@/components/ExecutiveInfo'
 
+const teamMembers = [
+  {
+    name: 'Thoa Le',
+    role: 'President',
+    image: '/team/thoa-le.jpg',
+    description: 'hiya my name is Thoa. I like being really really tall.'
+  },
+  {
+    name: 'Akshat Chopra',
+    role: 'Vice President',
+    image: '/team/akshat-chopra.jpg',
+    description: 'hiya my name is Akshat. I like being really really tall.'
+  },
+  {
+    name: 'Thoa Le',
+    role: 'President',
+    image: '/team/thoa-le.jpg',
+    description: 'hiya my name is Thoa. I like being really really tall.'
+  },
+  {
+    name: 'Akshat Chopra',
+    role: 'Vice President',
+    image: '/team/akshat-chopra.jpg',
+    description: 'hiya my name is Akshat. I like being really really tall.'
+  },
+  {
+    name: 'Thoa Le',
+    role: 'President',
+    image: '/team/thoa-le.jpg',
+    description: 'hiya my name is Thoa. I like being really really tall.'
+  },
+  {
+    name: 'Akshat Chopra',
+    role: 'Vice President',
+    image: '/team/akshat-chopra.jpg',
+    description: 'hiya my name is Akshat. I like being really really tall.'
+  },
+  {
+    name: 'Thoa Le',
+    role: 'President',
+    image: '/team/thoa-le.jpg',
+    description: 'hiya my name is Thoa. I like being really really tall.'
+  },
+  {
+    name: 'Akshat Chopra',
+    role: 'Vice President',
+    image: '/team/akshat-chopra.jpg',
+    description: 'hiya my name is Akshat. I like being really really tall.'
+  },
+  {
+    name: 'Thoa Le',
+    role: 'President',
+    image: '/team/thoa-le.jpg',
+    description: 'hiya my name is Thoa. I like being really really tall.'
+  },
+  {
+    name: 'Akshat Chopra',
+    role: 'Vice President',
+    image: '/team/akshat-chopra.jpg',
+    description: 'hiya my name is Akshat. I like being really really tall.'
+  },
+];
+
+const aboutTheTeam = [
+  {
+    title: 'Executives',
+    description: 'Working closely with the SAC staff advisors, the Executive Team helps to oversee SAC and mentor members. The executive team is selected in May of each year through an application and election process.',
+    image: '/placeholder.jpg',
+    alt: 'placeholder'
+  },
+  {
+    title: 'Grade Reps',
+    description: 'Grade Representatives work to voice the opinions of their grade and engage with them. Grade Representatives are selected in are selected in September of the new school year!',
+    image: '/placeholder.jpg',
+    alt: 'placeholder'
+  },
+  {
+    title: 'Honouraries',
+    description: 'Honourary Members make up the majority of SAC. They are student leaders who help to plan, execute, and promote SAC events. Honourary positions are chosen at the start of the year and can be found here.',
+    image: '/placeholder.jpg',
+    alt: 'placeholder'
+  },
+]
+
 const page = () => {
   return (
     <main>
       <div className='custom-background-4 text-white flex flex-col lg:justify-between justify-center items-center' style={{height: '90.33vh'}}>
-        <div className='text-center lg:mt-32 flex flex-col justify-center items-center w-5/12 my-8'>
+        <div className='text-center lg:mt-32 flex flex-col justify-center items-center lg:w-5/12 my-8'>
           <h1 className='lgtext-7xl text-5xl font-semibold mb-4'>Meet Our Team</h1>
           <p className='lg:text-xl text-base'>SAC has over 30 members including executives, grade reps, and honorary members. Learn more about our current members!</p>
         </div>
@@ -20,56 +104,48 @@ const page = () => {
       </div>
 
 
-      <div className='min-h-screen flex justify-center items-center flex-col gap-y-20 my-20'>
-        <div className='bg-gray-300 flex justify-center items-center flex-col text-center rounded-2xl' style={{height:'50vh', width: '35vh'}}>
-          <div className='w-48 h-48 overflow-hidden relative'>
-            <Image
-              src="/placeholder.jpg"
-              alt="Description of the image"
-              layout="fill"
-              objectFit="cover"
-            />
+      <div className=' flex justify-center items-center flex-col lg:flex-row lg:gap-x-20 gap-y-20 my-20'>
+        {aboutTheTeam.map(about => (
+          <div className='bg-gray-200 flex justify-center items-center flex-col text-center rounded-2xl' style={{height:'70vh', width: '35vh'}}>
+          <div className='w-full flex justify-center items-center' style={{height: '50%'}}>
+            <div className='w-48 h-48 overflow-hidden relative'>
+              <Image
+                src={about.image ?? ''}
+                alt={about.alt ?? ''}
+                layout="fill"
+                objectFit="cover"
+                className='rounded-md'
+              />
+            </div>
           </div>
-          <h1 className='font-semibold text-3xl my-4'>
-            Executives
-          </h1>
-          <p className='w-11/12'>Working closely with the SAC staff advisors, the Executive Team helps to oversee SAC and mentor members. The executive team is selected in May of each year through an application and election process.</p>
-        </div>
-        <div className='bg-gray-300 flex justify-center items-center flex-col text-center rounded-2xl' style={{height:'50vh', width: '35vh'}}>
-          <div className='w-48 h-48 overflow-hidden relative'>
-            <Image
-              src="/placeholder.jpg"
-              alt="Description of the image"
-              layout="fill"
-              objectFit="cover"
-            />
+          <div className='w-full flex flex-col justify-center items-center h-1/2'>
+            <h1 className='font-semibold text-3xl my-4'>
+              {about.title}
+            </h1>
+            <p className='w-11/12 tracking-wide leading-7'>{about.description}</p>
           </div>
-          <h1 className='font-semibold text-3xl my-4'>
-            Grade Reps
-          </h1>
-          <p className='w-11/12'>Grade Representatives work to voice the opinions of their grade and engage with them. Grade Representatives are selected in are selected in September of the new school year!</p>
         </div>
-        <div className='bg-gray-300 flex justify-center items-center flex-col text-center rounded-2xl' style={{height:'50vh', width: '35vh'}}>
-          <div className='w-48 h-48 overflow-hidden relative'>
-            <Image
-              src="/placeholder.jpg"
-              alt="Description of the image"
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-          <h1 className='font-semibold text-3xl my-4'>
-            Honouraries
-          </h1>
-          <p className='w-11/12'>Honourary Members make up the majority of SAC. They are student leaders who help to plan, execute, and promote SAC events. Honourary positions are chosen at the start of the year and can be found here.</p>
-        </div>
+        ))}
       </div>
 
       <div>
-        <p>MEET THE...</p>
-        <h1>Executive Team</h1>
-        <div className='flex flex-col justify-center items-center gap-y-8 my-8'>
-          <ExecutiveInfo name='Thoa Le' image='thoa-le.jpg' role='President' description='hiya my name is Thoa. I like being really really tall.' />
+        <div className='w-full flex flex-col justify-center items-center'>
+          <div className='w-full flex justify-center items-center flex-col'>
+            <p className='tracking-widest font-light'>MEET THE...</p>
+            <h1 className='font-medium text-4xl mt-4'>Executive Team</h1>
+          </div>
+          <div className='lg:grid lg:grid-cols-5 lg:gap-x-32 lg:gap-y-12 flex flex-col justify-center items-center gap-y-8 my-8'>
+            {teamMembers.map(member => (
+              <ExecutiveInfo
+                key={member.name}
+                name={member.name}
+                role={member.role}
+                image={member.image}
+                description={member.description}
+              />
+            ))}
+          
+          </div>
         </div>
       </div>
     </main>
