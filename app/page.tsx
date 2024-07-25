@@ -159,7 +159,7 @@ const Page = () => {
                 <div className='lg:flex-1'>
                   <Image
                     className='container-image rounded-xl'
-                    src='/thoa-le.jpg' 
+                    src='/team/thoa-le.jpg' 
                     width={175}
                     height={175}
                     alt='thoa le' />
@@ -171,7 +171,7 @@ const Page = () => {
                 <div className='lg:flex-1'>
                   <Image
                     className='container-image rounded-xl'
-                    src='/akshat-chopra.jpg' 
+                    src='/team/akshat-chopra.jpg' 
                     width={175}
                     height={175}
                     alt='akshat chopra' />
