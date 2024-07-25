@@ -4,60 +4,70 @@ import ExecutiveInfo from '@/components/ExecutiveInfo'
 
 const teamMembers = [
   {
+    id: 1,
     name: 'Thoa Le',
     role: 'President',
     image: '/team/thoa-le.jpg',
     description: 'hiya my name is Thoa. I like being really really tall.'
   },
   {
+    id: 2,
     name: 'Akshat Chopra',
     role: 'Vice President',
     image: '/team/akshat-chopra.jpg',
     description: 'hiya my name is Akshat. I like being really really tall.'
   },
   {
+    id: 3,
     name: 'Thoa Le',
     role: 'President',
     image: '/team/thoa-le.jpg',
     description: 'hiya my name is Thoa. I like being really really tall.'
   },
   {
+    id: 4,
     name: 'Akshat Chopra',
     role: 'Vice President',
     image: '/team/akshat-chopra.jpg',
     description: 'hiya my name is Akshat. I like being really really tall.'
   },
   {
+    id: 5,
     name: 'Thoa Le',
     role: 'President',
     image: '/team/thoa-le.jpg',
     description: 'hiya my name is Thoa. I like being really really tall.'
   },
   {
+    id: 6,
     name: 'Akshat Chopra',
     role: 'Vice President',
     image: '/team/akshat-chopra.jpg',
     description: 'hiya my name is Akshat. I like being really really tall.'
   },
   {
+    id: 7,
     name: 'Thoa Le',
     role: 'President',
     image: '/team/thoa-le.jpg',
     description: 'hiya my name is Thoa. I like being really really tall.'
   },
   {
+    id: 8,
     name: 'Akshat Chopra',
     role: 'Vice President',
     image: '/team/akshat-chopra.jpg',
     description: 'hiya my name is Akshat. I like being really really tall.'
   },
   {
+    id: 9,
     name: 'Thoa Le',
     role: 'President',
     image: '/team/thoa-le.jpg',
     description: 'hiya my name is Thoa. I like being really really tall.'
   },
   {
+    id: 10,
     name: 'Akshat Chopra',
     role: 'Vice President',
     image: '/team/akshat-chopra.jpg',
@@ -105,8 +115,8 @@ const page = () => {
 
 
       <div className=' flex justify-center items-center flex-col lg:flex-row lg:gap-x-20 gap-y-20 my-20'>
-        {aboutTheTeam.map(about => (
-          <div className='bg-gray-200 flex justify-center items-center flex-col text-center rounded-2xl' style={{height:'70vh', width: '35vh'}}>
+        {aboutTheTeam.map((about, index) => (
+        <div key={index} className='bg-gray-200 flex justify-center items-center flex-col text-center rounded-2xl' style={{height:'70vh', width: '35vh'}}>
           <div className='w-full flex justify-center items-center' style={{height: '50%'}}>
             <div className='w-48 h-48 overflow-hidden relative'>
               <Image
@@ -135,16 +145,15 @@ const page = () => {
             <h1 className='font-medium text-4xl mt-4'>Executive Team</h1>
           </div>
           <div className='lg:grid lg:grid-cols-5 lg:gap-x-32 lg:gap-y-12 flex flex-col justify-center items-center gap-y-8 my-8'>
-            {teamMembers.map(member => (
-              <ExecutiveInfo
-                key={member.name}
-                name={member.name}
-                role={member.role}
-                image={member.image}
-                description={member.description}
-              />
-            ))}
-          
+          {teamMembers.map(member => (
+            <ExecutiveInfo
+              key={member.id}
+              name={member.name}
+              role={member.role}
+              image={member.image}
+              description={member.description}
+            />
+          ))}
           </div>
         </div>
       </div>
