@@ -11,7 +11,7 @@ const BgConditionContext = createContext({
   setBgCondition: (condition: string) => {},
 });
 
-export const useBgCondition = () => useContext(BgConditionContext);
+export const UseBgCondition = () => useContext(BgConditionContext);
 
 export const BgConditionProvider = ({ children }: BgConditionContextProviderProps) => {
   const [bgCondition, setBgCondition] = useState('');

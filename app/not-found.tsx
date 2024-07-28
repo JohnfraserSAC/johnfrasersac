@@ -2,11 +2,11 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { useBgCondition } from '@/components/BgConditionContext';
+import { UseBgCondition } from '@/components/BgConditionContext';
 import { useEffect } from 'react';
  
 export default async function NotFound() {
-  const { setBgCondition } = useBgCondition();
+  const { setBgCondition } = UseBgCondition();
 
   useEffect(() => {
   setBgCondition("blackbg");

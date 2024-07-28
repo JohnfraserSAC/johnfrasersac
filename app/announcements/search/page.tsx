@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { fetchAnnouncements } from '@/utils/announcementData';
-import { useBgCondition } from '@/components/BgConditionContext';
+import { UseBgCondition } from '@/components/BgConditionContext';
 
 interface Announcement {
   id: string;
@@ -17,7 +17,7 @@ export default function AnnouncementList() {
   const [sortedAnnouncements, setSortedAnnouncements] = useState<{id: string, title: string, slug: string, date: string }[]>([]);
   const [sortOrder, setSortOrder] = useState('descending'); // Default to 'descending'
 
-  const { setBgCondition } = useBgCondition();
+  const { setBgCondition } = UseBgCondition();
 
   useEffect(() => {
 	setBgCondition("blackbg");

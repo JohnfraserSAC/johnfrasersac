@@ -3,13 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useBgCondition } from "./BgConditionContext";
+import { UseBgCondition } from "./BgConditionContext";
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
-import { devpostLink, name, registrationLink } from "@util/config";
-
 import { FaBars } from 'react-icons/fa';
-import TopBanner from "./TopBanner";
 
 const clamp = (num: number, min: number, max: number) => Math.min(Math.max(num, min), max);
 
@@ -58,7 +55,7 @@ interface NavbarProps {
 }
 
 export default function Navbar({ home }: NavbarProps) {
-    const { bgCondition } = useBgCondition();
+    const { bgCondition } = UseBgCondition();
     const [logoSrc, setLogoSrc] = useState('/WSAC-Logo.png');
 
     useEffect(() => {

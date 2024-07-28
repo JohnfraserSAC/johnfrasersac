@@ -120,19 +120,19 @@
 }
 
 .button-3 {
-  border: 2px solid rgba(40,129,244,255); /* Blue outline */
-  color: rgba(40,129,244,255); /* Blue text */
-  background-color: white; /* White background */
-  border-radius: 50px; /* Completely rounded corners */
-  padding: 10px 30px; /* Padding to increase button size */
-  text-decoration: none; /* Remove underline if it's a link */
-  transition: all 0.3s ease; /* Smooth transition */
+  border: 2px solid rgba(40,129,244,255); 
+  color: rgba(40,129,244,255); 
+  background-color: white; 
+  border-radius: 50px; 
+  padding: 10px 30px; 
+  text-decoration: none; 
+  transition: all 0.3s ease; 
 }
 
 .button-3:hover {
-  border-color: white; /* White outline on hover */
-  color: white; /* White text on hover */
-  background-color: rgb(255, 215, 0); /* Yellow background on hover */
+  border-color: white;
+  color: white; 
+  background-color: rgb(255, 215, 0); 
 }
 
 .button-4 {
@@ -160,12 +160,12 @@
 }
 
 .title {
-  font-size: 2.25rem; /* 4xl */
+  font-size: 2.25rem; 
 }
 
 @media (min-width: 1024px) {
   .title {
-    font-size: 3.97rem; /* custom size */
+    font-size: 3.97rem; 
   }
 }
 
@@ -223,7 +223,7 @@
 }
 
 .final-container {
-  max-width: 2000px; /* This sets the maximum width */
+  max-width: 2000px; 
 }
 
 .bg-translucent-gray {
@@ -247,8 +247,44 @@
 }
 
 .image {
-  width: 16px; /* Adjust based on your preference */
-  height: 8px; /* Adjust based on your preference */
+  width: 16px; 
+  height: 8px; 
   background-size: cover;
   background-position: center;
+}
+
+.frasertickets {
+  width: 900px;
+  height: auto;
+}
+
+
+@media (max-width: 700px) {
+  .frasertickets {
+    width: 400px;
+    height: auto;
+  }
+}
+
+.button-6 {
+  background-image: url('/hero-bg.png');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  border: none;
+  color: white;
+  padding: 13.5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+}
+
+.button-6:hover {
+  background-color: rgb(255, 215, 0);
+  color: white;
 }
