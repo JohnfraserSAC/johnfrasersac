@@ -1,7 +1,4 @@
-"use client"
-
 import React from 'react';
-import { fetchAnnouncements } from '@/utils/announcementData';
 
 interface Announcement {
   id: number;
@@ -11,23 +8,18 @@ interface Announcement {
   date: string;
 }
 
-export default function Page({ params }: { params: { slug: string } }) {
-  const [announcements, setAnnouncements] = React.useState<Announcement[]>([]);
+export async function generateStaticParams() {
+  const response = await fetch('https://sheetdb.io/api/v1/07ube0lmjw2nh', {})
+  const data = await response.json();
+  return data.map(() => ({
+  }))
 
-  React.useEffect(() => {
-    const fetchAndSetAnnouncements = async () => {
-      const data = await fetchAnnouncements();
-      setAnnouncements(data);
-    };
+}
 
-    fetchAndSetAnnouncements();
-  }, []);
-
-  const announcement = announcements.find(announcement => announcement.slug === params.slug);
-
+const page = () => {
   return (
     <div>
-      {announcement ? (
+      {/* {announcement ? (
         <div className='flex flex-col justify-center items-center' style={{ height: '50.3333vh' }}>
           <h1>{announcement.title}</h1>
           <p>{announcement.content}</p>
@@ -37,7 +29,9 @@ export default function Page({ params }: { params: { slug: string } }) {
         </div>
       ) : (
         <p>Announcement not found.</p>
-      )}
+      )} */}
     </div>
   );
 }
+
+export default page
