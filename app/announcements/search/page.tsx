@@ -7,15 +7,16 @@ import { UseBgCondition } from '@/components/BgConditionContext';
 
 interface Announcement {
   id: string;
-  title: string;
   slug: string;
+  title: string;
+  content: string;
   date: string;
 }
 
 export default function AnnouncementList() {
   const [announcements, setAnnouncements] = useState<{ id: string, title: string, slug: string, date: string }[]>([]);
   const [sortedAnnouncements, setSortedAnnouncements] = useState<{id: string, title: string, slug: string, date: string }[]>([]);
-  const [sortOrder, setSortOrder] = useState('descending'); // Default to 'descending'
+  const [sortOrder, setSortOrder] = useState('descending'); 
 
   const { setBgCondition } = UseBgCondition();
 
@@ -61,11 +62,6 @@ export default function AnnouncementList() {
     }, [announcements, sortOrder]);
 
     console.log(sortedAnnouncements)
-
-    // const res = await fetch('@/utils/announcementData', {
-    //   next: { revalidate: 10 }.
-    // });
-    // const finalAnnouncements = (await res.json()) as Announcement[];
 
   return (
     <div className='flex justify-center items-center flex-col text-center' style={{height: '90.3333vh'}}>
