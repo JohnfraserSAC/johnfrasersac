@@ -4,19 +4,10 @@ import React, { useMemo, useState, useEffect } from 'react';
 import clubs from '@/utils/clubs';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { UseBgCondition } from '@/components/BgConditionContext';
 
 const Page = () => {
   const [sortOrder, setSortOrder] = useState('ascending');
   const [windowWidth, setWindowWidth] = useState(0); 
-
-  const { setBgCondition } = UseBgCondition();
-
-  useEffect(() => {
-  setBgCondition("blackbg");
-
-  return () => setBgCondition("");
-  }, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

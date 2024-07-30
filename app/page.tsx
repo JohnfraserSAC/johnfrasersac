@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image'
+import Link from 'next/link';
 
 const Page = () => {
   const [hoveredImage, setHoveredImage] = useState<string | null>(null);
@@ -30,8 +31,8 @@ const Page = () => {
                     </button>
                   </a>
                 </div>
-                <a href='/anouncements' className='my-5 lg:self-start lg:ml-2'>
-                  <p className='text-white'>View Anouncements &rarr;</p>
+                <a href='/announcements' className='my-5 lg:self-start lg:ml-2'>
+                  <p className='text-white'>View Announcements &rarr;</p>
                 </a>
               </div>
             </div>
@@ -130,9 +131,9 @@ const Page = () => {
                 </div>
               </div>
             </div>
-            <a href='/anouncements' className='w-full flex'>
+            <a href='/announcements' className='w-full flex'>
               <button className='button-2 w-full'>
-                <p>View Anouncements</p>
+                <p>View Announcements</p>
               </button>
             </a>
           </div>
@@ -148,9 +149,9 @@ const Page = () => {
                   <h1 className='font-bold text-4xl'>Meet Our Team</h1>
                 </div>
                 <button className='button-3 my-6'>
-                  <a>
+                  <Link href='/team'>
                     <p>Learn More</p>
-                  </a>
+                  </Link>
                 </button>
               </div>
             </div>

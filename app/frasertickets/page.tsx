@@ -1,17 +1,7 @@
-"use client"
-
-import React, { useEffect } from 'react'
+import React from 'react'
 import Link from 'next/link'
-import { UseBgCondition } from '@/components/BgConditionContext';
 
 const Page = () => {
-  const { setBgCondition } = UseBgCondition();
-
-  useEffect(() => {
-  setBgCondition("blackbg");
-
-  return () => setBgCondition("");
-  }, []);
 
   return (
     <main>

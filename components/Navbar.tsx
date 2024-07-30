@@ -3,12 +3,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { UseBgCondition } from "./BgConditionContext";
+import { useRouter } from "next/router";
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 import { FaBars } from 'react-icons/fa';
 
 const clamp = (num: number, min: number, max: number) => Math.min(Math.max(num, min), max);
+
 
 const links = [
     {
@@ -55,16 +56,21 @@ interface NavbarProps {
 }
 
 export default function Navbar({ home }: NavbarProps) {
-    const { bgCondition } = UseBgCondition();
     const [logoSrc, setLogoSrc] = useState('/WSAC-Logo.png');
 
     useEffect(() => {
-        if (bgCondition === "blackbg") {
-            setLogoSrc('/BSAC-Logo.png');
-        } else {
-            setLogoSrc('/WSAC-Logo.png');
-        }
-    }, [bgCondition]);
+        const blackLogoPaths = [
+            '/announcements/search',
+            '/clubs',
+            '/frasertickets',
+            '/404'
+        ];
+
+        const currentPath = window.location.pathname;
+        const isBlackLogoPage = blackLogoPaths.some(path => currentPath.startsWith(path));
+        setLogoSrc(isBlackLogoPage ? '/BSAC-Logo.png' : '/WSAC-Logo.png');
+    }, []);
+
 
     const [showDropdown, setShowDropdown] = useState(false);
     const initialOpacity = home ? 0 : 1;
@@ -101,8 +107,8 @@ export default function Navbar({ home }: NavbarProps) {
             >
                 <div className="container px-4 lg:flex lg:items-center lg:justify-around w-full">
                     <div className="flex justify-around items-center">
-                            <a href="/#home" className="flex flex-row items-center gap-4 font-bold text-xl text-teal">
-                                <Image src={logoSrc} alt="logo" width={200} height={64} quality={100}/>
+                            <a href="/" className="flex flex-row items-center gap-4 font-bold text-xl text-teal">
+                                <Image src={logoSrc} alt="logo" width={200} height={64} quality={100} />
                             </a>
 
                         <button
