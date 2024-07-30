@@ -27,7 +27,7 @@ const ExecutiveInfo: React.FC<ExecutiveInfoProps> = ({ name, role, image, descri
       opacity: 1,
       duration: 0.3,
       ease: 'power2.out'
-    }, '+=0.3'); // Delay the text fade-in by 0.3s
+    }, '+=0.3'); 
   };
 
   const handleMouseLeave = () => {
@@ -42,7 +42,7 @@ const ExecutiveInfo: React.FC<ExecutiveInfoProps> = ({ name, role, image, descri
       opacity: 0,
       duration: 0.3,
       ease: 'power2.in'
-    }, '+=0.3'); // Delay the box shrink by 0.3s
+    }, '+=0.3'); 
   };
 
   return (

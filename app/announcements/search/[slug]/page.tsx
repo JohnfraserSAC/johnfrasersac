@@ -20,7 +20,7 @@ interface PageProps {
 
 export async function generateStaticParams() {
   const response = await fetch('https://sheetdb.io/api/v1/07ube0lmjw2nh', {
-    next: { revalidate: 86400 }
+    next: { revalidate: 5 }
   });
   const data: Announcement[] = await response.json();
   console.log('Fetched data:', data);
@@ -31,7 +31,7 @@ export async function generateStaticParams() {
 
 async function fetchAnnouncement(slug: string): Promise<Announcement | null> {
   const response = await fetch('https://sheetdb.io/api/v1/07ube0lmjw2nh', {
-    next: { revalidate: 10 }
+    next: { revalidate: 5 }
   });
   const data: Announcement[] = await response.json();
   return data.find((announcement) => announcement.slug === slug) || null;
@@ -44,18 +44,20 @@ const Page: FC<PageProps> = async ({ params }) => {
   if (!announcement) {
     return (
       <div className='flex flex-col justify-center items-center' style={{ height: '50.3333vh' }}>
-        <p>Announcement not found.</p>
+        <p>can&apos;t find that one lol.</p>
       </div>
     );
   }
 
   return (
-    <div className='flex flex-col justify-center items-center' style={{ height: '50.3333vh' }}>
-      <div key={announcement.id}>
-        <h1>{announcement.title}</h1>
-        <p>{announcement.content}</p>
-        <div className='w-full text-left'>
-          <p>Posted on: {announcement.date}</p>
+    <div className='flex flex-col justify-center items-center'>
+      <div className='h-full w-full flex flex-col justfiy-center items-center my-40'>
+        <div key={announcement.id}>
+          <h1>{announcement.title}</h1>
+          <p>{announcement.content}</p>
+          <div className='w-full text-left'>
+            <p>Posted on: {announcement.date}</p>
+          </div>
         </div>
       </div>
     </div>
