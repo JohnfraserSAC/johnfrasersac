@@ -53,11 +53,15 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
                 <ul className='w-7/12 text-center overflow-y-auto border' style={{ height: '20vh' }}>
                     {announcements.map(announcement => (
                         <li key={announcement.id}>
-                            <div className='flex justify-evenly mb-4'>
-                                <Link href={`/announcements/search/${announcement.slug}`}>
-                                    <p className='font-bold underline'>{announcement.title}</p>
-                                </Link>
-                                <p className='text-blue-500'>{announcement.date}</p>
+                            <div className='flex justify-evenly mb-4 '>
+                                <div className=' w-full'>
+                                    <Link href={`/announcements/search/${announcement.slug}`}>
+                                        <p className='font-bold underline'>{announcement.title}</p>
+                                    </Link>
+                                </div>
+                                <div className=' w-full'>
+                                    <p className='text-blue-500'>{announcement.date}</p>
+                                </div>
                             </div>
                         </li>
                     ))}
