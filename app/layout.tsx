@@ -6,7 +6,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { AOSInitializer } from '@/components/AOSInitializer';
 import DisplayNavbar from "@/components/displayNavbar";
-import { BgConditionProvider } from "@/components/BgConditionContext";
 import 'dotenv/config';
 
 require('dotenv').config()
@@ -24,15 +23,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <BgConditionProvider>
-      <html lang="en">
-        <body>
-          <DisplayNavbar />
-          <AOSInitializer />
-            {children}
-          <Footer />
-        </body>
-      </html>
-    </BgConditionProvider>
+    <html lang="en">
+      <body>
+        <DisplayNavbar />
+        <AOSInitializer />
+          {children}
+        <Footer />
+      </body>
+    </html>
   );
 }

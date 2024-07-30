@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import { gsap } from 'gsap';
+import Image from 'next/image';
 
 interface ExecutiveInfoProps {
     name: string,
@@ -48,7 +49,7 @@ const ExecutiveInfo: React.FC<ExecutiveInfoProps> = ({ name, role, image, descri
   return (
     <div>
         <div className="relative inline-block">
-        <img
+        <Image
             ref={imageRef}
             src={image}
             alt="Executive"
