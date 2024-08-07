@@ -1,142 +1,108 @@
-"use client"
+"use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { useScrollPosition } from '@n8tb1t/use-scroll-position'
-
-import { FaBars } from 'react-icons/fa';
-
-const clamp = (num: number, min: number, max: number) => Math.min(Math.max(num, min), max);
-
+import { usePathname } from "next/navigation";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const links = [
-    {
-        name: "Anouncements",
-        link: "/announcements",
-        id: "anouncements",
-        priority: false
-    },
-    {
-        name: "SAC Oppurtunities",
-        link: "/oppurtunities",
-        id: "oppurtunities",
-        priority: false
-    },
-    {
-        name: "Clubs",
-        link: "/clubs",
-        id: "clubs",
-        priority: false
-    },
-    {
-        name: "Our Team",
-        link: "/team",
-        id: "team",
-        priority: false
-    },
-    {
-        name: "FraserTickets",
-        link: "/frasertickets",
-        id: "frasertickets",
-        priority: false
-    },
+  { name: "Announcements", href: "/announcements" },
+  { name: "SAC Opportunities", href: "/opportunities" },
+  { name: "Clubs", href: "/clubs" },
+  { name: "Our Team", href: "/team" },
+  { name: "FraserTickets", href: "/frasertickets" },
 ];
 
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [logoSrc, setLogoSrc] = useState("/WSAC-Logo.png");
+  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
+  useEffect(() => {
+    const blackLogoPaths = ["/announcements", "/clubs", "/frasertickets"];
+    setLogoSrc(
+      blackLogoPaths.some((path) => pathname.startsWith(path))
+        ? "/BSAC-Logo.png"
+        : "/WSAC-Logo.png",
+    );
 
-const scrollPosToPercentage = (scrollPos: number) => {
-    const currScroll = clamp(Math.abs(scrollPos), 0, 80) * 100/80; // Goes opaque after 80 pixels scrolled (generally 1 scroll wheel click)
-    return currScroll / 100; // Convert to percentage
-}
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname]);
 
-interface NavbarProps {
-    home?: boolean;
-}
-
-export default function Navbar({ home }: NavbarProps) {
-    const [logoSrc, setLogoSrc] = useState('/WSAC-Logo.png');
-
-    useEffect(() => {
-        const blackLogoPaths = [
-            '/announcements/search',
-            '/clubs',
-            '/frasertickets',
-            '/404'
-        ];
-
-        const currentPath = window.location.pathname;
-        const isBlackLogoPage = blackLogoPaths.some(path => currentPath.startsWith(path));
-        setLogoSrc(isBlackLogoPage ? '/BSAC-Logo.png' : '/WSAC-Logo.png');
-    }, []);
-
-
-    const [showDropdown, setShowDropdown] = useState(false);
-    const initialOpacity = home ? 0 : 1;
-    const [opacity, setOpacity] = useState(initialOpacity);
-
-    useScrollPosition(({ currPos }) => {
-        if (home && !showDropdown) {
-            const newOpacity = scrollPosToPercentage(currPos.y);
-            setOpacity(newOpacity);
-        }
-    });
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const offset = window.scrollY;
-            if (offset > 200) {
-                setOpacity(0); 
-            } else {
-                const newOpacity = 1 - offset / 200;
-                setOpacity(home ? newOpacity : 1);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [home]);
-
-    return (
-        <div className="fixed z-50 w-screen transition-opacity duration-500 ease-in-out" style={{ opacity: opacity }}>
-            <nav 
-                className={`bg-transparent flex flex-col items-center py-2 lg:py-4 w-full transition-colors duration-500 ease-in-out`}
+  return (
+    <nav
+      className={`py-8 fixed top-0 z-50 w-full transition-all duration-300 ${isScrolled ? "bg-[#1c3b6a] shadow-md" : "bg-transparent"}`}
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <div className="flex-shrink-0">
+            <Link href="/">
+              <Image
+                src={logoSrc}
+                alt="Logo"
+                width={300}
+                height={300}
+                className="h-28 w-auto"
+              />
+            </Link>
+          </div>
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-4">
+              {links.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`rounded-md px-3 py-2 text-md font-medium ${
+                    pathname === link.href
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             >
-                <div className="container px-4 lg:flex lg:items-center lg:justify-around w-full">
-                    <div className="flex justify-around items-center">
-                            <a href="/" className="flex flex-row items-center gap-4 font-bold text-xl text-teal">
-                                <Image src={logoSrc} alt="logo" width={200} height={64} quality={100} />
-                            </a>
-
-                        <button
-                            className="border border-solid border-gray-200 px-3 py-1 rounded text-gray-200 opacity-50 hover:opacity-75 lg:hidden cursor-pointer"
-                            aria-label="Menu"
-                            data-test-id="navbar-menu"
-                            onClick={
-                                () => {
-                                    setShowDropdown(!showDropdown);
-                                }}
-                        >
-                            <FaBars/>
-                        </button>
-                    </div>
-
-                    <div className={`${showDropdown ? "flex" : "hidden"} lg:flex flex-col lg:flex-row mt-3 lg:mt-0`} data-test-id="navbar">
-                        {
-                            links.map(({ name, link, priority, id }) =>
-                                <Link key={name} href={link}>
-                                    <div onClick={() => setShowDropdown(false)} className={`${priority ? "text-emerald-300 hover:bg-emerald-900 hover:text-white text-center border border-solid border-emerald-900 mt-1 lg:mt-0 lg:ml-1 " : "text-gray-300 hover:bg-gray-200/25 hover:text-white"} text-base p-2 lg:px-4 lg:mx-2 rounded duration-300 transition-colors`}>
-                                        {name}
-                                    </div>
-                                </Link>
-                            )
-                        }
-                    </div>
-                </div>
-            </nav>
+              <span className="sr-only">Open main menu</span>
+              {isOpen ? (
+                <FaTimes className="h-6 w-6" />
+              ) : (
+                <FaBars className="h-6 w-6" />
+              )}
+            </button>
+          </div>
         </div>
-    )
+      </div>
+
+      {isOpen && (
+        <div className="flex w-full mt-5 md:hidden ">
+          <div className="space-y-1 rounded-xl bg-[#1c3b6a] px-2 pb-3 pt-2 sm:px-3">
+            {links.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`block rounded-md px-3 py-2 text-base font-medium ${
+                  pathname === link.href
+                    ? "bg-gray-900 text-white"
+                    : "text-gray-300 hover:bg-gray-700 hover:text-white"
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </nav>
+  );
 }

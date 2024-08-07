@@ -52,6 +52,8 @@ const ExecutiveInfo: React.FC<ExecutiveInfoProps> = ({ name, role, image, descri
         <Image
             ref={imageRef}
             src={image}
+            width={100}
+            height={100}
             alt="Executive"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}

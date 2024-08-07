@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { AOSInitializer } from '@/components/AOSInitializer';
-import DisplayNavbar from "@/components/displayNavbar";
+import Navbar from "@/components/Navbar";
 import 'dotenv/config';
 
 require('dotenv').config()
@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <DisplayNavbar />
+        <Navbar />
         <AOSInitializer />
           {children}
         <Footer />
