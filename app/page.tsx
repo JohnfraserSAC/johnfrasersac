@@ -209,7 +209,7 @@ const Page = () => {
         {/* Social Links Section */}
         <section className="py-20">
           <div className="container mx-auto">
-            <div className="flex flex-col items-center justify-center gap-y-4 lg:flex-row lg:gap-x-4">
+            <div className="flex flex-col items-center justify-evenly gap-y-4 lg:flex-row lg:gap-x-4">
               {images.map((image) => (
                 <div
                   key={image.id}

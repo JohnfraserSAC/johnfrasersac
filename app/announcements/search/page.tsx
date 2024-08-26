@@ -38,7 +38,7 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
 
     return (
         <main>
-            <div className='flex justify-center items-center flex-col text-center gap-y-4' style={{ height: '90.3333vh' }}>
+            <div className='container mx-auto flex justify-center items-center flex-col text-center gap-y-4' style={{ height: '90.3333vh' }}>
                 <h1 className='text-5xl font-bold '>Search For Announcements</h1>
                 <form method="get" action="/announcements/search" className='mb-4'>
                     <input

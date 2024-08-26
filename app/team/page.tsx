@@ -114,29 +114,29 @@ const page = () => {
       </div>
 
 
-        <div className='flex justify-center items-center flex-col lg:flex-row lg:gap-x-20 gap-y-20 my-20'>
-          {aboutTheTeam.map((about, index) => (
-              <div key={index} className='bg-gray-200 flex justify-center items-center flex-col text-center rounded-2xl' style={{ height: '70vh', width: '35vh' }}>
-                  <div className='w-full flex justify-center items-center' style={{ height: '50%' }}>
-                      <div className='w-48 h-48 overflow-hidden relative'>
-                          <Image
-                              src={about.image ?? '/placeholder.jpg'}
-                              alt={about.alt ?? 'Placeholder'}
-                              fill
-                              objectFit="cover"
-                              className='rounded-md'
-                          />
-                      </div>
-                  </div>
-                  <div className='w-full flex flex-col justify-center items-center h-1/2'>
-                      <h1 className='font-semibold text-3xl my-4'>
-                          {about.title}
-                      </h1>
-                      <p className='w-11/12 tracking-wide leading-7'>{about.description}</p>
-                  </div>
-              </div>
-          ))}
-        </div>
+      <div className='mx-auto container flex justify-center items-center flex-col lg:flex-row lg:gap-x-20 gap-y-20 my-20'>
+        {aboutTheTeam.map((about, index) => (
+            <div key={index} className='bg-gray-200 flex justify-center items-center flex-col text-center rounded-2xl' style={{ height: '70vh', width: '35vh' }}>
+                <div className='w-full flex justify-center items-center' style={{ height: '50%' }}>
+                    <div className='w-48 h-48 overflow-hidden relative'>
+                        <Image
+                            src={about.image ?? '/placeholder.jpg'}
+                            alt={about.alt ?? 'Placeholder'}
+                            fill
+                            objectFit="cover"
+                            className='rounded-md'
+                        />
+                    </div>
+                </div>
+                <div className='w-full flex flex-col justify-center items-center h-1/2'>
+                    <h1 className='font-semibold text-3xl my-4'>
+                        {about.title}
+                    </h1>
+                    <p className='w-11/12 tracking-wide leading-7'>{about.description}</p>
+                </div>
+            </div>
+        ))}
+      </div>
 
       <div>
         <div className='w-full flex flex-col justify-center items-center'>

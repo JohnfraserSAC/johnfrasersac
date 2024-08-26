@@ -11,16 +11,16 @@ const page = () => {
 
 
   return (
-    <main>
+    <main className=''>
       <div className='custom-background-4 flex flex-col justify-center items-center text-center' style={{height: "40.3333vh"}}>
-        <div className='w-11/12 text-white'>
+        <div className='container w-11/12 text-white'>
           <h1 className='font-semibold text-7xl mb-4'>SAC Oppurtunities</h1>
           <p className='font-thin text-xl'>SAC has many oppurtunities throughout the school year for you to volunteer, attend events, and apply to be a part of the team!</p>
         </div>
       </div>
       
 
-      <div className='flex-col lg:flex-row flex justify-center items-center my-8'>
+      <div className='mx-auto container flex-col lg:flex-row flex justify-center items-center my-8'>
         <div className='lg:w-7/12 lg:flex lg:justify-center lg:items-center'>
           <Image
               src='/sac-oppurtunities.jpg'
@@ -52,27 +52,28 @@ const page = () => {
           
         </div>
       </div>
-
-      <div className='flex flex-col justify-center items-center lg:flex-row lg:mx-8 mt-32'>
-        <div className='lg:flex-col'>
-          <h1 className='font-semibold text-3xl w-8/12 mb-7'>Volunteering</h1>
-          <Image
-              src='/volunteering-img.jpg'
-              alt='sac-oppurtunities'
-              width={500}
-              height={300}
-            />
-        </div>
-        <div className='w-full flex justify-center items-center mt-12'>
-          <div className='gap-y-12 flex flex-col justify-center items-center text center w-10/12 leading-10 lg:text-xl'>
-            <p>Throughout the year SAC provides many opportunities to get involved with the club while simultaneously receiving volunteer hours. Events such as Haunted House and Mosaic Lunch require a lot of work in which we need YOUR help! During the time of these events, volunteer applications are released for any interested students</p>
-            <p>Details on volunteering opportunities will be released on SAC social media platforms, daily announcements, as well as the website.</p>
+      <div className='w-full flex flex-col justify-center items-center'>
+        <div className='container flex flex-col justify-center items-center lg:flex-row lg:mx-8 mt-32'>
+          <div className='lg:flex-col container'>
+            <h1 className='font-semibold text-3xl w-8/12 mb-7'>Volunteering</h1>
+            <Image
+                src='/volunteering-img.jpg'
+                alt='sac-oppurtunities'
+                width={500}
+                height={300}
+              />
+          </div>
+          <div className='w-full flex justify-center items-center mt-12'>
+            <div className='gap-y-12 flex flex-col justify-center items-center text center w-10/12 leading-10 lg:text-xl'>
+              <p>Throughout the year SAC provides many opportunities to get involved with the club while simultaneously receiving volunteer hours. Events such as Haunted House and Mosaic Lunch require a lot of work in which we need YOUR help! During the time of these events, volunteer applications are released for any interested students</p>
+              <p>Details on volunteering opportunities will be released on SAC social media platforms, daily announcements, as well as the website.</p>
+            </div>
           </div>
         </div>
       </div>
 
       <hr className='hr-1'></hr>
-      <div className='lg:flex lg:justify-center lg:items-center'>
+      <div className='lg:flex lg:justify-center lg:items-center container mx-auto'>
         <div className='flex flex-col lg:flex-row lg:justify-between justify-center items-center text-center gap-y-5 mb-16 lg:w-10/12'>
           <p className='text-5xl font-semibold'>Let Numbers Talk</p>
           <div className='text-5xl font-extrabold'>

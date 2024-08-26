@@ -25,6 +25,8 @@
 
 .custom-background-4 {
   background-image: url('/backgrounds/hero-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .button-1 {

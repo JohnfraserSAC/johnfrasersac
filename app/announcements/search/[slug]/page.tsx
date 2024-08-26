@@ -51,7 +51,7 @@ const Page: FC<PageProps> = async ({ params }) => {
 
   return (
     <div className='flex flex-col justify-center items-center'>
-      <div key={announcement.id} className='w-full h-full flex flex-col justify-center items-center my-40  gap-y-10'>
+      <div key={announcement.id} className='container flex flex-col justify-center items-center my-40  gap-y-10'>
         <div className='h-full  w-full'>
           <h1 className='text-5xl font-semibold text-center underline'>{announcement.title}</h1>
           <div className='w-full flex justify-center items-center mt-4'>

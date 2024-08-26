@@ -21,17 +21,10 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const blackLogoPaths = ["/announcements", "/clubs", "/frasertickets"];
-    setLogoSrc(
-      blackLogoPaths.some((path) => pathname.startsWith(path))
-        ? "/BSAC-Logo.png"
-        : "/WSAC-Logo.png",
-    );
-
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [pathname]);
+  }, []);
 
   return (
     <nav

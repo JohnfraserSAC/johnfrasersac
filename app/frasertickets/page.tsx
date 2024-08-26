@@ -5,7 +5,7 @@ const Page = () => {
 
   return (
     <main>
-      <div className='min-h-screen flex flex-col justify-center items-center'>
+      <div className='min-h-screen flex flex-col justify-center items-center mt-20'>
         <div className='w-full flex flex-col justify-center items-center text-center gap-y-4 mb-8'>
           <h1 className='font-semibold text-3xl lg:text-6xl'>Fraser Tickets</h1>
           <p className='font-light '>This is FraserTickets, where we manage YOUR tickets through our fool-proof ticket manager!</p>
