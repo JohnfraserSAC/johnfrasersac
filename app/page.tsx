@@ -98,7 +98,7 @@ const Page = () => {
               </h2>
               <p className="mb-8 text-xl">
                 <strong>
-                  SAC stands for "Student Activity Council". We are a team of
+                  SAC stands for &quot;Student Activity Council&quot;. We are a team of
                   John Fraser students committed to enhancing your high school
                   experience through a diverse array of events! Learn more about
                   what we do and how you can get involved on this page.
@@ -240,7 +240,7 @@ const Page = () => {
             <div className="mb-20">
               <h2 className="mb-4 text-3xl font-bold">Say Cheese!</h2>
               <p className="mb-6 text-xl">
-                You can now see any photos taken by John Fraser's SAC on our
+                You can now see any photos taken by John Fraser&apos;s SAC on our
                 website.
               </p>
               <Link href="https://johnfrasersac.com/photos/">
@@ -252,10 +252,10 @@ const Page = () => {
             <hr className="my-20 border-t border-gray-200" />
             <div>
               <h2 className="mb-4 text-3xl font-bold">
-                We'd love to hear from you
+                We&apos;d love to hear from you
               </h2>
               <p className="mb-6 text-xl">
-                Let us know how we're doing, if you have any ideas for new
+                Let us know how we&apos;re doing, if you have any ideas for new
                 events, or feedback on existing ones!
               </p>
               <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdJO3rFBZiyOMEVoZYRCxcfUwLlQCmgo8LuJfxssci0tHlsew/viewform">
