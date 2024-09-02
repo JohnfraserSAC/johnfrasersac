@@ -2,17 +2,8 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { UseBgCondition } from '@/components/BgConditionContext';
-import { useEffect } from 'react';
  
 export default function NotFound() {
-  const { setBgCondition } = UseBgCondition();
-
-  useEffect(() => {
-  setBgCondition("blackbg");
-
-  return () => setBgCondition("");
-  }, []);
   return (
     <main className='h-screen'>
         <div className='h-full flex justify-center items-center flex-col text-center'>
