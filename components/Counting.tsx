@@ -9,12 +9,14 @@ interface CountUpAnimationProps {
 }
 
 const CountUpAnimation: React.FC<CountUpAnimationProps> = ( { children, duration = 2000 }: { children: React.ReactNode, duration?: number } ) => {
+	// defining variables
 	let countTo = 0;
 	if (typeof children === 'string') {
 		countTo = parseInt(children, 10);
 	}
 	const [ count, setCount ] = useState( 0 );
 
+	// setting up the animation and then counting up (frame for duration)
 	useEffect( () => {
 		let frame = 0;
 		const totalFrames = Math.round( duration / frameDuration );

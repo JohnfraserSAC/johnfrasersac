@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+const API_URL = process.env.NEXT_PUBLIC_SHEETDB_ENDPOINT_URL;
+
 export const metadata: Metadata = {
     title: 'Announcements',
 };
@@ -13,13 +15,19 @@ interface Announcement {
     date: string;
 }
 
+// getting all of the data from the sheetdb (once on deployment)
 async function getAllAnnouncements(searchQuery: string = ''): Promise<Announcement[]> {
-    const response = await fetch('https://sheetdb.io/api/v1/07ube0lmjw2nh');
+    if (!API_URL) {
+        throw new Error('API URL is not defined');
+    }
+
+    const response = await fetch(API_URL);
     if (!response.ok) {
         throw new Error('Failed to fetch announcements');
     }
     let announcements: Announcement[] = await response.json();
 
+    // sorting algorithm to display originally (by date)
     if (searchQuery) {
         announcements = announcements.filter(announcement =>
             announcement.title.toLowerCase().includes(searchQuery.toLowerCase()) ||

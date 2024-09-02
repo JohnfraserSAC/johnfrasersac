@@ -1,3 +1,4 @@
+// initialize ANIMATE ON SCROLL LIBRARY
 "use client";
 
 import { useEffect } from 'react';

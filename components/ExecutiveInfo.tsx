@@ -16,6 +16,7 @@ const ExecutiveInfo: React.FC<ExecutiveInfoProps> = ({ name, role, image, descri
   const infoBoxRef = useRef<HTMLDivElement>(null);
 
   const handleMouseEnter = () => {
+    // GSAP HANDLER
     const tl = gsap.timeline();
     tl.to(infoBoxRef.current, {
       width: '207.5px', 

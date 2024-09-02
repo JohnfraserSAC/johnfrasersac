@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
 
+const API_URL = process.env.NEXT_PUBLIC_SHEETDB_ENDPOINT_URL;
+
 interface Announcement {
   id: number;
   slug: string;
@@ -18,8 +20,12 @@ interface PageProps {
   }
 }
 
+// grab and generate the proper data
 export async function generateStaticParams() {
-  const response = await fetch('https://sheetdb.io/api/v1/07ube0lmjw2nh', {
+  if (!API_URL) {
+    throw new Error('API URL is not defined');
+  }
+  const response = await fetch(API_URL, {
     next: { revalidate: 200 }
   });
   const data: Announcement[] = await response.json();
@@ -29,8 +35,12 @@ export async function generateStaticParams() {
   }));
 }
 
+// now provide the corresponding data for the slug that you have been directed to. SLUGS MUST HAVE UNIQUE IDS
 async function fetchAnnouncement(slug: string): Promise<Announcement | null> {
-  const response = await fetch('https://sheetdb.io/api/v1/07ube0lmjw2nh', {
+  if (!API_URL) {
+    throw new Error('API URL is not defined');
+  }
+  const response = await fetch(API_URL, {
     next: { revalidate: 200 }
   });
   const data: Announcement[] = await response.json();
