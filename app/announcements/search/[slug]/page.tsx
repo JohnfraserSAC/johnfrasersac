@@ -29,7 +29,7 @@ export async function generateStaticParams() {
     next: { revalidate: 200 }
   });
   const data: Announcement[] = await response.json();
-  console.log('Fetched data:', data);
+  // console.log('Fetched data:', data);
   return data.map((announcement: any) => ({
     slug: announcement.slug,
   }));

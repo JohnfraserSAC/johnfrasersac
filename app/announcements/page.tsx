@@ -49,10 +49,10 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
     const announcements: Announcement[] = await getAllAnnouncements(searchQuery);
 
     return (
-        <main className='flex'>
+        <main className=''>
             <BootstrapClient/>
-            <div className='border flex justify-center items-center flex-col text-center mt-40 w-full my-8'>
-                <div className='mb-12 text-center w-full flex flex-col justify-center items-center'>
+            <div className='flex justify-center items-center flex-col text-center mt-40 w-full my-8'>
+                <div className='mb-12 text-center flex flex-col justify-center items-center container'>
                   <h1 className='text-4xl mb-3 lg:text-6xl font-bold'>Announcements</h1>
                   <p className='w-7/12 text-lg mb-6'>Check here for all up to date new at John Fraser! Join our Google Classroom if you never want to miss an event.</p>
                   <Link href='/announcements/search'>
@@ -60,7 +60,7 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
                   </Link>
                 </div>
 
-                <div id="carouselExampleIndicators" className="carousel slide lg: w-7/12" data-bs-ride="carousel">
+                <div id="carouselExampleIndicators" className="carousel slide lg: w-7/12 container" data-bs-ride="carousel">
                     <div className="carousel-indicators">
                         {announcements.map((_, index) => (
                             <button
