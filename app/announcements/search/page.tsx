@@ -58,10 +58,10 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
                     />
                     <button type="submit" className='button-2'>Search</button>
                 </form>
-                <ul className='w-7/12 text-center overflow-y-auto border' style={{ height: '20vh' }}>
+                <ul className='w-10/12 lg:w-7/12 text-center overflow-y-auto border' style={{ height: '20vh' }}>
                     {announcements.map(announcement => (
                         <li key={announcement.id}>
-                            <div className='flex justify-evenly mb-4 '>
+                            <div className='flex justify-evenly mb-2 '>
                                 <div className=' w-full'>
                                     <Link href={`/announcements/search/${announcement.slug}`}>
                                         <p className='font-bold underline'>{announcement.title}</p>
