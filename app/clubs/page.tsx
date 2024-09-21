@@ -1,5 +1,4 @@
-"use client"
-
+'use client';
 import React, { useMemo, useState, useEffect } from 'react';
 import clubs from '@/utils/clubs';
 import Link from 'next/link';
@@ -7,8 +6,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Page = () => {
   const [sortOrder, setSortOrder] = useState('ascending');
-  const [windowWidth, setWindowWidth] = useState(0); 
+  const [windowWidth, setWindowWidth] = useState(0);
+  const [activeClubId, setActiveClubId] = useState(null);
 
+  // Handle window resizing to detect width 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setWindowWidth(window.innerWidth);
@@ -23,63 +24,95 @@ const Page = () => {
     }
   }, []);
 
-  const sortedAnnouncements = useMemo(() => clubs.sort((a, b) => {
-    if (sortOrder === 'ascending') {
-      return a.name.localeCompare(b.name);
-    } else {
-      return b.name.localeCompare(a.name);
-    }
-  }), [sortOrder]);
+  // Sort clubs by name based on the sortOrder
+  const sortedAnnouncements = useMemo(() => {
+    return clubs.slice().sort((a, b) => {
+      return sortOrder === 'ascending'
+        ? a.name.localeCompare(b.name)
+        : b.name.localeCompare(a.name);
+    });
+  }, [sortOrder]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
+  // Toggle club dropdown visibility
+  const toggleClub = (clubId) => {
+    setActiveClubId((prev) => (prev === clubId ? null : clubId));
+  };
 
   return (
-    <main className='flex flex-col justify-center items-center'>
-      <div className='container flex justify-center items-center flex-col text-center mt-40'>
-        <h1 className='text-4xl mb-5 lg:text-6xl font-bold'>Clubs</h1>
-        <p className='w-7/12 text-lg'>Check here for all the updates and clubs here at John Fraser Secondary School!</p>
+    <main className="flex flex-col justify-center items-center min-h-screen bg-gray-100">
+      <div className="container mx-auto text-center mt-20 lg:mt-40">
+        <h1 className="text-3xl lg:text-6xl font-bold mb-5">Clubs</h1>
+        <p className="text-lg lg:w-6/12 mx-auto text-gray-600">
+          Check here for all the updates and clubs at John Fraser Secondary School!
+        </p>
       </div>
-      <div className='container flex h-40 justify-center items-start mb-12'>
-        <div id='filter' className='flex '>
-          <button className='button-2' onClick={() => setSortOrder('ascending')}>A-Z</button>
-          <button className='button-2' onClick={() => setSortOrder('descending')}>Z-A</button>
-        </div>
+
+      {/* Sort Buttons */}
+      <div className="flex justify-center space-x-4 my-8">
+        <button
+          className={`px-4 py-2 rounded-lg font-semibold ${sortOrder === 'ascending' ? 'button-2' : 'button-3'} transition duration-300 ease-in-out`}
+          onClick={() => setSortOrder('ascending')}
+        >
+          A-Z
+        </button>
+        <button
+          className={`px-4 py-2 rounded-lg font-semibold ${sortOrder === 'descending' ? 'button-2' : 'button-3'} transition duration-300 ease-in-out`}
+          onClick={() => setSortOrder('descending')}
+        >
+          Z-A
+        </button>
       </div>
-      <div className='container flex justify-center items-center mb-24'>
-        <div className='justify-center items-center flex-col lg:grid lg:grid-cols-3 lg:w-10/12'>
-          <AnimatePresence>
-            {sortedAnnouncements.map((club, index) => (
-              <motion.div
-                key={club.id}
-                initial={{ opacity: 1, y: (windowWidth > 768 && (index % 3) === 1) ? 60 : 0 }} // Apply conditional y offset based on window width
-                animate={{ opacity: 1, y: (windowWidth > 768 && (index % 3) === 1) ? 60 : 0 }} // Same as initial to prevent animation on scroll
-                exit={{ opacity: 0, y: -20 }}
-                layout
-                className="asd123 mx-auto"
+
+      {/* Club Dropdowns */}
+      <div className="container grid grid-cols-1 gap-3 md:w-3/4 px-4 lg:px-0 mx-auto">
+        {sortedAnnouncements.map((club) => (
+          <motion.div
+            key={club.id}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            layout
+            className="bg-white rounded-lg p-4 transition duration-300"
+          >
+            <div
+              className="flex justify-between items-center cursor-pointer"
+              onClick={() => toggleClub(club.id)}
+            >
+              <h2 className="text-xl font-semibold text-gray-800">{club.name}</h2>
+              <motion.span
+                animate={{ rotate: activeClubId === club.id ? 180 : 0 }}
+                className="text-gray-500"
               >
-                <div className=''>
-                  <h2>{club.name}</h2>
-                  <p>{club.description}</p>
-                  <Link href={club.insta ?? ''} target='_blank'>
-                    <button className='button-5'>Learn More</button>
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
+                ▼
+              </motion.span>
+            </div>
+
+            {/* Dropdown Content */}
+            <AnimatePresence>
+              {activeClubId === club.id && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden mt-4"
+                >
+                  <p className="text-gray-600 mb-4">{club.description}</p>
+                  {club.insta && (
+                    <Link href={club.insta} target="_blank">
+                      <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
+                        Learn More
+                      </button>
+                    </Link>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        ))}
       </div>
     </main>
   );
 };
 
-export default Page
+export default Page;
