@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
@@ -44,8 +44,9 @@ const Page = () => {
             <div className="absolute inset-0 bg-black opacity-50"></div>
           </div>
           <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col items-center justify-between lg:flex-row">
-              <div className="mb-10 lg:mb-0 lg:w-5/12">
+            {/* Removed m-20 and adjusted spacing for better control */}
+            <div className="flex flex-col items-center justify-between lg:flex-row space-y-10 lg:space-y-0 lg:space-x-10">
+              <div className="lg:w-5/12">
                 <h1 className="mb-6 text-4xl font-bold text-white lg:text-6xl">
                   John Fraser Student Council
                 </h1>
@@ -54,9 +55,7 @@ const Page = () => {
                 </p>
                 <div className="flex flex-col items-start lg:items-center sm:flex-row">
                   <Link href="/opportunities" className="mb-4 sm:mb-0 sm:mr-4">
-                    <button className="button-2">
-                      Get Involved
-                    </button>
+                    <button className="button-2">Get Involved</button>
                   </Link>
                   <Link
                     href="/announcements"
@@ -81,12 +80,12 @@ const Page = () => {
         </section>
 
         {/* Who We Are Section */}
-        <section className="py-20">
+        <section className="py-20  mx-5 md:mx-20">
           <div className="container mx-auto flex flex-col items-center lg:flex-row">
-            <div className="mb-10 lg:mb-0 lg:w-1/3">
+            <div className="mb-10 lg:mb-0 lg:w-1/4">
               <Image
-                src="/who-we-are.jpg"
-                width={300}
+                src="/co-pres.jpg"
+                width={400}
                 height={400}
                 alt="Who we are"
                 className="rounded-lg shadow-md"
@@ -98,20 +97,21 @@ const Page = () => {
               </h2>
               <p className="mb-8 text-xl">
                 <strong>
-                  SAC stands for &quot;Student Activity Council&quot;. We are a team of
-                  John Fraser students committed to enhancing your high school
-                  experience through a diverse array of events! Learn more about
-                  what we do and how you can get involved on this page.
+                  SAC stands for &quot;Student Activity Council&quot;. We are a
+                  team of John Fraser students committed to enhancing your high
+                  school experience through a diverse array of events! Learn
+                  more about what we do and how you can get involved on this
+                  page.
                 </strong>
               </p>
               <div className="flex flex-col justify-between sm:flex-row">
                 <div className="mb-6 sm:mb-0">
-                  <p className="font-bold">President</p>
-                  <p>Thoa Le</p>
+                  <p className="font-bold">Co-president</p>
+                  <p>Aleena Ali</p>
                 </div>
                 <div>
-                  <p className="font-bold">Vice President</p>
-                  <p>Akshat Chopra</p>
+                  <p className="font-bold">Co-president</p>
+                  <p>Cody Doan</p>
                 </div>
               </div>
             </div>
@@ -121,7 +121,7 @@ const Page = () => {
         <hr className="my-20 border-t border-gray-200" />
 
         {/* Upcoming Events Section */}
-        <section className="py-20">
+        <section className="py-20  mx-5 md:mx-20">
           <div className="container mx-auto flex flex-col items-center lg:flex-row">
             <div className="mb-10 lg:mb-0 lg:w-1/2">
               <Image
@@ -163,27 +163,23 @@ const Page = () => {
                 ))}
               </div>
               <Link href="/announcements">
-                <button className="button-2">
-                  View Announcements
-                </button>
+                <button className="button-2">View Announcements</button>
               </Link>
             </div>
           </div>
         </section>
 
         {/* Meet Our Team Section */}
-        <section className="py-20">
+        <section className="py-20  mx-5 md:mx-20">
           <div className="container mx-auto">
             <div className="mb-10 flex items-center justify-between">
               <h2 className="text-3xl font-bold lg:text-4xl">Meet Our Team</h2>
               <Link href="/team">
-                <button className="button-5">
-                  Learn More
-                </button>
+                <button className="button-5">Learn More</button>
               </Link>
             </div>
             <div className="flex flex-col items-center justify-center space-y-10 sm:flex-row sm:space-x-10 sm:space-y-0">
-              {["Thoa Le", "Akshat Chopra"].map((name, index) => (
+              {["Aleena Ali", "Cody Doan"].map((name, index) => (
                 <div
                   key={index}
                   className="relative h-80 w-64 overflow-hidden rounded-lg bg-gray-100 shadow-md"
@@ -197,7 +193,7 @@ const Page = () => {
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
                     <p className="font-bold text-white">{name}</p>
                     <p className="text-white">
-                      {index === 0 ? "President" : "Vice-President"}
+                      {index === 0 ? "Co-president" : "Co-president"}
                     </p>
                   </div>
                 </div>
@@ -207,7 +203,7 @@ const Page = () => {
         </section>
 
         {/* Social Links Section */}
-        <section className="py-20">
+        <section className="py-20  mx-5 md:mx-20">
           <div className="container mx-auto">
             <div className="flex flex-col items-center justify-evenly gap-y-4 lg:flex-row lg:gap-x-4">
               {images.map((image) => (
@@ -235,18 +231,16 @@ const Page = () => {
         </section>
 
         {/* Photos and Feedback Sections */}
-        <section className="py-20">
+        <section className="py-2 m-5 md:m-20">
           <div className="container mx-auto">
             <div className="mb-20">
               <h2 className="mb-4 text-3xl font-bold">Say Cheese!</h2>
               <p className="mb-6 text-xl">
-                You can now see any photos taken by John Fraser&apos;s SAC on our
-                website.
+                You can now see any photos taken by John Fraser&apos;s SAC on
+                our website.
               </p>
               <Link href="https://johnfrasersac.com/photos/">
-                <button className="button-2">
-                  See Photos
-                </button>
+                <button className="button-2">See Photos</button>
               </Link>
             </div>
             <hr className="my-20 border-t border-gray-200" />
@@ -259,9 +253,7 @@ const Page = () => {
                 events, or feedback on existing ones!
               </p>
               <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdJO3rFBZiyOMEVoZYRCxcfUwLlQCmgo8LuJfxssci0tHlsew/viewform">
-                <button className="button-2">
-                  Give Us Feedback
-                </button>
+                <button className="button-2">Give Us Feedback</button>
               </Link>
             </div>
           </div>

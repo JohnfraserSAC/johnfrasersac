@@ -64,7 +64,7 @@ const Page = () => {
       </div>
 
       {/* Club Dropdowns */}
-      <div className="container grid grid-cols-1 gap-3 md:w-3/4 px-4 lg:px-0 mx-auto">
+      <div className="container grid grid-cols-1 gap-2 my-5 md:w-3/4 px-4 lg:px-0 mx-auto">
         {sortedAnnouncements.map((club) => (
           <motion.div
             key={club.id}

@@ -45,36 +45,49 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
     const announcements: Announcement[] = await getAllAnnouncements(searchQuery);
 
     return (
-        <main>
-            <div className='container mx-auto flex justify-center items-center flex-col text-center gap-y-4' style={{ height: '90.3333vh' }}>
-                <h1 className='text-5xl font-bold '>Search For Announcements</h1>
-                <form method="get" action="/announcements/search" className='mb-4'>
-                    <input
-                        type="text"
-                        name="search"
-                        placeholder="Search..."
-                        defaultValue={searchQuery}
-                        className='p-2 border rounded'
-                    />
-                    <button type="submit" className='button-2'>Search</button>
-                </form>
-                <ul className='w-10/12 lg:w-7/12 text-center overflow-y-auto border' style={{ height: '20vh' }}>
-                    {announcements.map(announcement => (
-                        <li key={announcement.id}>
-                            <div className='flex justify-evenly mb-2 '>
-                                <div className=' w-full'>
-                                    <Link href={`/announcements/search/${announcement.slug}`}>
-                                        <p className='font-bold underline'>{announcement.title}</p>
-                                    </Link>
-                                </div>
-                                <div className=' w-full'>
-                                    <p className='text-blue-500'>{announcement.date}</p>
-                                </div>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </main>
+        <main className="min-h-screen bg-gray-50 py-12 pt-32 md:pt-40">
+  <div className="container mx-auto flex flex-col items-center justify-center text-center gap-y-8">
+    
+    {/* Heading */}
+    <h1 className="text-3xl lg:text-4xl font-extrabold text-gray-800">
+      Search For Announcements
+    </h1>
+    
+    {/* Search Form */}
+    <form method="get" action="/announcements/search" className="w-full max-w-lg flex flex-col sm:flex-row gap-4 items-center">
+      <input
+        type="text"
+        name="search"
+        placeholder="Search announcements..."
+        defaultValue={searchQuery}
+        className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition ease-in-out duration-150"
+      />
+      <button type="submit" className="w-full sm:w-auto px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out">
+        Search
+      </button>
+    </form>
+
+    {/* Announcements List */}
+    <ul className="w-full max-w-3xl bg-white rounded-lg shadow-md divide-y divide-gray-200 overflow-y-auto" style={{ height: '20vh' }}>
+      {announcements.map(announcement => (
+        <li key={announcement.id} className="flex justify-between items-center p-4 hover:bg-gray-50 transition duration-150">
+          
+          {/* Title */}
+          <Link href={`/announcements/search/${announcement.slug}`}>
+            <a className="font-semibold text-lg text-blue-600 hover:text-blue-700 hover:underline transition duration-200">
+              {announcement.title}
+            </a>
+          </Link>
+          
+          {/* Date */}
+          <p className="text-gray-500 text-sm">
+            {announcement.date}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</main>
+
     );
 }

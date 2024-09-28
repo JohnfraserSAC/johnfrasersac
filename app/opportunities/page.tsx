@@ -12,10 +12,10 @@ const page = () => {
 
   return (
     <main className=''>
-      <div className='custom-background-4 flex flex-col justify-center items-center text-center' style={{height: "40.3333vh"}}>
+      <div className='custom-background-4 flex flex-col justify-center items-center text-center py-30 pt-10' style={{height: "50.3333vh"}}>
         <div className='container w-11/12 text-white'>
-          <h1 className='font-bold lg:text-6xl text-[40px] mb-4'>SAC Oppurtunities</h1>
-          <p className='text-lg'>SAC has many oppurtunities throughout the school year for you to volunteer, attend events, and apply to be a part of the team!</p>
+          <h1 className='font-bold lg:text-6xl text-[40px] mb-4'>SAC Opportunities</h1>
+          <p className='text-lg'>SAC has many opportunities throughout the school year for you to volunteer, attend events, and apply to be a part of the team!</p>
         </div>
       </div>
       

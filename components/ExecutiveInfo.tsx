@@ -19,7 +19,7 @@ const ExecutiveInfo: React.FC<ExecutiveInfoProps> = ({ name, role, image, descri
     // GSAP HANDLER
     const tl = gsap.timeline();
     tl.to(infoBoxRef.current, {
-      width: '207.5px', 
+      width: '300px', 
       height: '300px', 
       borderRadius: '15px',
       opacity: 1,

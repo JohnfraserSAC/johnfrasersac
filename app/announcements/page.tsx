@@ -4,6 +4,8 @@ import { BootstrapClient } from "@/components/BootstrapClient";
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+require('dotenv').config()
+
 const API_URL = process.env.NEXT_PUBLIC_SHEETDB_ENDPOINT_URL;
 
 export const metadata: Metadata = {
