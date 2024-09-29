@@ -34,7 +34,7 @@ const Page = () => {
   }, [sortOrder]);
 
   // Toggle club dropdown visibility
-  const toggleClub = (clubId) => {
+  const toggleClub = (clubId: any) => {
     setActiveClubId((prev) => (prev === clubId ? null : clubId));
   };
 
