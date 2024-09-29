@@ -62,7 +62,8 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
                   </Link>
                 </div>
 
-                <div id="carouselExampleIndicators" className="carousel slide lg: w-7/12 container" data-bs-ride="carousel">
+                {/* Carousel */}
+                {/* <div id="carouselExampleIndicators" className="carousel slide lg: w-7/12 container" data-bs-ride="carousel">
                     <div className="carousel-indicators">
                         {announcements.map((_, index) => (
                             <button
@@ -97,7 +98,7 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
                         <span className="carousel-control-next-icon" aria-hidden="true"></span>
                         <span className="visually-hidden">Next</span>
                     </button>
-                </div>
+                </div> */}
 
             </div>
         </main>

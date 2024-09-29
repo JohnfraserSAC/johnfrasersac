@@ -74,7 +74,7 @@ const page = () => {
 
       <hr className='hr-1'></hr>
       <div className='lg:flex lg:justify-center lg:items-center container mx-auto'>
-        <div className='flex flex-col lg:flex-row lg:justify-between justify-center items-center text-center gap-y-5 mb-16 lg:w-10/12'>
+        <div className='flex flex-col lg:flex-row lg:justify-between justify-center items-center text-center gap-y-5 mb-16 lg:w-10/12' data-aos="fade-up">
           <p className='text-5xl font-semibold'>Let Numbers Talk</p>
           <div className='text-5xl font-extrabold'>
             <p><CountingAnimation duration={2000}>100</CountingAnimation>+</p>
