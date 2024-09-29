@@ -28,8 +28,12 @@ export async function generateStaticParams() {
   const response = await fetch(API_URL, {
     next: { revalidate: 200 }
   });
-  const data: Announcement[] = await response.json();
-  // console.log('Fetched data:', data);
+  const data = await response.json();
+
+  if (!Array.isArray(data)) {
+    throw new Error('Fetched data is not an array');
+  }
+
   return data.map((announcement: any) => ({
     slug: announcement.slug,
   }));
