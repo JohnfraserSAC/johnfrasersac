@@ -74,9 +74,9 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
           
           {/* Title */}
           <Link href={`/announcements/search/${announcement.slug}`}>
-            <a className="font-semibold text-lg text-blue-600 hover:text-blue-700 hover:underline transition duration-200">
+            <p className="font-semibold text-lg text-blue-600 hover:text-blue-700 hover:underline transition duration-200">
               {announcement.title}
-            </a>
+            </p>
           </Link>
           
           {/* Date */}
