@@ -109,7 +109,7 @@ const aboutTheTeam = [
     title: "Executives",
     description:
       "Working closely with the SAC staff advisors, the Executive Team helps to oversee SAC and mentor members. The executive team is selected in May of each year through an application and election process.",
-    image: "/jag.jpg",
+    image: "/team/jag.jpg",
     alt: "placeholder",
   },
   {
