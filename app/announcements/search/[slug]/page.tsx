@@ -30,6 +30,8 @@ export async function generateStaticParams() {
   });
   const data = await response.json();
 
+  console.log('Fetched data:', data); // Log the fetched data
+
   if (!Array.isArray(data)) {
     throw new Error('Fetched data is not an array');
   }
