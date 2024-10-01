@@ -158,7 +158,7 @@ const page = () => {
           <div
             key={index}
             className="bg-gray-200 flex justify-center items-center flex-col text-center rounded-2xl"
-            style={{ height: "75vh", width: "40vh" }}
+            style={{ height: "70vh", width: "40vh" }}
           >
             <div
               className="w-full flex justify-center items-center"

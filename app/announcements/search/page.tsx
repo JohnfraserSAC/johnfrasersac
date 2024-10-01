@@ -68,9 +68,9 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
     </form>
 
     {/* Announcements List */}
-    <ul className="w-full max-w-3xl bg-white rounded-lg shadow-md divide-y divide-gray-200 overflow-y-auto" style={{ height: '20vh' }}>
+    <ul className="w-full max-w-3xl bg-white rounded-lg shadow-md divide-y divide-gray-200 overflow-y-auto h-[20vh]">
       {announcements.map(announcement => (
-        <li key={announcement.id} className="flex justify-between items-center p-4 hover:bg-gray-50 transition duration-150">
+        <li key={announcement.id} className="p-4 w-full flex justify-between items-center hover:bg-gray-50 transition duration-150">
           
           {/* Title */}
           <Link href={`/announcements/search/${announcement.slug}`}>

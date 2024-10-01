@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
  
 export default function NotFound() {
   return (
@@ -15,7 +16,7 @@ export default function NotFound() {
                 width={400}
                 alt='dog slipping'
                     />
-            <p className='text-lg'>Here&apos;s the way <a href='/' style={{ color: 'blue', textDecoration: 'underline' }}>home</a></p>
+            <p className='text-lg'>Here&apos;s the way <Link href='/' className='text-blue-500 underline'>home</Link></p>
         </div>
     </main>
   )
