@@ -1,6 +1,4 @@
-# School Website
-
-## Overview
+# JFSS SAC Website
 
 Our John Fraser Student Council official website! With new and improved features that we know you have all wanted.
   
