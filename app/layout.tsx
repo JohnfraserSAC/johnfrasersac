@@ -14,7 +14,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "John Fraser SAC Website",
-  description: "Made by Yang Xue with some love :)",
+  description: "Made by the John Fraser Secondary School Student Council with some love :)",
 };
 
 export default function RootLayout({
