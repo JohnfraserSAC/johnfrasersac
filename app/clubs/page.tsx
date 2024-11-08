@@ -40,11 +40,13 @@ const Page = () => {
 
   return (
     <main className="flex flex-col justify-center items-center min-h-screen bg-gray-100">
-      <div className="container mx-auto text-center mt-20 lg:mt-40">
-        <h1 className="text-3xl lg:text-6xl font-bold mb-5">Clubs</h1>
-        <p className="text-lg lg:w-6/12 mx-auto text-gray-600">
-          Check here for all the updates and clubs at John Fraser Secondary School!
-        </p>
+      <div className="custom-background-4 w-full px-auto text-center py-20 lg:pt-40">
+        <div className='container mx-auto'>
+          <h1 className="text-3xl lg:text-6xl font-bold mb-5 text-white">Clubs</h1>
+          <p className="text-lg lg:w-6/12 mx-auto text-gray-300">
+            Check here for all the updates and clubs at John Fraser Secondary School!
+          </p>  
+        </div>  
       </div>
 
       {/* Sort Buttons */}

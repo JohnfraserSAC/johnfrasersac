@@ -157,12 +157,10 @@ const page = () => {
         {aboutTheTeam.map((about, index) => (
           <div
             key={index}
-            className="bg-gray-200 flex justify-center items-center flex-col text-center rounded-2xl"
-            style={{ height: "70vh", width: "40vh" }}
+            className="bg-gray-200 flex justify-center items-center flex-col text-center rounded-2xl h-[70vh] w-[40vh]"
           >
             <div
-              className="w-full flex justify-center items-center"
-              style={{ height: "50%" }}
+              className="w-full flex justify-center items-center h-1/2"
             >
               <div className="w-52 h-52 overflow-hidden relative">
                 <Image
