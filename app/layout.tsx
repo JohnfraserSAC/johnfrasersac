@@ -8,6 +8,7 @@ import { AOSInitializer } from '@/components/AOSInitializer';
 import Navbar from "@/components/Navbar";
 import 'dotenv/config';
 
+
 require('dotenv').config()
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,6 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body>
         <Navbar />
         <AOSInitializer />
