@@ -411,7 +411,7 @@ const clubs = [
         description: "The Muslim Inter-Scholastic Tournament (MIST) is an engaging, educational, and exciting tournament geared towards connecting high school students to develop leadership, communication, and creative skills, all while gaining a deeper understanding of Islam. All students, regardless of their faith, are welcome to and encouraged to join! John Fraser's MIST team regularly competes in MIST and brings home awards, lasting memories, and even make it to Nationals in the USA. MIST has something to offer for everyone: sports teams, rap battles, chant-offs, performances, and more!",
         insta:'google.com',
         image: null
-    } 
+    } ,
 ];
 
 export default clubs;

@@ -18,7 +18,7 @@ const page = () => {
           <p className='text-lg'>SAC has many opportunities throughout the school year for you to volunteer, attend events, and apply to be a part of the team!</p>
         </div>
       </div>
-      
+
 
       <div className='mx-auto container flex-col lg:flex-row flex justify-center items-center my-8'>
         <div className='lg:w-7/12 lg:flex lg:justify-center lg:items-center'>
