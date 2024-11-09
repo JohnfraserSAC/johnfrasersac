@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import GradeRep from "../components/GradeRep"
 
 const Page = () => {
   const [hoveredImage, setHoveredImage] = useState<string | null>(null);
@@ -200,6 +201,10 @@ const Page = () => {
               ))}
             </div>
           </div>
+        </section>
+
+        <section className="container mx-auto">
+
         </section>
 
         {/* Social Links Section */}
