@@ -11,7 +11,7 @@ const links = [
   { name: "SAC Opportunities", href: "/opportunities" },
   { name: "Clubs", href: "/clubs" },
   { name: "Our Team", href: "/team" },
-  { name: "FraserTickets", href: "https://frasertickets.johnfrasersac.ca/" },
+  { name: "FraserTickets", href: "https://tickets.aritrosaha.ca/" },
 ];
 
 export default function Navbar() {

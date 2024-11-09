@@ -8,13 +8,14 @@ import { AOSInitializer } from '@/components/AOSInitializer';
 import Navbar from "@/components/Navbar";
 import 'dotenv/config';
 
+
 require('dotenv').config()
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "John Fraser SAC Website",
-  description: "Made by Yang Xue with some love :)",
+  description: "Made by the John Fraser Secondary School Student Council with some love :)",
 };
 
 export default function RootLayout({
@@ -24,6 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body>
         <Navbar />
         <AOSInitializer />
