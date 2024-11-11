@@ -19,6 +19,43 @@ const page = () => {
         </div>
       </div>
 
+      <div className='mx-auto container flex-col lg:flex-row flex justify-center items-center my-8'>
+        <div className='lg:w-7/12 lg:flex lg:justify-center lg:items-center'>
+          <Image
+              src='/opportunities/mosaic-lunch.jpg'
+              alt='Mosaic lunch'
+              width={500}
+              height={300}
+              className='mb-8 lg:w-[700px] lg:h-auto'
+            />
+        </div>
+        <div className='w-11/12 lg:w-5/12 lg:mx-4'>
+          <h1 className='font-semibold text-2xl w-8/12 lg:w-9/12 lg:text-4xl lg:font-semibold'>Mosaic Lunch</h1>
+          <div className="images-line lg:my-4 lg:w-1/12">
+            <div className="image" style={{backgroundImage: "url('/image.svg')"}}></div>
+            <div className="image" style={{backgroundImage: "url('/image.svg')"}}></div>
+            <div className="image" style={{backgroundImage: "url('/image.svg')"}}></div>
+            <div className="image" style={{backgroundImage: "url('/image.svg')"}}></div>
+          </div>
+          <div className=''>
+            <p className='mb-8 font-semibold text-lg lg:text-xl'>Sign up now!</p>
+            <p className='mb-8 lg:text-lg lg:w-9/12'>On Wednesday, November 27th, get ready for the most exciting cultural event of the year at John Fraser – Mosaic Lunch! At lunch in the cafeteria, volunteer to run a booth or showcase a cultural performance in exchange for volunteer hours! This is your chance to share your heritage, passion, and talents with the whole school community, whether it’s through delicious food, traditional crafts, or a unique performance. Help make this event unforgettable—sign up using the links provided.</p>
+            <div className='mb-8 w-full flex justify-center items-center lg:justify-normal lg:items-start'>
+              <Link href={'https://forms.gle/WeaPxwNQcyU78Tfm7'}>
+                <button className='button-2'>
+                  <p>Booth Sign-up</p>
+                </button>
+              </Link>
+              <Link href={'https://forms.gle/uA7jg6JikPqfouGR7'}>
+                <button className='button-2'>
+                  <p>Sign-up for performances</p>
+                </button>
+              </Link>
+            </div>
+          </div>
+          
+        </div>
+      </div>
 
       <div className='mx-auto container flex-col lg:flex-row flex justify-center items-center my-8'>
         <div className='lg:w-7/12 lg:flex lg:justify-center lg:items-center'>
@@ -40,7 +77,7 @@ const page = () => {
           </div>
           <div className=''>
             <p className='mb-8 font-semibold text-lg lg:text-xl'>Closed</p>
-            <p className='mb-8 lg:text-lg lg:w-9/12'>Our honourary & grade rep applications will open next September. To leanr more, check out our Google Classroom (code: i725i36) and visit our Instagram: @johnfrasersac!</p>
+            <p className='mb-8 lg:text-lg lg:w-9/12'>Our honourary & grade rep applications will open next September. To learn more, check out our Google Classroom (code: i725i36) and visit our Instagram: @johnfrasersac!</p>
             <div className='mb-8 w-full flex justify-center items-center lg:justify-normal lg:items-start'>
               <Link href={'https://google.com'}>
                 <button className='button-2'>
