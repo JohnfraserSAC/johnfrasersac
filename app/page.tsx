@@ -124,8 +124,8 @@ const Page = () => {
           <div className="mb-10 lg:mb-0 lg:w-1/2">
             <Image
               className="rounded-xl shadow-lg"
-              src="/hero.jpg"
-              width={400}
+              src="/hero2.jpg"
+              width={550}
               height={300}
               alt="Upcoming events"
               objectFit="cover"

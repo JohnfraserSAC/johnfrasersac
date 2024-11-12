@@ -53,21 +53,13 @@ const page = () => {
               </Link>
             </div>
           </div>
-          
         </div>
       </div>
 
+      
+
       <div className='mx-auto container flex-col lg:flex-row flex justify-center items-center my-8'>
-        <div className='lg:w-7/12 lg:flex lg:justify-center lg:items-center'>
-          <Image
-              src='/sac-oppurtunities.jpg'
-              alt='sac-oppurtunities'
-              width={500}
-              height={300}
-              className='mb-8 lg:w-[700px] lg:h-auto'
-            />
-        </div>
-        <div className='w-11/12 lg:w-5/12 lg:mx-4'>
+      <div className='w-11/12 lg:w-5/12 lg:mx-4'>
           <h1 className='font-semibold text-2xl w-8/12 lg:w-9/12 lg:text-4xl lg:font-semibold'>Honourary & Grade Rep Applications</h1>
           <div className="images-line lg:my-4 lg:w-1/12">
             <div className="image" style={{backgroundImage: "url('/image.svg')"}}></div>
@@ -86,7 +78,15 @@ const page = () => {
               </Link>
             </div>
           </div>
-          
+        </div>
+        <div className='lg:w-7/12 lg:flex lg:justify-center lg:items-center'>
+          <Image
+              src='/sac-oppurtunities.jpg'
+              alt='sac-oppurtunities'
+              width={500}
+              height={300}
+              className='mb-8 lg:w-[700px] lg:h-auto'
+            />
         </div>
       </div>
       <div className='w-full flex flex-col justify-center items-center'>
