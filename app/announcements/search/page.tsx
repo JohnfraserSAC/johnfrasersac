@@ -68,24 +68,31 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
     </form>
 
     {/* Announcements List */}
-    <ul className="w-full max-w-3xl bg-white rounded-lg shadow-md divide-y divide-gray-200 overflow-y-auto h-[20vh]">
-      {announcements.map(announcement => (
-        <li key={announcement.id} className="p-4 w-full flex justify-between items-center hover:bg-gray-50 transition duration-150">
-          
-          {/* Title */}
-          <Link href={`/announcements/search/${announcement.slug}`}>
-            <p className="font-semibold text-lg text-blue-600 hover:text-blue-700 hover:underline transition duration-200">
-              {announcement.title}
+    <div className="flex justify-center w-full px-4">
+      <ul className="w-full max-w-3xl bg-white rounded-lg shadow-md divide-y divide-gray-200 overflow-y-auto lg:h-[40vh] h-[50vh] md:h-[60vh]">
+        {announcements.map((announcement) => (
+          <li
+            key={announcement.id}
+            className="p-4 flex justify-between items-center hover:bg-gray-50 transition duration-150"
+          >
+            {/* Title */}
+            <Link href={`/announcements/search/${announcement.slug}`}>
+              <p className="font-semibold text-lg text-blue-600 hover:text-blue-700 hover:underline transition duration-200">
+                {announcement.title}
+              </p>
+            </Link>
+
+            {/* Date */}
+            <p className="text-gray-500 text-sm">
+              {announcement.date}
             </p>
-          </Link>
-          
-          {/* Date */}
-          <p className="text-gray-500 text-sm">
-            {announcement.date}
-          </p>
-        </li>
-      ))}
-    </ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+
+
   </div>
 </main>
 
