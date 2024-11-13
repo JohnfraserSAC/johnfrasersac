@@ -36,7 +36,7 @@ const clubs = [
     },
     {
         id: 6,
-        name: 'The Ladybug (Fashion Society)',
+        name: 'Ladybug Magazine',
         description: 'We are a fashion magazine club promoting confidence and creativity while providing an outlet for students to express themselves through our magazine and Instagram page, as well as upcoming events.',
         insta: 'https://www.instagram.com/jfss.debate/',
         image: null
