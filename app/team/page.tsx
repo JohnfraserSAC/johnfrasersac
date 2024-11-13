@@ -2,61 +2,61 @@ import React from "react";
 import Image from "next/image";
 import ExecutiveInfo from "@/components/ExecutiveInfo";
 
-const teamMembers = [
+const executiveTeamMembers = [
   {
     id: 1,
     name: "Aleena Ali",
     role: "President",
-    image: "/team/aleena-ali.jpg",
+    image: "/executiveTeam/aleena-ali.jpg",
     description: "Hi Jags! I’m Aleena, one of your Co-Presidents for this year :) The last 3 years on SAC have been amazing and we can’t wait to introduce you all to all of the amazing events this year!",
   },
   {
     id: 2,
     name: "Cody Doan",
     role: "President",
-    image: "/team/cody-doan.jpg",
+    image: "/executiveTeam/cody-doan.jpg",
     description: "Hey everyone! I'm Cody, one of your Co-Presidents this year! After three years on SAC, I'm excited about the amazing events we have planned and look forward to making this year truly memorable for all of us!",
   },
     {
     id: 3,
     name: "Shashvati Deshmukh",
     role: "Secretary",
-    image: "/team/shashvati-deshmukh.jpg",
+    image: "/executiveTeam/shashvati-deshmukh.jpg",
     description: "",
   },
   {
     id: 4,
     name: "Nikhil Khanna",
     role: "Treasurer",
-    image: "/team/nikhil-khanna.jpg",
+    image: "/executiveTeam/nikhil-khanna.jpg",
     description: "Hey everyone!  I’m Nikhil, your treasurer for this year.  I’m super excited to work with the student body and SAC to ensure our events are as fun as possible (while staying in budget 🤑)!!!",
   },
   {
     id: 5,
     name: "Amrita Rajaram",
     role: "Clubs Liaison",
-    image: "/team/amrita-rajaram.jpg",
+    image: "/executiveTeam/amrita-rajaram.jpg",
     description: "Hi everyone! I'm Amrita and your club liaison this year! If you're interested in anything clubs-related or want some info/clarity on any club matter reach out to me through email or Instagram! Very excited to see what all the clubs accomplish this year!",
   },
   {
     id: 6,
     name: "Arya Holmukhe",
     role: "Technology Liaison",
-    image: "/team/arya-holmukhe.jpg",
+    image: "/executiveTeam/arya-holmukhe.jpg",
     description: "",
   },
   {
     id: 7,
     name: "Akshat Chopra",
     role: "Environmental Liaison",
-    image: "/team/akshat-chopra.jpg",
+    image: "/executiveTeam/akshat-chopra.jpg",
     description: "",
   },
   {
     id: 8,
     name: "Ronia Puliyelil",
     role: "Arts Liaison",
-    image: "/team/ronia-puliyelil.jpg",
+    image: "/executiveTeam/ronia-puliyelil.jpg",
     description: "",
   },
   
@@ -64,43 +64,60 @@ const teamMembers = [
     id: 9,
     name: "Hamza Saleh",
     role: "Athletics Liaison",
-    image: "/team/hamza-saleh.jpg",
+    image: "/executiveTeam/hamza-saleh.jpg",
     description: "",
   },
   {
     id: 10,
     name: "Inesh Haque",
     role: "Community Outreach",
-    image: "/team/inesh-haque.jpg",
+    image: "/executiveTeam/inesh-haque.jpg",
     description: "",
   },
   {
     id: 11,
     name: "Bismaad Kalra",
     role: "Social Convenor",
-    image: "/team/bismaad-kalra.jpg",
+    image: "/executiveTeam/bismaad-kalra.jpg",
     description: "",
   },
   {
     id: 12,
     name: "Cindy Lee",
     role: "Photography Executive",
-    image: "/team/cindy-lee.jpg",
+    image: "/executiveTeam/cindy-lee.jpg",
     description: "",
   },
   {
     id: 13,
     name: "Kirpa Chandi",
     role: "Promotions Officer",
-    image: "/team/kirpa-chandi.jpg",
+    image: "/executiveTeam/kirpa-chandi.jpg",
     description: "Hi everyone! I'm Amrita and your club liaison this year! If you're interested in anything clubs-related or want some info/clarity on any club matter reach out to me through email or Instagram! Very excited to see what all the clubs accomplish this year!",
   },
   {
     id: 14  ,
     name: "Adolina Kiflay",
     role: "Promotions Officer",
-    image: "/team/adolina-kiflay.jpg",
+    image: "/executiveTeam/adolina-kiflay.jpg",
     description: "Hey jags! I’m Adolina Kiflay and I’m one of your promotions officer this year and I’m so excited to make new and engaging promo with all of you!",
+  },
+];
+
+const generalTeamMembers = [
+  {
+    id: 1,
+    name: "Aleena Ali",
+    role: "President",
+    image: "/generalTeam/aleena-ali.jpg",
+    description: "Hi Jags! I’m Aleena, one of your Co-Presidents for this year :) The last 3 years on SAC have been amazing and we can’t wait to introduce you all to all of the amazing events this year!",
+  },
+  {
+    id: 2,
+    name: "Cody Doan",
+    role: "President",
+    image: "/generalTeam/cody-doan.jpg",
+    description: "Hey everyone! I'm Cody, one of your Co-Presidents this year! After three years on SAC, I'm excited about the amazing events we have planned and look forward to making this year truly memorable for all of us!",
   },
 ];
 
@@ -182,14 +199,16 @@ const page = () => {
         ))}
       </div>
 
-      <div>
+      <section className="flex flex-col gap-y-16 my-8">
+
+
         <div className="w-full flex flex-col justify-center items-center">
           <div className="w-full flex justify-center items-center flex-col">
             <p className="tracking-widest font-light">MEET THE...</p>
             <h1 className="font-medium text-4xl mt-4">Executive Team</h1>
           </div>
           <div className="lg:grid lg:grid-cols-4 lg:gap-x-32 lg:gap-y-12 flex flex-col justify-center items-center gap-y-8 my-8">
-            {teamMembers.map((member) => (
+            {executiveTeamMembers.map((member) => (
               <ExecutiveInfo
                 key={member.id}
                 name={member.name}
@@ -200,7 +219,28 @@ const page = () => {
             ))}
           </div>
         </div>
-      </div>
+
+        <div className="w-full flex flex-col justify-center items-center">
+          <div className="w-full flex justify-center items-center flex-col">
+            <p className="tracking-widest font-light">MEET THE...</p>
+            <h1 className="font-medium text-4xl mt-4">Honourary Members</h1>
+          </div>
+          <div className="lg:grid lg:grid-cols-4 lg:gap-x-32 lg:gap-y-12 flex flex-col justify-center items-center gap-y-8 my-8">
+            {generalTeamMembers.map((member) => (
+              <ExecutiveInfo
+                key={member.id}
+                name={member.name}
+                role={member.role}
+                image={member.image}
+                description={member.description}
+              />
+            ))}
+          </div>
+        </div>
+
+
+
+      </section>
     </main>
   );
 };
