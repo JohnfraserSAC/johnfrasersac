@@ -288,8 +288,8 @@ const clubs = [
     },
     {
         id: 42,
-        name: 'Christian Club (Project 153)',
-        description: "Religion - Learning and sharing the gospel of Jesus Christ",
+        name: 'Warm Wishes',
+        description: "Warm Wishes is a club that will partner with local long term care centers in our area. This club will work as a pen pal system, with our members being connected with residents in these centers, and will have the opportunity to write letters back and forth with the residents they are assigned with!",
         insta:'google.com',
         image: null
     },
@@ -337,8 +337,8 @@ const clubs = [
     },
     {
         id: 49,
-        name: 'Chapter One',
-        description: "The club's purpose is to provide an oppurtunity for students to engage in discussions regarding books and literature. ",
+        name: 'Game Development Club ',
+        description: "The Game Development Club at John Fraser Secondary School is dedicated to inspiring and equipping students with a passion for coding and creativity to build fully functional games. Using the powerful Unity engine, members will be guided step-by-step through the process of game development, from the basics of programming and design to more advanced concepts. By the end of the term, members will have the opportunity to showcase their games, contributing to a portfolio that highlights their skills and creativity.",
         insta:'google.com',
         image: null
     },
@@ -409,6 +409,36 @@ const clubs = [
         id: 61,
         name: 'MIST (Muslim Interscholastic Tournament)',
         description: "The Muslim Inter-Scholastic Tournament (MIST) is an engaging, educational, and exciting tournament geared towards connecting high school students to develop leadership, communication, and creative skills, all while gaining a deeper understanding of Islam. All students, regardless of their faith, are welcome to and encouraged to join! John Fraser's MIST team regularly competes in MIST and brings home awards, lasting memories, and even make it to Nationals in the USA. MIST has something to offer for everyone: sports teams, rap battles, chant-offs, performances, and more!",
+        insta:'google.com',
+        image: null
+    } ,{
+        id: 62,
+        name: 'Digital Security',
+        description: "The club is aimed at creating a community of curious individuals that show an interest in the Information and Technology sector. More specifically, the club focuses on educating and raising awareness about several security techniques, as well as providing a reliable education on several Digital Security and ethical hacking topics, such as networking,  penetration testing, SQL injection.",
+        insta:'google.com',
+        image: null
+    } ,{
+        id: 63,
+        name: 'Philosophy & Ethics Society ',
+        description: "The Philosophy and Ethics Society delves into teaching crash courses about philosophy, partaking in thoughtful discussions and debates, and hosting games and workshops. Our club will be surrounding ethical issues happening in the world, talking about major philosophers of the past and more. Once the team is fully established and ready to take on further challenges, we would like to start looking into competitions like the ethics bowl to take our club to higher levels. ",
+        insta:'google.com',
+        image: null
+    } ,{
+        id: 64,
+        name: 'Aid4Need John Fraser',
+        description: "Aid4Need is a nonprofit organization dedicated to empowering youth through community service. With 26 chapters across the US, I am proud to launch the first international chapter right here at John Fraser. Aid4Need John Fraser will host monthly workshops, such as creating appreciation cards for hospital staff, veterans, and more. These events will feature games, music, and snacks—a perfect way to bring our school community closer while making a positive impact.  Participants can also earn valuable volunteer hours, with each card they make counting as one hour of service.",
+        insta:'google.com',
+        image: null
+    } ,{
+        id: 65,
+        name: 'Project Luminosity',
+        description: "Project Luminosity is a student-led club dedicated to helping teens explore and choose their future professions. Our mission is to connect students with professionals, post-secondary students, and recent graduates from various fields, providing real-world insights and guidance. Through interactive Q&A sessions, and one-on-one mentoring, we aim to answer questions and popularize different career paths. Project Luminosity offers an inside look into the daily lives of professionals and students, helping students understand the skills, challenges, and rewards of each profession. Whether you're curious about the demands of a specific job, unsure about which path to pursue, or simply want to explore your options, Project Luminosity is here to illuminate the way to your future. Join us to make informed decisions and gain the confidence you need to follow your passion!",
+        insta:'google.com',
+        image: null
+    } ,{
+        id: 66,
+        name: 'RClub',
+        description: "The purpose of RClub is to create a safe, inclusive environment where like-minded car enthusiasts can come together to learn more about automobiles on a smaller scale. Firstly, as you may know, many students at John Fraser were not able to take the auto tech courses due to the excessive volume. This poses a problem as students feel excluded and separated from their school body simply because their interests were not fulfilled. In this way, the RClub will work to solve the problem as students are will be given the opportunity to join a club similar to their desired auto course. For the academic year 2024-2025, the goal of the RClub is to teach lessons and material that educates students about the functions of an RC car, similar to a full sized vehicle. Moreover, students will benefit from joining the RClub as we will be working with risk-free RC (Remote Control) cars rather than street cars. This is significant as safety is a top priority.  ",
         insta:'google.com',
         image: null
     } ,
