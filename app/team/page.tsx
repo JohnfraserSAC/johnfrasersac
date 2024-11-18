@@ -93,7 +93,7 @@ const teamMembers = [
     name: "Kirpa Chandi",
     role: "Promotions Officer",
     image: "/team/kirpa-chandi.jpg",
-    description: "Hi everyone! I'm Amrita and your club liaison this year! If you're interested in anything clubs-related or want some info/clarity on any club matter reach out to me through email or Instagram! Very excited to see what all the clubs accomplish this year!",
+    description: "",
   },
   {
     id: 14  ,
