@@ -11,7 +11,7 @@ const page = () => {
 
 
   return (
-    <main className=''>
+    <main className='overflow-hidden y'>
       {/* Header */}
       <div className='custom-background-4 flex flex-col justify-center items-center text-center py-30 pt-10' style={{height: "50.3333vh"}}>
         <div className='container w-11/12 text-white'>
@@ -47,28 +47,50 @@ const page = () => {
             {/* subtitle for the event */}
             <p className='mb-8 font-semibold text-lg lg:text-xl'>Sign up now!</p>
             {/* Further details of the event */}
-            <p className='mb-8 lg:text-lg lg:w-9/12'>On Wednesday, November 27th, get ready for the most exciting cultural event of the year at John Fraser – Mosaic Lunch! At lunch in the cafeteria, volunteer to run a booth or showcase a cultural performance in exchange for volunteer hours! This is your chance to share your heritage, passion, and talents with the whole school community, whether it’s through delicious food, traditional crafts, or a unique performance. Help make this event unforgettable—sign up using the links provided.</p>
+            <p className='mb-3 lg:text-lg lg:w-11/12'>On Wednesday, November 27th, get ready for the most exciting cultural event of the year at John Fraser – Mosaic Lunch! In the cafeteria, check out the cultural booths and performances! This is your chance to experience the diverse heritage, passion, and talents with the whole school community, whether it’s through delicious food, traditional crafts, or a unique performance. Don't forget to wear your traditional attire to proudly showcase your cultural heritage!</p>
+            <p className='mb-8 lg:text-lg lg:w-9/12'>Make sure to buy tickets using SchoolCashOnline in the Jag store on Nov. 25th, and 26th and in the Cafeteria on 28th. Using these tickets you can enjoy and purchase a delightful selection of food and goods!</p>
             {/* If applicable for the event: buttons found here*/}
             <div className='mb-8 w-full flex justify-center items-center lg:justify-normal lg:items-start'>
-              <Link href={'https://forms.gle/WeaPxwNQcyU78Tfm7'}>
-                <button className='button-2'>
-                  <p>Booth Sign-up</p>
-                </button>
-              </Link>
-              <Link href={'https://forms.gle/uA7jg6JikPqfouGR7'}>
-                <button className='button-2'>
-                  <p>Sign-up for performances</p>
-                </button>
-              </Link>
+             
             </div>
           </div>
         </div>
       </div>
 
-      
+{/* Twinkle links section */}
+      <div className='mx-auto container flex-col lg:flex-row flex justify-center items-center my-8'>
+        {/* Left: Details */}
+        <div className='w-11/12 lg:w-3/4 lg:mx-4'>
+          <h1 className='font-semibold text-2xl w-8/12 lg:w-9/12 lg:text-4xl lg:font-semibold'>Twinkle Links</h1>
+
+          {/* Decorative line */}
+          <div className="images-line lg:my-4 lg:w-1/12">
+            <div className="image" style={{backgroundImage: "url('/image.svg')"}}></div>
+            <div className="image" style={{backgroundImage: "url('/image.svg')"}}></div>
+            <div className="image" style={{backgroundImage: "url('/image.svg')"}}></div>
+            <div className="image" style={{backgroundImage: "url('/image.svg')"}}></div>
+          </div>
+
+          {/* Event description */}
+          <p className='mb-4 lg:text-lg lg:w-full'>
+          Join us for the exciting Twinkle Links event at John Fraser! Everyone's names will be beautifully displayed throughout the school, creating a sparkling connection between us all. If you spot your name, snap a picture and send it to the John Fraser SAC Instagram account. You'll be entered into a raffle for a chance to win a fantastic prize!
+          </p>
+<p className='mb-8 italic lg:w-1/2'>If you prefer not to have your name displayed publicly, please use the opt-out form below.</p>
+          {/* Classroom link */}
+          <div className='mb-8 w-full flex justify-center items-center lg:justify-normal lg:items-start'>
+            <Link href={'https://docs.google.com/forms/d/e/1FAIpQLSdsnDoU2AaVLVq5jI5vHhgNeOLfwOx2GBRYsP_-aHRSAa47UA/viewform?usp=sharing'}>
+              <button className='button-2'>
+                <p>Opt-out of Twinkle Links</p>
+              </button>
+            </Link>
+          </div>
+        </div>
+
+        
+      </div>
 
          {/* Section: Honourary & Grade Rep Applications */}
-         <div className='mx-auto container flex-col lg:flex-row flex justify-center items-center my-8'>
+         <div className='mx-9 overflow-hidden container flex-col lg:flex-row flex justify-center items-center my-8'>
         {/* Left: Details */}
         <div className='w-11/12 lg:w-5/12 lg:mx-4'>
           <h1 className='font-semibold text-2xl w-8/12 lg:w-9/12 lg:text-4xl lg:font-semibold'>Honourary & Grade Rep Applications</h1>
