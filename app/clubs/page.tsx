@@ -103,13 +103,13 @@ const Page = () => {
                   className="overflow-hidden mt-4"
                 >
                   <p className="text-gray-600 mb-4">{club.description}</p>
-                  {/* {club.insta && (
+                  {club.insta && (
                     <Link href={club.insta} target="_blank">
                       <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
                         Learn More
                       </button>
                     </Link>
-                  )} */}
+                  )}
                 </motion.div>
               )}
             </AnimatePresence>
