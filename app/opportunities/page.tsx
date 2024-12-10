@@ -37,12 +37,12 @@ const Page = () => {
             to the John Fraser SAC Instagram account. You&apos;ll be entered into a raffle for a chance to win a fantastic prize!
           </p>
           <p className='mb-8 italic lg:w-1/2'>
-            If you prefer not to have your name displayed publicly, please use the opt-out form below.
+            Add your submission through the link below!
           </p>
           <div className='mb-8 w-full flex justify-center items-center lg:justify-normal lg:items-start'>
-            <Link href={'https://docs.google.com/forms/d/e/1FAIpQLSdsnDoU2AaVLVq5jI5vHhgNeOLfwOx2GBRYsP_-aHRSAa47UA/viewform?usp=sharing'}>
+            <Link href={'https://forms.gle/g34XMqxRkpyfHTK37'}>
               <button className='button-2'>
-                <p>Opt-out of Twinkle Links</p>
+                <p>Add your Twinkle Link submission</p>
               </button>
             </Link>
           </div>
@@ -50,7 +50,6 @@ const Page = () => {
       </div>
 
       {/* Other sections */}
-      {/* Repeat similar fixes for unescaped entities in other parts of your code */}
 
       <hr className='hr-1'></hr>
       <div className='lg:flex lg:justify-center lg:items-center container mx-auto'>
