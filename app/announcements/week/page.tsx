@@ -81,7 +81,7 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
                                             key={announcement.id}
                                             className="p-4 flex justify-between items-center hover:bg-gray-50 transition duration-150"
                                         >
-                                            <Link href={`/announcements/search/${announcement.slug}`}>
+                                            <Link href={`/announcements/week/${announcement.slug}`}>
                                                 <p className="font-semibold text-lg text-blue-600 hover:text-blue-700 hover:underline transition duration-200">
                                                     {announcement.title}
                                                 </p>

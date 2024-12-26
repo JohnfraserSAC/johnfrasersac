@@ -57,7 +57,7 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
                     <div className='mb-12 text-center flex flex-col justify-center items-center container'>
                         <h1 className='text-4xl mb-3 lg:text-6xl font-bold'>Announcements</h1>
                         <p className='w-7/12 text-lg mb-6'>Check here for all up to date new at John Fraser! Join our Google Classroom if you never want to miss an event.</p>
-                        <Link href='/announcements/search'>
+                        <Link href='/announcements/week'>
                             <button className='button-5'>View All Announcements</button>
                         </Link>
                     </div>
