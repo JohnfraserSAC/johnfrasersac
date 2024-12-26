@@ -7,99 +7,99 @@ const executiveTeamMembers = [
     id: 1,
     name: "Aleena Ali",
     role: "President",
-    image: "/executiveTeam/aleena-ali.jpg",
-    description: "Hi Jags! I’m Aleena, one of your Co-Presidents for this year :) The last 3 years on SAC have been amazing and we can’t wait to introduce you all to all of the amazing events this year!",
+    image: "/team/aleena-ali.jpg",
+    description: "Hi Jags! I'm Aleena, one of your Co-Presidents for this year :) The last 3 years on SAC have been amazing and we can’t wait to introduce you all to all of the amazing events this year!",
   },
   {
     id: 2,
     name: "Cody Doan",
     role: "President",
-    image: "/executiveTeam/cody-doan.jpg",
+    image: "/team/cody-doan.jpg",
     description: "Hey everyone! I'm Cody, one of your Co-Presidents this year! After three years on SAC, I'm excited about the amazing events we have planned and look forward to making this year truly memorable for all of us!",
   },
-    {
+  {
     id: 3,
     name: "Shashvati Deshmukh",
     role: "Secretary",
-    image: "/executiveTeam/shashvati-deshmukh.jpg",
+    image: "/team/shashvati-deshmukh.jpg",
     description: "",
   },
   {
     id: 4,
     name: "Nikhil Khanna",
     role: "Treasurer",
-    image: "/executiveTeam/nikhil-khanna.jpg",
+    image: "/team/nikhil-khanna.jpg",
     description: "Hey everyone!  I’m Nikhil, your treasurer for this year.  I’m super excited to work with the student body and SAC to ensure our events are as fun as possible (while staying in budget 🤑)!!!",
   },
   {
     id: 5,
     name: "Amrita Rajaram",
     role: "Clubs Liaison",
-    image: "/executiveTeam/amrita-rajaram.jpg",
+    image: "/team/amrita-rajaram.jpg",
     description: "Hi everyone! I'm Amrita and your club liaison this year! If you're interested in anything clubs-related or want some info/clarity on any club matter reach out to me through email or Instagram! Very excited to see what all the clubs accomplish this year!",
   },
   {
     id: 6,
     name: "Arya Holmukhe",
     role: "Technology Liaison",
-    image: "/executiveTeam/arya-holmukhe.jpg",
+    image: "/team/arya-holmukhe.jpg",
     description: "",
   },
   {
     id: 7,
     name: "Akshat Chopra",
     role: "Environmental Liaison",
-    image: "/executiveTeam/akshat-chopra.jpg",
+    image: "/team/akshat-chopra.jpg",
     description: "",
   },
   {
     id: 8,
     name: "Ronia Puliyelil",
     role: "Arts Liaison",
-    image: "/executiveTeam/ronia-puliyelil.jpg",
+    image: "/team/ronia-puliyelil.jpg",
     description: "",
   },
-  
+
   {
     id: 9,
     name: "Hamza Saleh",
     role: "Athletics Liaison",
-    image: "/executiveTeam/hamza-saleh.jpg",
+    image: "/team/hamza-saleh.jpg",
     description: "",
   },
   {
     id: 10,
     name: "Inesh Haque",
     role: "Community Outreach",
-    image: "/executiveTeam/inesh-haque.jpg",
+    image: "/team/inesh-haque.jpg",
     description: "",
   },
   {
     id: 11,
     name: "Bismaad Kalra",
     role: "Social Convenor",
-    image: "/executiveTeam/bismaad-kalra.jpg",
+    image: "/team/bismaad-kalra.jpg",
     description: "",
   },
   {
     id: 12,
     name: "Cindy Lee",
     role: "Photography Executive",
-    image: "/executiveTeam/cindy-lee.jpg",
+    image: "/team/cindy-lee.jpg",
     description: "",
   },
   {
     id: 13,
     name: "Kirpa Chandi",
     role: "Promotions Officer",
-    image: "/executiveTeam/kirpa-chandi.jpg",
+    image: "/team/kirpa-chandi.jpg",
     description: "Hi everyone! I'm Amrita and your club liaison this year! If you're interested in anything clubs-related or want some info/clarity on any club matter reach out to me through email or Instagram! Very excited to see what all the clubs accomplish this year!",
   },
   {
-    id: 14  ,
+    id: 14,
     name: "Adolina Kiflay",
     role: "Promotions Officer",
-    image: "/executiveTeam/adolina-kiflay.jpg",
+    image: "/team/adolina-kiflay.jpg",
     description: "Hey jags! I’m Adolina Kiflay and I’m one of your promotions officer this year and I’m so excited to make new and engaging promo with all of you!",
   },
 ];
@@ -174,11 +174,9 @@ const page = () => {
         {aboutTheTeam.map((about, index) => (
           <div
             key={index}
-            className="bg-gray-200 flex justify-center items-center flex-col text-center rounded-2xl h-[70vh] w-[40vh]"
+            className="bg-gray-200 flex justify-center items-center flex-col text-center rounded-2xl h-[90vh] w-[40vh]"
           >
-            <div
-              className="w-full flex justify-center items-center h-1/2"
-            >
+            <div className="w-full flex justify-center items-center h-1/3">
               <div className="w-52 h-52 overflow-hidden relative">
                 <Image
                   src={about.image ?? "/placeholder.jpg"}
@@ -219,27 +217,6 @@ const page = () => {
             ))}
           </div>
         </div>
-
-        <div className="w-full flex flex-col justify-center items-center">
-          <div className="w-full flex justify-center items-center flex-col">
-            <p className="tracking-widest font-light">MEET THE...</p>
-            <h1 className="font-medium text-4xl mt-4">Honourary Members</h1>
-          </div>
-          <div className="lg:grid lg:grid-cols-4 lg:gap-x-32 lg:gap-y-12 flex flex-col justify-center items-center gap-y-8 my-8">
-            {generalTeamMembers.map((member) => (
-              <ExecutiveInfo
-                key={member.id}
-                name={member.name}
-                role={member.role}
-                image={member.image}
-                description={member.description}
-              />
-            ))}
-          </div>
-        </div>
-
-
-
       </section>
     </main>
   );

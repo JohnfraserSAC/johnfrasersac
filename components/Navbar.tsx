@@ -11,6 +11,7 @@ const links = [
   { name: "SAC Opportunities", href: "/opportunities" },
   { name: "Clubs", href: "/clubs" },
   { name: "Our Team", href: "/team" },
+  { name: "Photos", href: "https://drive.google.com/drive/folders/1WIpAVouRSgXtycP7XPadHCjcF38iH1uD?usp=drive_link" },
   { name: "FraserTickets", href: "https://tickets.aritrosaha.ca/" },
 ];
 

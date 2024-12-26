@@ -32,7 +32,7 @@ const Page = () => {
   return (
   <main className="w-full">
       {/* Hero Section */}
-      <section className="relative flex min-h-screen items-center py-20">
+      <section className="relative flex min-h-screen items-center md:pb-30 py-40">
         <div className="absolute inset-0 z-0">
           <Image
             src="/hero-bg.png"
@@ -201,7 +201,7 @@ const Page = () => {
       </section>
 
       {/* Social Links Section */}
-      <section className="py-20  mx-5 md:mx-20">
+      <section className="py-20 mx-5 md:mx-20">
         <div className="container mx-auto">
           <div className="flex flex-col items-center justify-evenly gap-y-4 lg:flex-row lg:gap-x-4">
             {images.map((image) => (

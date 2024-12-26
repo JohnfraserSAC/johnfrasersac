@@ -43,9 +43,12 @@ const Page = () => {
       <div className="custom-background-4 w-full px-auto text-center py-20 lg:pt-40">
         <div className='container mx-auto'>
           <h1 className="text-3xl lg:text-6xl font-bold mb-5 text-white">Clubs</h1>
-          <p className="text-lg lg:w-6/12 mx-auto text-gray-300">
+          <p className="text-lg lg:w-6/12 mx-auto text-gray-300 mb-5">
             Check here for all the updates and clubs at John Fraser Secondary School!
           </p>  
+          <Link href='https://docs.google.com/spreadsheets/d/1gHvHkLVwV21s-vFNmRKdqwaBZlhQx1HRjXFa8dwhhAU/edit?usp=sharing'>
+                            <button className='button-5'>Clubs Masterlist</button>
+                        </Link>
         </div>  
       </div>
 
@@ -100,13 +103,13 @@ const Page = () => {
                   className="overflow-hidden mt-4"
                 >
                   <p className="text-gray-600 mb-4">{club.description}</p>
-                  {/* {club.insta && (
+                  {club.insta && (
                     <Link href={club.insta} target="_blank">
                       <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
                         Learn More
                       </button>
                     </Link>
-                  )} */}
+                  )}
                 </motion.div>
               )}
             </AnimatePresence>
