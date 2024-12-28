@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { parseISO, getDay } from 'date-fns';
 
 const API_URL = process.env.NEXT_PUBLIC_SHEETDB_ENDPOINT_URL;
 
@@ -50,10 +51,11 @@ function groupAnnouncementsByDay(announcements: Announcement[]) {
     });
 
     announcements.forEach(announcement => {
-        const date = new Date(announcement.date);
-        const dayIndex = date.getDay();
+        const date = parseISO(announcement.date); // Parse date string to Date object using date-fns
+        const dayIndex = getDay(date); // Get day of the week as an index (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
+        console.log(`Date: ${announcement.date}, Day Index: ${dayIndex}`); // Log the date and day index
         if (dayIndex >= 1 && dayIndex <= 5) { // Only include Monday to Friday
-            const dayName = daysOfWeek[dayIndex - 1];
+            const dayName = daysOfWeek[dayIndex - 1]; // Map index to day name
             grouped[dayName].push(announcement);
         }
     });
@@ -81,7 +83,7 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
                                             key={announcement.id}
                                             className="p-4 flex justify-between items-center hover:bg-gray-50 transition duration-150"
                                         >
-                                            <Link href={`/announcements/week/${announcement.slug}`}>
+                                            <Link href={`/announcements/search/${announcement.slug}`}>
                                                 <p className="font-semibold text-lg text-blue-600 hover:text-blue-700 hover:underline transition duration-200">
                                                     {announcement.title}
                                                 </p>
