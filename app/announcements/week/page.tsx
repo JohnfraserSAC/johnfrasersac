@@ -91,7 +91,7 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
                                             className="w-full flex justify-between items-center hover:bg-gray-50 transition duration-150"
                                         >
                                             <div className='w-full flex justify-evenly items-center'>
-                                                <Link href={`/announcements/search/${announcement.slug}`}>
+                                                <Link href={`/announcements/week/${announcement.slug}`}>
                                                     <p className="underline-offset-0 font-semibold text-lg text-blue-600 hover:text-blue-700 hover:underline transition duration-200">
                                                         {announcement.title}
                                                     </p>
@@ -107,7 +107,7 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
                         ))}
                     </div>
                 </div>
-                <Link href='/announcements/search/all'>
+                <Link href='/announcements/all'>
                             <button className='button-5'>View All Announcements</button>
                     </Link>
             </div>

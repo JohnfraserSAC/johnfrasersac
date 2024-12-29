@@ -54,7 +54,7 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
     </h1>
     
     {/* Search Form */}
-    <form method="get" action="/announcements/search" className="w-full max-w-lg flex flex-col sm:flex-row gap-4 items-center">
+    <form method="get" action="/announcements/all" className="w-full max-w-lg flex flex-col sm:flex-row gap-4 items-center">
       <input
         type="text"
         name="search"
