@@ -56,7 +56,9 @@ function groupAnnouncementsByDay(announcements: Announcement[]) {
         console.log(`Date: ${announcement.date}, Day Index: ${dayIndex}`); // Log the date and day index
         if (dayIndex >= 1 && dayIndex <= 5) { // Only include Monday to Friday
             const dayName = daysOfWeek[dayIndex - 1]; // Map index to day name
-            grouped[dayName].push(announcement);
+            if (!grouped[dayName].length || new Date(announcement.date) > new Date(grouped[dayName][0].date)) {
+                grouped[dayName] = [announcement]; // Replace with the most recent announcement
+            }
         }
     });
 
@@ -69,28 +71,35 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
     const groupedAnnouncements = groupAnnouncementsByDay(announcements);
 
     return (
-        <main className="min-h-screen bg-gray-50 py-12 pt-32 md:pt-40">
-            <div className="container mx-auto flex flex-col items-center justify-center text-center gap-y-8">
-                <div className='border-4 border-black rounded-md w-[600px] shadow-lg'>
-                    <h1>Weekly Announcements 📢</h1>
+        <main>
+            <div className='text-white custom-background-4 flex justify-center items-center flex-col text-center pt-40 w-full py-8'>
+                    <div className='mb-12 text-center flex flex-col justify-center items-center container'>
+                        <h1 className='text-4xl mb-3 lg:text-6xl font-bold'>Weekly Announcements</h1>
+                        <p className='w-7/12 text-lg mb-6'>Check out this weeks announcements at john fraser!</p>
+                    </div>
+            </div>
+            <div className="py-8 container mx-auto flex flex-col items-center justify-center text-center gap-y-8">
+                <div className=' rounded-md w-[600px] shadow-lg'>
                     <div className=''>
                         {Object.keys(groupedAnnouncements).map(day => (
-                            <div key={day}>
-                                <h3 className='border'>{day}</h3>
-                                <div className='border'>
+                            <div key={day} className=' flex border-t-2 border-black border-l-2 last:border-b-2 border-r-2'>
+                                <h3 className='w-1/4 border-r-2 border-black'>{day}</h3>
+                                <div className='w-full'>
                                     {groupedAnnouncements[day].map((announcement) => (
                                         <li
                                             key={announcement.id}
-                                            className="p-4 flex justify-between items-center hover:bg-gray-50 transition duration-150"
+                                            className="w-full flex justify-between items-center hover:bg-gray-50 transition duration-150"
                                         >
-                                            <Link href={`/announcements/search/${announcement.slug}`}>
-                                                <p className="font-semibold text-lg text-blue-600 hover:text-blue-700 hover:underline transition duration-200">
-                                                    {announcement.title}
+                                            <div className='w-full flex justify-evenly items-center'>
+                                                <Link href={`/announcements/search/${announcement.slug}`}>
+                                                    <p className="underline-offset-0 font-semibold text-lg text-blue-600 hover:text-blue-700 hover:underline transition duration-200">
+                                                        {announcement.title}
+                                                    </p>
+                                                </Link>
+                                                <p className="text-gray-500 text-sm">
+                                                    {announcement.date}
                                                 </p>
-                                            </Link>
-                                            <p className="text-gray-500 text-sm">
-                                                {announcement.date}
-                                            </p>
+                                            </div>  
                                         </li>
                                     ))}
                                 </div>
@@ -98,6 +107,9 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
                         ))}
                     </div>
                 </div>
+                <Link href='/announcements/search/all'>
+                            <button className='button-5'>View All Announcements</button>
+                    </Link>
             </div>
         </main>
     );
