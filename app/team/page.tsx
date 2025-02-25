@@ -52,7 +52,7 @@ const teamMembers = [
   {
     id: 7,
     name: "Akshat Chopra",
-    role: "Environmental Liaison",
+    role: "General Executive",
     image: "/team/execs/akshat-chopra.jpg",
     description: "",
   },
@@ -131,7 +131,7 @@ const gradeReps = [
   {
     id: 4,
     name: "Eshal Siddiqi",
-    role: "Treasurer",
+    role: "Grade 12 Rep.",
     image: "/team/grade-reps/eshal-siddiqi.jpg",
   },
 ];
