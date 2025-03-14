@@ -71,10 +71,10 @@ const Page: FC<PageProps> = async ({ params }) => {
         <div className='h-full  w-full'>
           <h1 className='text-5xl font-semibold text-center underline'>{announcement.title}</h1>
           <div className='w-full flex justify-center items-center mt-4'>
-            <p className=' w-8/12'>{announcement.content}</p>
+            <p className='w-8/12' dangerouslySetInnerHTML={{ __html: announcement.content.replace(/\n/g, '<br />') }}></p>
           </div>
         </div>
-        <div className='w-full  text-right mr-12'>
+        <div className='w-full text-right mr-12'>
           <p>Posted on: {announcement.date}</p>
         </div>
       </div>
