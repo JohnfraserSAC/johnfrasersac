@@ -183,7 +183,7 @@ const Page = () => {
                 className="relative h-80 w-64 overflow-hidden rounded-lg bg-gray-100 shadow-md"
               >
                 <Image
-                  src={`/team/${name.toLowerCase().replace(" ", "-")}.jpg`}
+                  src={`/team/execs/${name.toLowerCase().replace(" ", "-")}.jpg`}
                   layout="fill"
                   objectFit="cover"
                   alt={name}
