@@ -96,7 +96,8 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-          <More />
+            {/* this is the special dropdown menu */}
+            <More />
           </div>
         </div>
       )}

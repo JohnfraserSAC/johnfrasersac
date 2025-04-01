@@ -53,7 +53,7 @@ const More = () => {
     <div className="relative">
       {/* TOGGLE */}
       <div
-        className="flex items-center justify-center cursor-pointer"
+        className="flex items-center justify-start cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
         <p className="rounded-md pl-3 py-2 text-md font-medium text-gray-300">More</p>
@@ -68,7 +68,7 @@ const More = () => {
         className="overflow-hidden absolute top-full mt-2 w-48 text-gray-200 rounded shadow-lg"
         style={{ height: 0 }}
       >
-        <ul className="flex flex-col">
+        <ul className="flex flex-col bg-[#1c3b6a] md:bg-transparent">
           {links.map((link) => (
               <Link
               key={link.name}
