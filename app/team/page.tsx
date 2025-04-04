@@ -281,9 +281,9 @@ const aboutTheTeam = [
     alt: "placeholder",
   },
   {
-    title: "Honouraries",
+    title: "Honoraries",
     description:
-      "Honourary Members make up the majority of SAC. They are student leaders who help to plan, execute, and promote SAC events. Honourary positions are chosen at the start of the year and can be found here.",
+      "Honorary Members make up the majority of SAC. They are student leaders who help to plan, execute, and promote SAC events. Honorary positions are chosen at the start of the year and can be found here.",
     image: "/team/honouraries.jpg",
     alt: "placeholder",
   },
@@ -390,7 +390,7 @@ const page = () => {
             <p className="tracking-widest font-light">
               Turning visions into reality with their support and dedication...
             </p>
-            <h1 className="font-medium text-4xl mt-4">Honouraries</h1>
+            <h1 className="font-medium text-4xl mt-4">Honoraries</h1>
           </div>
           <div className="lg:grid lg:grid-cols-4 lg:gap-x-32 lg:gap-y-12 flex flex-col justify-center items-center gap-y-8 my-8">
             {honouraries.map((member) => (
