@@ -14,7 +14,7 @@ const links = [
   },
   { 
     name: "SAC Budget Transparency Plans 2025", 
-    href: "https://google.com/" 
+    href: "/JFSS_SAC_Transparency_Report.pdf" 
   },
   // add more links here
 ];

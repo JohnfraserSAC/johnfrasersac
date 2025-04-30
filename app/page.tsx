@@ -9,7 +9,7 @@ const Page = () => {
   const [currentHeroImage, setCurrentHeroImage] = useState("/hero.jpg");
   const [fade, setFade] = useState(true);
 
-  const heroImages = ["/hero.jpg", "/hero2.jpg", "/hero3.jpg"];
+  const heroImages = ["/hero.jpg", "/placeholder.jpg", "/cw-1.png"];
   let currentIndex = 0;
 
   useEffect(() => {
