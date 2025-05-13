@@ -9,7 +9,7 @@ const Page = () => {
   const [currentHeroImage, setCurrentHeroImage] = useState("/hero.jpg");
   const [fade, setFade] = useState(true);
 
-  const heroImages = ["/hero.jpg", "/placeholder.jpg", "/cw-1.png"];
+    const heroImages = ["/hero.jpg", "/placeholder.jpg", "/cw-1.png"];
   let currentIndex = 0;
 
   useEffect(() => {
@@ -18,9 +18,9 @@ const Page = () => {
       setTimeout(() => {
         currentIndex = (currentIndex + 1) % heroImages.length;
         setCurrentHeroImage(heroImages[currentIndex]);
-        setFade(true); 
-      }, 500); 
-    }, 5000); 
+        setFade(true);
+      }, 500);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
