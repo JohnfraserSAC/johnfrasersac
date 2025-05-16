@@ -1,12 +1,29 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import GradeRep from "../components/GradeRep"
 
 const Page = () => {
   const [hoveredImage, setHoveredImage] = useState<string | null>(null);
+  const [currentHeroImage, setCurrentHeroImage] = useState("/hero.jpg");
+  const [fade, setFade] = useState(true);
+
+    const heroImages = ["/hero.jpg", "/placeholder.jpg", "/cw-1.png"];
+  let currentIndex = 0;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % heroImages.length;
+        setCurrentHeroImage(heroImages[currentIndex]);
+        setFade(true);
+      }, 500);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const images = [
     {
@@ -30,7 +47,7 @@ const Page = () => {
   ];
 
   return (
-  <main className="w-full">
+    <main className="w-full">
       {/* Hero Section */}
       <section className="relative flex min-h-screen items-center md:pb-30 py-40">
         <div className="absolute inset-0 z-0">
@@ -44,7 +61,6 @@ const Page = () => {
           <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Removed m-20 and adjusted spacing for better control */}
           <div className="flex flex-col items-center justify-between lg:flex-row space-y-10 lg:space-y-0 lg:space-x-10">
             <div className="lg:w-5/12">
               <h1 className="mb-6 text-4xl font-bold text-white lg:text-6xl">
@@ -66,14 +82,20 @@ const Page = () => {
               </div>
             </div>
             <div className="lg:w-1/2">
-              <Image
-                className="rounded-xl shadow-lg"
-                src="/hero.jpg"
-                width={500}
-                height={300}
-                alt="Hero image"
-                objectFit="cover"
-              />
+              <div
+                className={` transition-opacity duration-500 ${
+                  fade ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <Image
+                  src={currentHeroImage}
+                  width={500}
+                  height={300}
+                  alt="Hero image"
+                  objectFit="cover"
+                  className="rounded-xl shadow-lg"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -124,7 +146,7 @@ const Page = () => {
           <div className="mb-10 lg:mb-0 lg:w-1/2">
             <Image
               className="rounded-xl shadow-lg"
-              src="/hero2.jpg"
+              src="/events.jpg"
               width={550}
               height={300}
               alt="Upcoming events"
@@ -183,7 +205,7 @@ const Page = () => {
                 className="relative h-80 w-64 overflow-hidden rounded-lg bg-gray-100 shadow-md"
               >
                 <Image
-                  src={`/team/${name.toLowerCase().replace(" ", "-")}.jpg`}
+                  src={`/team/execs/${name.toLowerCase().replace(" ", "-")}.jpg`}
                   layout="fill"
                   objectFit="cover"
                   alt={name}

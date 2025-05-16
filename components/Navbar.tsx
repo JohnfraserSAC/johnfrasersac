@@ -5,13 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FaBars, FaTimes } from "react-icons/fa";
+import More from "./navbarMore";
 
 const links = [
   { name: "Announcements", href: "/announcements" },
   { name: "SAC Opportunities", href: "/opportunities" },
   { name: "Clubs", href: "/clubs" },
   { name: "Our Team", href: "/team" },
-  { name: "Photos", href: "https://drive.google.com/drive/folders/1WIpAVouRSgXtycP7XPadHCjcF38iH1uD?usp=drive_link" },
+  { name: "FraserTickets", href: "https://tickets.aritrosaha.ca/" },
   { name: "FraserPay", href: "https://pay.johnfrasersac.com/" },
 ];
 
@@ -59,6 +60,8 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
+              {/* this is the special dropdown menu */}
+              <More />
             </div>
           </div>
           <div className="md:hidden">
@@ -94,6 +97,8 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
+            {/* this is the special dropdown menu */}
+            <More />
           </div>
         </div>
       )}

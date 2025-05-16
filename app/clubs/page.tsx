@@ -1,5 +1,5 @@
 'use client';
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState, useEffect, useRef } from 'react';
 import clubs from '@/utils/clubs';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -47,8 +47,8 @@ const Page = () => {
             Check here for all the updates and clubs at John Fraser Secondary School!
           </p>  
           <Link href='https://docs.google.com/spreadsheets/d/1gHvHkLVwV21s-vFNmRKdqwaBZlhQx1HRjXFa8dwhhAU/edit?usp=sharing'>
-                            <button className='button-5'>Clubs Masterlist</button>
-                        </Link>
+            <button className='button-5'>Clubs Masterlist</button>
+          </Link>
         </div>  
       </div>
 
@@ -69,53 +69,62 @@ const Page = () => {
       </div>
 
       {/* Club Dropdowns */}
-      <div className="container grid grid-cols-1 gap-2 my-5 md:w-3/4 px-4 lg:px-0 mx-auto">
-        {sortedAnnouncements.map((club) => (
-          <motion.div
-            key={club.id}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            layout
-            className="bg-white rounded-lg p-4 transition duration-300"
-          >
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={sortOrder}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          className="container grid grid-cols-1 gap-2 my-5 md:w-3/4 px-4 lg:px-0 mx-auto"
+        >
+          {sortedAnnouncements.map((club) => (
             <div
-              className="flex justify-between items-center cursor-pointer"
-              onClick={() => toggleClub(club.id)}
+              key={club.id}
+              className="bg-white rounded-lg p-4 transition duration-300"
             >
-              <h2 className="text-xl font-semibold text-gray-800">{club.name}</h2>
-              <motion.span
-                animate={{ rotate: activeClubId === club.id ? 180 : 0 }}
-                className="text-gray-500"
+              <div
+                className="flex justify-between items-center cursor-pointer"
+                onClick={() => toggleClub(club.id)}
               >
-                ▼
-              </motion.span>
-            </div>
+                <h2 className="text-xl font-semibold text-gray-800">{club.name}</h2>
+                <span className="text-gray-500">
+                  <motion.span
+                    animate={{ rotate: activeClubId === club.id ? 540 : 0 }}
+                    transition={{ duration: 0.5, ease: 'easeInOut' }}
+                    style={{ display: 'inline-block' }}
+                  >
+                    ▼
+                  </motion.span>
+                </span>
+              </div>
 
-            {/* Dropdown Content */}
-            <AnimatePresence>
-              {activeClubId === club.id && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden mt-4"
-                >
-                  <p className="text-gray-600 mb-4">{club.description}</p>
-                  {club.insta && (
-                    <Link href={club.insta} target="_blank">
-                      <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
-                        Learn More
-                      </button>
-                    </Link>
-                  )}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        ))}
-      </div>
+              {/* Dropdown Content with animation */}
+              <AnimatePresence initial={false}>
+                {activeClubId === club.id && (
+                  <motion.div
+                    key="content"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="overflow-hidden mt-4"
+                  >
+                    <p className="text-gray-600 mb-4">{club.description}</p>
+                    {club.insta && (
+                      <Link href={club.insta} target="_blank">
+                        <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
+                          Learn More
+                        </button>
+                      </Link>
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+        </motion.div>
+      </AnimatePresence>
     </main>
   );
 };
