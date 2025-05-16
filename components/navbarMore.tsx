@@ -10,7 +10,7 @@ const links = [
   },
   { 
     name: "Published Meeting Agendas", 
-    href: "https://google.com/" 
+    href: "https://drive.google.com/drive/folders/1TJUOGyLqhqOphUnxu-3ZihWcw8XS5Geg?usp=sharing" 
   },
   { 
     name: "SAC Budget Transparency Plans 2025", 
