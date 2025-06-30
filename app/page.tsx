@@ -62,12 +62,12 @@ const Page = () => {
               <h1 className="mb-6 text-4xl font-bold text-white lg:text-6xl">
                 John Fraser Student Council
               </h1>
-              <p className="mb-8 text-2xl text-white font-thin">
-                <strong>SAC Elections</strong> are currently happening! Click below to learn more and meet the candidates!
+              <p className="mb-8 text-xl text-white">
+                Run By Students, For Students. Made with passion and heart
               </p>
               <div className="flex flex-col items-start lg:items-center sm:flex-row">
-                <Link href="https://elections.johnfrasersac.com" className="mb-4 sm:mb-0 sm:mr-4" target="_blank">
-                  <button className="button-2">Meet the Candidates</button>
+                <Link href="/opportunities" className="mb-4 sm:mb-0 sm:mr-4">
+                  <button className="button-2">Get Involved</button>
                 </Link>
                 <Link
                   href="/announcements"
