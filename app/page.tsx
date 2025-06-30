@@ -27,22 +27,18 @@ const Page = () => {
 
   const images = [
     {
-      id: "twitter",
-      colored: "/links/twitter-colored.png",
-      grayscale: "/links/twitter-grayscale.png",
-      alt: "Twitter",
+      id: "gmail",
+      colored: "/links/gmail-colored.jpg",
+      grayscale: "/links/gmail-grayscale.png",
+      link: "mailto:johnfraserstudentcouncil@gmail.com?subject=Student%20Council%20Inquiry&body=Dear%20Student%20Council%2C%0A%0AI%20would%20like%20to%20ask%20about...",
+      alt: "gmail",
     },
     {
       id: "instagram",
       colored: "/links/instagram-colored.jpg",
       grayscale: "/links/instagram-grayscale.png",
+      link: "https://www.instagram.com/johnfrasersac/",
       alt: "Instagram",
-    },
-    {
-      id: "facebook",
-      colored: "/links/facebook-colored.png",
-      grayscale: "/links/facebook-grayscale.png",
-      alt: "Facebook",
     },
   ];
 
@@ -233,17 +229,19 @@ const Page = () => {
                 onMouseLeave={() => setHoveredImage(null)}
                 className="transition-transform duration-300 hover:scale-110"
               >
-                <Image
-                  src={
-                    hoveredImage === image.id
-                      ? image.colored
-                      : image.grayscale
-                  }
-                  height={140}
-                  width={140}
-                  alt={image.alt}
-                  className="transition-opacity duration-300"
-                />
+                <Link href={image.link} target="_blank" rel="noopener noreferrer">
+                  <Image
+                      src={
+                        hoveredImage === image.id
+                          ? image.colored
+                          : image.grayscale
+                      }
+                      height={140}
+                      width={140}
+                      alt={image.alt}
+                      className="transition-opacity duration-300"
+                    />
+                </Link>
               </div>
             ))}
           </div>
