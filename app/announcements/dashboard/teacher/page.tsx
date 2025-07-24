@@ -8,37 +8,39 @@ export default function TeacherDashboard() {
   const [newUsername, setNewUsername] = useState('');
   const [status, setStatus] = useState('');
   const [announcements, setAnnouncements] = useState([]);
-  const [role, setRole] = useState('');
-  const [club, setClub] = useState('');
 
   useEffect(() => {
-    const user = requireRole('teacher');
-    setAccessCode(user?.accessCode || '');
-    const localUser = JSON.parse(localStorage.getItem('user') || '{}');
-    setRole(localUser.role || '');
-    setClub(localUser.club || '');
+  requireRole('teacher');
+  // Fetch accessCode from user and set it
+  const user = requireRole('teacher');
+  setAccessCode(user?.accessCode || '');
+}, []);
 
-    fetchAnnouncements(localUser.role, localUser.club);
-  }, []);
+useEffect(() => {
+  if (accessCode) {
+    fetchAnnouncements();
+  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [accessCode]);
 
-  const fetchAnnouncements = async (role: string, club: string) => {
-    try {
-      const res = await fetch(`/api/announcements/approve?role=${role}&club=${club}`);
-      const data = await res.json();
-      setAnnouncements(data);
-    } catch (err) {
-      setStatus('❌ Failed to fetch announcements.');
-    }
-  };
+const fetchAnnouncements = async () => {
+  try {
+    const res = await fetch(`/api/announcements/approve?accessCode=${accessCode}`);
+    const data = await res.json();
+    setAnnouncements(data);
+  } catch (err) {
+    setStatus('❌ Failed to fetch announcements.');
+  }
+};
 
   const handleApprove = async (id: string) => {
     try {
       await fetch('/api/announcements/approve', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id }),
+        body: JSON.stringify({ id, approval: true }), // <-- add approval: true
       });
-      fetchAnnouncements(role, club);
+      fetchAnnouncements();
     } catch (err) {
       setStatus('❌ Failed to approve announcement.');
     }
