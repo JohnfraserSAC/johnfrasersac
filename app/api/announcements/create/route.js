@@ -1,8 +1,19 @@
 import clientPromise from '@/lib/mongodb';
 
+function slugify(text) {
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, '-')           // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+    .replace(/^-+/, '')             // Trim - from start of text
+    .replace(/-+$/, '');            // Trim - from end of text
+}
+
 export async function POST(req) {
-  const { accessCode, description, date } = await req.json();
-  if (!accessCode || !description || !date) {
+  const { accessCode, description, dates } = await req.json();
+  if (!accessCode || !description || !Array.isArray(dates) || dates.length === 0) {
     return new Response(JSON.stringify({ error: 'Missing fields' }), { status: 400 });
   }
 
@@ -16,17 +27,24 @@ export async function POST(req) {
   }
 
   const club = user.club;
-  const title = `${date}, ${club}`;
-  const customId = `${club}_${date}_${Math.random().toString(36).substr(2, 9)}`;
 
-  await db.collection('announcements').insertOne({
-    _id: customId,
-    title,
-    description,
-    date,
-    club,
-    approval: false
+  const docs = dates.map((date) => {
+    const title = `${date}, ${club}`;
+    const customId = `${club}_${date}_${Math.random().toString(36).substr(2, 9)}`;
+    const slug = slugify(`${club} ${date}`);
+    return {
+      _id: customId,
+      title,
+      description,
+      date,
+      club,
+      slug,
+      approval: false,
+      accessCode, // <-- Store accessCode with the announcement
+    };
   });
 
-  return new Response(JSON.stringify({ message: 'Announcement submitted' }), { status: 201 });
+  await db.collection('announcements').insertMany(docs);
+
+  return new Response(JSON.stringify({ message: 'Announcement(s) submitted' }), { status: 201 });
 }
