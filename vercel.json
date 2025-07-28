@@ -1,13 +1,16 @@
 {
-    "functions": {
-        "api/backup/6h/route.ts": {
-            "schedule": "0 */6 * * *"
-        },
-        "api/backup/daily/route.ts": {
-            "schedule": "30 12 * * *"
-        },
-        "api/backup/weekly/route.ts": {
-            "schedule": "0 0 * * 0"
-        }
+  "crons": [
+    {
+      "path": "/api/backup/6h",
+      "schedule": "0 */6 * * *"
+    },
+    {
+      "path": "/api/backup/daily",
+      "schedule": "30 12 * * *"
+    },
+    {
+      "path": "/api/backup/weekly",
+      "schedule": "0 0 * * 0"
     }
+  ]
 }
