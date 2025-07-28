@@ -46,6 +46,19 @@ const fetchAnnouncements = async () => {
     }
   };
 
+  const handleApproveAll = async () => {
+    try {
+      await fetch('/api/announcements/approve', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ approval: true, accessCode }),
+      });
+      fetchAnnouncements();
+    } catch (err) {
+      setStatus('❌ Failed to approve all announcements.');
+    }
+  };
+
   const handleUsernameChange = async (e: any) => {
     e.preventDefault();
     try {
@@ -76,6 +89,11 @@ const fetchAnnouncements = async () => {
       </form>
       {status && <p style={{ marginTop: '1rem' }}>{status}</p>}
       <h1>Teacher Dashboard – Pending Announcements</h1>
+      {announcements.length > 0 && (
+        <button onClick={handleApproveAll} style={{ marginBottom: '1rem' }}>
+          Approve All
+        </button>
+      )}
       {announcements.length === 0 && <p>No pending announcements.</p>}
       <ul>
         {announcements.map((a: any) => (

@@ -83,6 +83,24 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleDeleteUser = async (id: string) => {
+    console.log('Deleting user with id:', id);
+    if (!window.confirm('Are you sure you want to delete this user?')) return;
+    const res = await fetch('/api/admin/delete-user', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id }),
+    });
+    console.log('Deleting user with id:', id);
+    if (res.ok) {
+      setStatus(`✅ Deleted user ${id}`);
+      fetchUsers();
+    } else {
+      const result = await res.json();
+      setStatus(`❌ Error deleting user: ${result.error}`);
+    }
+  };
+
   return (
     <div style={{ padding: '2rem', maxWidth: '1000px', margin: 'auto' }}>
       <h1>Admin Dashboard</h1>
@@ -137,6 +155,12 @@ export default function AdminDashboard() {
               </td>
               <td>
                 <button onClick={() => handleSave(user)}>Save</button>
+                <button
+                  style={{ marginLeft: '0.5rem', color: 'red' }}
+                  onClick={() => handleDeleteUser(user._id)}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

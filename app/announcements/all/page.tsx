@@ -44,12 +44,9 @@ async function getAllAnnouncements(searchQuery: string = ''): Promise<Announceme
     }));
 }
 
-// ...existing code...
 export default async function AnnouncementsPage({ searchParams }: { searchParams: { search?: string } }) {
     const searchQuery = searchParams.search || '';
     const announcements: Announcement[] = await getAllAnnouncements(searchQuery);
-
-    const grouped = groupByDate(announcements);
 
     return (
         <main className="min-h-screen bg-gray-50 py-12 pt-32 md:pt-40">
@@ -71,27 +68,27 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
                         Search
                     </button>
                 </form>
-                {/* Announcements Grouped by Date */}
+                {/* Announcements List */}
                 <div className="flex justify-center w-full px-4">
-                    <div className="w-full max-w-3xl bg-white rounded-lg shadow-md divide-y divide-gray-200 overflow-y-auto lg:h-[40vh] h-[50vh] md:h-[60vh] p-4">
-                        {Object.entries(grouped).map(([date, items]) => (
-                            <div key={date} className="mb-6">
-                                <h2 className="text-xl font-bold text-gray-700 mb-2">{date}</h2>
-                                <ul>
-                                    {items.map((announcement) => (
-                                        <li key={announcement._id} className="flex justify-between items-center py-2 border-b last:border-b-0">
-                                            <Link href={`/announcements/week/${announcement.slug}`}>
-                                                <p className="font-semibold text-blue-600 hover:text-blue-700 hover:underline transition duration-200">
-                                                    {announcement.title}
-                                                </p>
-                                            </Link>
-                                            <span className="text-gray-500 text-sm">{announcement.club}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                    <ul className="w-full max-w-3xl bg-white rounded-lg shadow-md divide-y divide-gray-200 overflow-y-auto lg:h-[40vh] h-[50vh] md:h-[60vh]">
+                        {announcements.map((announcement) => (
+                            <li
+                                key={announcement._id}
+                                className="p-4 flex justify-between items-center hover:bg-gray-50 transition duration-150"
+                            >
+                                {/* Title */}
+                                <Link href={`/announcements/all/${announcement.slug}`}>
+                                    <p className="font-semibold text-lg text-blue-600 hover:text-blue-700 hover:underline transition duration-200">
+                                        {announcement.title}
+                                    </p>
+                                </Link>
+                                {/* Date */}
+                                <p className="text-gray-500 text-sm">
+                                    {announcement.date}
+                                </p>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                 </div>
             </div>
         </main>
