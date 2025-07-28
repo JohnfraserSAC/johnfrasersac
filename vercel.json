@@ -1,0 +1,13 @@
+{
+    "functions": {
+        "api/backup/6h/route.ts": {
+            "schedule": "0 */6 * * *"
+        },
+        "api/backup/daily/route.ts": {
+            "schedule": "30 12 * * *"
+        },
+        "api/backup/weekly/route.ts": {
+            "schedule": "0 0 * * 0"
+        }
+    }
+}
