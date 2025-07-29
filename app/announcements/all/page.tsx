@@ -37,8 +37,17 @@ async function getAllAnnouncements(searchQuery: string = ''): Promise<Announceme
         .sort({ date: -1 })
         .toArray();
 
+    // Only show announcements after 8:30am of their date
+    const now = new Date();
+    const visibleAnnouncements = announcements.filter((a: any) => {
+        if (!a.date) return false;
+        // Create a Date object for 8:30am of the announcement date (local time)
+        const revealTime = new Date(`${a.date}T08:30:00`);
+        return now >= revealTime;
+    });
+
     // Convert _id to string for React keys (if not already)
-    return announcements.map((a: any) => ({
+    return visibleAnnouncements.map((a: any) => ({
         ...a,
         _id: a._id.toString(),
     }));

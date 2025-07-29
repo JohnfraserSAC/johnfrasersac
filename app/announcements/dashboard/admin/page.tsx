@@ -12,6 +12,10 @@ export default function AdminDashboard() {
   const [newUser, setNewUser] = useState({ username: '', accessCode: '', role: 'student', club: '' });
   const [createStatus, setCreateStatus] = useState('');
 
+  // NEW: Search states
+  const [userSearch, setUserSearch] = useState('');
+  const [announcementSearch, setAnnouncementSearch] = useState('');
+
   const fetchAnnouncements = async () => {
     const res = await fetch('/api/announcements/all');
     const data = await res.json();
@@ -84,14 +88,12 @@ export default function AdminDashboard() {
   };
 
   const handleDeleteUser = async (id: string) => {
-    console.log('Deleting user with id:', id);
     if (!window.confirm('Are you sure you want to delete this user?')) return;
     const res = await fetch('/api/admin/delete-user', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id }),
     });
-    console.log('Deleting user with id:', id);
     if (res.ok) {
       setStatus(`✅ Deleted user ${id}`);
       fetchUsers();
@@ -101,71 +103,103 @@ export default function AdminDashboard() {
     }
   };
 
+  // NEW: Filtered lists
+  const filteredUsers = users.filter((u: any) =>
+    u.username?.toLowerCase().includes(userSearch.toLowerCase())
+  );
+  const filteredAnnouncements = announcements.filter((a: any) =>
+    a.title?.toLowerCase().includes(announcementSearch.toLowerCase())
+  );
+
   return (
-    <div style={{ padding: '2rem', maxWidth: '1000px', margin: 'auto' }}>
+    <div style={{ padding: '2rem', maxWidth: '1100px', margin: 'auto' }}>
+      <hr className='h-40'></hr>
       <h1>Admin Dashboard</h1>
       {status && <p style={{ margin: '1rem 0', color: 'green' }}>{status}</p>}
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Access Code</th>
-            <th>Role</th>
-            <th>Club</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user: any) => (
-            <tr key={user._id}>
-              <td>
-                <input
-                  defaultValue={user.username || ''}
-                  onChange={(e) => handleChange(user._id, 'username', e.target.value)}
-                />
-              </td>
-              <td>
-                <input
-                  defaultValue={user.accessCode}
-                  onChange={(e) => handleChange(user._id, 'accessCode', e.target.value)}
-                />
-              </td>
-              <td>
-                <select
-                  defaultValue={user.role}
-                  onChange={(e) => handleChange(user._id, 'role', e.target.value)}
-                >
-                  <option value="student">Student</option>
-                  <option value="teacher">Teacher</option>
-                  <option value="admin">Admin</option>
-                </select>
-              </td>
-              <td>
-                <select
-                  defaultValue={user.club || ''}
-                  onChange={(e) => handleChange(user._id, 'club', e.target.value)}
-                >
-                  <option value="">-- Select Club --</option>
-                  {clubs.map((c) => (
-                    <option key={c.id} value={c.name}>
-                      {c.name}
-                    </option>
-                  ))}
-                </select>
-              </td>
-              <td>
-                <button onClick={() => handleSave(user)}>Save</button>
-                <button
-                  style={{ marginLeft: '0.5rem', color: 'red' }}
-                  onClick={() => handleDeleteUser(user._id)}
-                >
-                  Delete
-                </button>
-              </td>
+
+      {/* USERS TABLE */}
+      <h2>Accounts</h2>
+      <input
+        type="text"
+        placeholder="Search users by username..."
+        value={userSearch}
+        onChange={e => setUserSearch(e.target.value)}
+        style={{ marginBottom: '0.5rem', width: 250 }}
+      />
+      <div style={{ maxHeight: 350, overflowY: 'auto', border: '1px solid #ccc', borderRadius: 6 }}>
+        <table style={{ width: '100%', minWidth: 800, borderCollapse: 'collapse', tableLayout: 'fixed' }}>
+          <thead style={{ background: '#f5f5f5', position: 'sticky', top: 0 }}>
+            <tr>
+              <th style={{ width: 180 }}>Username</th>
+              <th style={{ width: 140 }}>Access Code</th>
+              <th style={{ width: 120 }}>Role</th>
+              <th style={{ width: 180 }}>Club</th>
+              <th style={{ width: 180 }}>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredUsers.map((user: any) => (
+              <tr key={user._id}>
+                <td>
+                  <input
+                    defaultValue={user.username || ''}
+                    onChange={(e) => handleChange(user._id, 'username', e.target.value)}
+                    style={{ width: '95%' }}
+                  />
+                </td>
+                <td>
+                  <input
+                    defaultValue={user.accessCode}
+                    onChange={(e) => handleChange(user._id, 'accessCode', e.target.value)}
+                    style={{ width: '95%' }}
+                  />
+                </td>
+                <td>
+                  <select
+                    defaultValue={user.role}
+                    onChange={(e) => handleChange(user._id, 'role', e.target.value)}
+                    style={{ width: '95%' }}
+                  >
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="admin">Admin</option>
+                  </select>
+                </td>
+                <td>
+                  <select
+                    defaultValue={user.club || ''}
+                    onChange={(e) => handleChange(user._id, 'club', e.target.value)}
+                    style={{ width: '95%' }}
+                  >
+                    <option value="">-- Select Club --</option>
+                    {clubs.map((c) => (
+                      <option key={c.id} value={c.name}>
+                        {c.name}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+                <td>
+                  <button onClick={() => handleSave(user)}>Save</button>
+                  <button
+                    style={{ marginLeft: '0.5rem', color: 'red' }}
+                    onClick={() => handleDeleteUser(user._id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+            {filteredUsers.length === 0 && (
+              <tr>
+                <td colSpan={5} style={{ textAlign: 'center', color: '#888' }}>
+                  No users found.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
 
       <h2 style={{ marginTop: '2rem' }}>Create User</h2>
       <form onSubmit={handleCreateUser} style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '2rem' }}>
@@ -205,37 +239,66 @@ export default function AdminDashboard() {
       </form>
       {createStatus && <p style={{ color: createStatus.startsWith('✅') ? 'green' : 'red' }}>{createStatus}</p>}
 
+      {/* ANNOUNCEMENTS TABLE */}
       <h2>Delete & Approve Announcements</h2>
       <button onClick={fetchAnnouncements}>Refresh Announcements</button>
-      <ul>
-        {announcements.map((a: any) => (
-          <li key={a._id} style={{ margin: '1rem 0' }}>
-            <b>{a.title}</b> — {a.description}
-            <span style={{ marginLeft: '1rem' }}>
-              {a.approval ? '✅ Approved' : '❌ Not Approved'}
-            </span>
-            <button
-              style={{ marginLeft: '1rem' }}
-              onClick={async () => {
-                await fetch('/api/announcements/approve', {
-                  method: 'PATCH',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ id: a._id, approval: !a.approval }),
-                });
-                fetchAnnouncements();
-              }}
-            >
-              {a.approval ? 'Unapprove' : 'Approve'}
-            </button>
-            <button
-              style={{ marginLeft: '1rem' }}
-              onClick={() => handleDelete(a._id)}
-            >
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
+      <input
+        type="text"
+        placeholder="Search announcements by title..."
+        value={announcementSearch}
+        onChange={e => setAnnouncementSearch(e.target.value)}
+        style={{ margin: '0.5rem 0', width: 300 }}
+      />
+      <div style={{ maxHeight: 350, overflowY: 'auto', border: '1px solid #ccc', borderRadius: 6 }}>
+        <table style={{ width: '100%', minWidth: 800, borderCollapse: 'collapse', tableLayout: 'fixed' }}>
+          <thead style={{ background: '#f5f5f5', position: 'sticky', top: 0 }}>
+            <tr>
+              <th style={{ width: 220 }}>Title</th>
+              <th>Description</th>
+              <th style={{ width: 120 }}>Status</th>
+              <th style={{ width: 220 }}>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredAnnouncements.map((a: any) => (
+              <tr key={a._id}>
+                <td style={{ wordBreak: 'break-word' }}>{a.title}</td>
+                <td style={{ wordBreak: 'break-word' }}>{a.description}</td>
+                <td>
+                  {a.approval ? '✅ Approved' : '❌ Not Approved'}
+                </td>
+                <td>
+                  <button
+                    onClick={async () => {
+                      await fetch('/api/announcements/approve', {
+                        method: 'PATCH',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id: a._id, approval: !a.approval }),
+                      });
+                      fetchAnnouncements();
+                    }}
+                  >
+                    {a.approval ? 'Unapprove' : 'Approve'}
+                  </button>
+                  <button
+                    style={{ marginLeft: '1rem', color: 'red' }}
+                    onClick={() => handleDelete(a._id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+            {filteredAnnouncements.length === 0 && (
+              <tr>
+                <td colSpan={4} style={{ textAlign: 'center', color: '#888' }}>
+                  No announcements found.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

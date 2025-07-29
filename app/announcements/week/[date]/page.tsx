@@ -1,6 +1,7 @@
 import clientPromise from '@/lib/mongodb';
 import { notFound } from 'next/navigation';
 import { format, parseISO } from 'date-fns';
+import ReactMarkdown from 'react-markdown';
 
 export default async function AnnouncementsForDatePage({ params }: { params: { date: string } }) {
   const client = await clientPromise;
@@ -27,8 +28,8 @@ export default async function AnnouncementsForDatePage({ params }: { params: { d
         {announcements.map((a) => (
           <li key={a._id} className='border p-4 rounded shadow'>
             <h2 className='text-2xl font-semibold'>{a.title}</h2>
-            <p>{a.description}</p>
-            <p className='text-sm text-gray-600'>Club: {a.club} | Access Code: {a.accessCode}</p>
+            <ReactMarkdown>{a.description}</ReactMarkdown>
+            <p className='text-sm text-gray-600'>Club: {a.club}</p>
           </li>
         ))}
       </ul>

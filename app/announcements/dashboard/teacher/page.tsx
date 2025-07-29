@@ -7,7 +7,51 @@ export default function TeacherDashboard() {
   const [accessCode, setAccessCode] = useState('');
   const [newUsername, setNewUsername] = useState('');
   const [status, setStatus] = useState('');
+  const [club, setClub] = useState('');
   const [announcements, setAnnouncements] = useState([]);
+  const [approvedAnnouncements, setApprovedAnnouncements] = useState<any[]>([]);
+
+  useEffect(() => {
+    const user = requireRole('teacher');
+    setAccessCode(user?.accessCode || '');
+    // Fetch the teacher's club using their access code
+    if (user?.accessCode) {
+      fetch(`/api/club/by-access-code?accessCode=${encodeURIComponent(user.accessCode)}`)
+        .then(res => res.json())
+        .then(data => setClub(data.club || ''));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (club) {
+      fetchAnnouncements();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [club]);
+
+  const fetchAnnouncements = async () => {
+    try {
+      const res = await fetch('/api/announcements/all');
+      const data = await res.json();
+      setAnnouncements(data.filter((a: any) => a.club === club && a.approval !== true));
+      setApprovedAnnouncements(data.filter((a: any) => a.club === club && a.approval === true));
+    } catch (err) {
+      setStatus('❌ Failed to fetch announcements.');
+    }
+  };
+
+  const handleUnapprove = async (id: string) => {
+    try {
+      await fetch('/api/announcements/approve', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, approval: false }),
+      });
+      fetchAnnouncements();
+    } catch (err) {
+      setStatus('❌ Failed to unapprove announcement.');
+    }
+  };
 
   useEffect(() => {
   requireRole('teacher');
@@ -22,16 +66,6 @@ useEffect(() => {
   }
   // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [accessCode]);
-
-const fetchAnnouncements = async () => {
-  try {
-    const res = await fetch(`/api/announcements/approve?accessCode=${accessCode}`);
-    const data = await res.json();
-    setAnnouncements(data);
-  } catch (err) {
-    setStatus('❌ Failed to fetch announcements.');
-  }
-};
 
   const handleApprove = async (id: string) => {
     try {
@@ -104,6 +138,20 @@ const fetchAnnouncements = async () => {
           </li>
         ))}
       </ul>
+      <h2 style={{ marginTop: '2rem' }}>Approved Announcements</h2>
+      {approvedAnnouncements.length === 0 ? (
+        <p>No approved announcements.</p>
+      ) : (
+        <ul>
+          {approvedAnnouncements.map((a: any) => (
+            <li key={a._id} style={{ marginBottom: '1rem', background: '#f6fff6', border: '1px solid #cfc', borderRadius: 8, padding: 12 }}>
+              <b>{a.title}</b>
+              <p>{a.description}</p>
+              <button onClick={() => handleUnapprove(a._id)}>Unapprove</button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

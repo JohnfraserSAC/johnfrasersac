@@ -1,4 +1,3 @@
-// app/api/announcements/all/route.js
 import clientPromise from '@/lib/mongodb';
 
 export async function GET() {
