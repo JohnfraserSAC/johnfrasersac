@@ -15,6 +15,7 @@ export async function GET(req) {
       .find({ accessCode })
       .toArray();
 
+    // Each announcement will include its title if present in the DB
     return Response.json({ announcements });
   } catch (err) {
     return Response.json({ error: 'Server error' }, { status: 500 });

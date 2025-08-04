@@ -1,5 +1,4 @@
 import clientPromise from '@/lib/mongodb';
-// ...existing imports...
 import { parseISO, startOfWeek, addDays, format } from 'date-fns';
 import Link from 'next/link';
 
@@ -22,23 +21,28 @@ export default async function AnnouncementsWeekPage() {
   const startStr = weekStart.toISOString().split('T')[0];
   const endStr = weekEnd.toISOString().split('T')[0];
 
-  // Calculate current time in Toronto
   const torontoNow = new Date(now.toLocaleString('en-US', { timeZone: 'America/Toronto' }));
   const todayDateStr = torontoNow.toISOString().split('T')[0];
 
   // Build 8:30 AM Toronto time for today
   const today830Toronto = new Date(
-    `${todayDateStr}T08:30:00${torontoNow.toISOString().slice(23, 29)}` // Use local offset
+    `${todayDateStr}T08:30:00${torontoNow.toISOString().slice(23, 29)}`
   );
 
-  // If before 8:30 AM Toronto time, exclude today's announcements
+  // Only show announcements up to today (after 8:30am), or up to yesterday (before 8:30am)
+  let lastAllowedDate: string;
+  if (torontoNow < today830Toronto) {
+    // Before 8:30am: only show up to yesterday
+    lastAllowedDate = format(addDays(torontoNow, -1), 'yyyy-MM-dd');
+  } else {
+    // After 8:30am: show up to today
+    lastAllowedDate = todayDateStr;
+  }
+
   const dateFilter: any = {
     $gte: startStr,
-    $lte: endStr,
+    $lte: lastAllowedDate,
   };
-  if (torontoNow < today830Toronto) {
-    dateFilter.$lt = todayDateStr;
-  }
 
   const announcements = await db
     .collection('announcements')
@@ -84,7 +88,7 @@ export default async function AnnouncementsWeekPage() {
                     </p>
                   </Link>
                 ) : (
-                  <span className='text-gray-400'>No announcements</span>
+                  <span className='text-gray-400'>Come back tomorrow!</span>
                 )}
               </div>
             </div>

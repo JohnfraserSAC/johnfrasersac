@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { requireRole } from '@/lib/checkAuth';
+import ReactMarkdown from 'react-markdown';
 
 export default function TeacherDashboard() {
   const [accessCode, setAccessCode] = useState('');
@@ -10,6 +11,19 @@ export default function TeacherDashboard() {
   const [club, setClub] = useState('');
   const [announcements, setAnnouncements] = useState([]);
   const [approvedAnnouncements, setApprovedAnnouncements] = useState<any[]>([]);
+  const [username, setUsername] = useState(''); // <-- Add this line
+
+  useEffect(() => {
+    const user = requireRole('teacher');
+    setAccessCode(user?.accessCode || '');
+    setUsername(user?.username || ''); // <-- Add this line
+    // Fetch the teacher's club using their access code
+    if (user?.accessCode) {
+      fetch(`/api/club/by-access-code?accessCode=${encodeURIComponent(user.accessCode)}`)
+        .then(res => res.json())
+        .then(data => setClub(data.club || ''));
+    }
+  }, []);
 
   useEffect(() => {
     const user = requireRole('teacher');
@@ -110,47 +124,99 @@ useEffect(() => {
 
   return (
     <div style={{ padding: '2rem', maxWidth: '500px', margin: 'auto' }}>
-      <hr className='h-[100px]'></hr>
-      <h1>Teacher Dashboard</h1>
-      <form onSubmit={handleUsernameChange} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <input
-          placeholder="New Username"
-          value={newUsername}
-          onChange={(e) => setNewUsername(e.target.value)}
-          required
-        />
-        <button type="submit">Set Username</button>
-      </form>
-      {status && <p style={{ marginTop: '1rem' }}>{status}</p>}
-      <h1>Teacher Dashboard – Pending Announcements</h1>
-      {announcements.length > 0 && (
-        <button onClick={handleApproveAll} style={{ marginBottom: '1rem' }}>
-          Approve All
-        </button>
-      )}
-      {announcements.length === 0 && <p>No pending announcements.</p>}
-      <ul>
-        {announcements.map((a: any) => (
-          <li key={a._id} style={{ marginBottom: '1rem' }}>
-            <b>{a.title}</b>
-            <p>{a.description}</p>
-            <button onClick={() => handleApprove(a._id)}>Approve</button>
-          </li>
-        ))}
-      </ul>
-      <h2 style={{ marginTop: '2rem' }}>Approved Announcements</h2>
-      {approvedAnnouncements.length === 0 ? (
-        <p>No approved announcements.</p>
+      {/* Settings Bar */}
+      <div style={{
+        position: 'absolute',
+        top: 100,
+        right: 24,
+        background: '#f5f5f5',
+        borderRadius: 8,
+        padding: '1rem',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+        minWidth: 220,
+        zIndex: 10,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-end'
+      }}>
+        <strong style={{ marginBottom: 8 }}>Settings</strong>
+        <form onSubmit={handleUsernameChange} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', width: '100%' }}>
+          <input
+            placeholder="New Username"
+            value={newUsername}
+            onChange={(e) => setNewUsername(e.target.value)}
+            required
+            style={{ width: '100%' }}
+          />
+          <button type="submit" style={{ alignSelf: 'flex-end' }}>Set Username</button>
+        </form>
+        {status && <p style={{ marginTop: 8, color: status.startsWith('✅') ? 'green' : 'red', fontSize: 13 }}>{status}</p>}
+      </div>
+      <hr className='h-[200px] md:h-[100px] border-0'></hr>
+      <h1 className="text-5xl font-bold mb-4">Teacher Dashboard</h1>
+      <h2 className="text-2xl text-gray-800 mb-6">Welcome <strong>{username}</strong>!</h2>
+
+      {status && <p className="mt-4 text-green-600">{status}</p>}
+
+      <h2 className="text-2xl font-semibold mt-8 mb-4">Unapproved Announcements</h2>
+
+      {announcements.length > 0 ? (
+        <>
+          <button
+            onClick={handleApproveAll}
+            className="mb-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+          >
+            Approve All
+          </button>
+
+          <ul className="space-y-4">
+            {announcements.map((a: any) => (
+              <li
+                key={a._id}
+                className="border border-gray-300 rounded p-4 shadow-sm bg-white"
+              >
+                <p className="font-semibold">{a.title}</p>
+                <div className="text-gray-700">
+                  <ReactMarkdown>{a.description}</ReactMarkdown>
+                </div>
+                <button
+                  onClick={() => handleApprove(a._id)}
+                  className="mt-2 px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+                >
+                  Approve
+                </button>
+              </li>
+            ))}
+          </ul>
+        </>
       ) : (
-        <ul>
+        <p className="text-gray-500">No pending announcements.</p>
+      )}
+
+      <h2 className="text-2xl font-semibold mt-10 mb-4">Approved Announcements</h2>
+
+      {approvedAnnouncements.length > 0 ? (
+        <ul className="space-y-4">
           {approvedAnnouncements.map((a: any) => (
-            <li key={a._id} style={{ marginBottom: '1rem', background: '#f6fff6', border: '1px solid #cfc', borderRadius: 8, padding: 12 }}>
-              <b>{a.title}</b>
-              <p>{a.description}</p>
-              <button onClick={() => handleUnapprove(a._id)}>Unapprove</button>
+            <li
+              key={a._id}
+              className="border border-green-300 bg-green-50 rounded p-4 shadow-sm"
+            >
+              <p className="font-semibold">{a.title}</p>
+              <div className="text-gray-700">
+                <ReactMarkdown>{a.description}</ReactMarkdown>
+              </div>
+              <button
+                onClick={() => handleUnapprove(a._id)}
+                className="mt-2 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+              >
+                Unapprove
+              </button>
             </li>
           ))}
         </ul>
+      ) : (
+        <p className="text-gray-500">No approved announcements.</p>
       )}
     </div>
   );

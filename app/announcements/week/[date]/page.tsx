@@ -3,6 +3,10 @@ import { notFound } from 'next/navigation';
 import { format, parseISO } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 
+function trimTitle(title: string) {
+  return title.slice(12);
+}
+
 export default async function AnnouncementsForDatePage({ params }: { params: { date: string } }) {
   const client = await clientPromise;
   const db = client.db();
@@ -22,17 +26,21 @@ export default async function AnnouncementsForDatePage({ params }: { params: { d
   } catch {}
 
   return (
-    <main className='container mx-auto py-12'>
-      <h1 className='text-4xl font-bold mb-6'>Announcements for {displayDate}</h1>
-      <ul className='space-y-6'>
-        {announcements.map((a) => (
-          <li key={a._id} className='border p-4 rounded shadow'>
-            <h2 className='text-2xl font-semibold'>{a.title}</h2>
-            <ReactMarkdown>{a.description}</ReactMarkdown>
-            <p className='text-sm text-gray-600'>Club: {a.club}</p>
-          </li>
-        ))}
-      </ul>
+    <main className=''>
+      <div className='text-white custom-background-4 flex justify-center items-center flex-col text-center pt-40 w-full py-8'>
+        <h1 className='text-4xl font-bold mb-6'>Announcements for {displayDate}</h1>
+      </div>
+      <div className='container mx-auto py-12'>
+        <ul className='space-y-6'>
+          {announcements.map((a) => (
+            <li key={a._id.toString()} className='border p-4 rounded shadow'>
+              <h2 className='text-2xl font-semibold'>{trimTitle(String(a.title))}</h2>
+              <ReactMarkdown>{a.description}</ReactMarkdown>
+              <p className='text-sm text-gray-600'>Club: {a.club}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </main>
   );
 }

@@ -12,8 +12,8 @@ function slugify(text) {
 }
 
 export async function POST(req) {
-  const { accessCode, description, dates } = await req.json();
-  if (!accessCode || !description || !Array.isArray(dates) || dates.length === 0) {
+  const { accessCode, title, description, dates } = await req.json();
+  if (!accessCode || !title || !description || !Array.isArray(dates) || dates.length === 0) {
     return new Response(JSON.stringify({ error: 'Missing fields' }), { status: 400 });
   }
 
@@ -29,9 +29,8 @@ export async function POST(req) {
   const club = user.club;
 
   const docs = dates.map((date) => {
-    const title = `${date}, ${club}`;
     const customId = `${club}_${date}_${Math.random().toString(36).substr(2, 9)}`;
-    const slug = slugify(`${club} ${date}`);
+    const slug = slugify(`${title} ${club} ${date}`);
     return {
       _id: customId,
       title,
@@ -40,7 +39,7 @@ export async function POST(req) {
       club,
       slug,
       approval: false,
-      accessCode, // <-- Store accessCode with the announcement
+      accessCode,
     };
   });
 

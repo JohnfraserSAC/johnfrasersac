@@ -16,7 +16,7 @@ export default async function SingleAnnouncementPage({ params }: { params: { slu
     <main className="container mx-auto py-12">
       <h1 className="text-4xl font-bold mb-4">{announcement.title}</h1>
       <div className="text-lg mb-4">
-        <ReactMarkdown>{announcement.description}</ReactMarkdown>
+        <ReactMarkdown >{announcement.description}</ReactMarkdown>
       </div>
       <p className="text-gray-600 text-sm">Date: {announcement.date}</p>
       <p className="text-gray-600 text-sm">Club: {announcement.club}</p>

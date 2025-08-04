@@ -7,7 +7,9 @@ import ReactMarkdown from 'react-markdown';
 export default function StudentDashboard() {
   const [accessCode, setAccessCode] = useState('');
   const [newUsername, setNewUsername] = useState('');
-  const [status, setStatus] = useState('');
+  const [usernameStatus, setUsernameStatus] = useState('');
+  const [announcementStatus, setAnnouncementStatus] = useState('');
+  const [dateStatus, setDateStatus] = useState('');
   const [description, setDescription] = useState('');
   const [dateInput, setDateInput] = useState('');
   const [dates, setDates] = useState<string[]>([]);
@@ -16,6 +18,10 @@ export default function StudentDashboard() {
   const [loadingPast, setLoadingPast] = useState(false);
   const [approvedAnnouncements, setApprovedAnnouncements] = useState<any[]>([]);
   const [pendingAnnouncements, setPendingAnnouncements] = useState<any[]>([]);
+  const [username, setUsername] = useState('');
+  const [title, setTitle] = useState('');
+  const [missingField, setMissingField] = useState<string | null>(null);
+  const [submitDisabled, setSubmitDisabled] = useState(false);
 
   useEffect(() => {
     if (!accessCode) return;
@@ -37,6 +43,7 @@ export default function StudentDashboard() {
   useEffect(() => {
     const user = requireRole('student');
     setAccessCode(user?.accessCode || '');
+    setUsername(user?.username || '');
   }, []);
 
   useEffect(() => {
@@ -66,17 +73,34 @@ export default function StudentDashboard() {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        accessCode, // from state
-        description,
-        dates,
+        accessCode,
+        newUsername,
       }),
     });
     const result = await res.json();
-    setStatus(res.ok ? '✅ Username updated!' : `❌ ${result.error}`);
+    if (res.ok) {
+      setUsername(newUsername);
+      setUsernameStatus('✅ Username updated!');
+    } else {
+      setUsernameStatus(`❌ ${result.error}`);
+    }
   };
 
   const handleAddDate = () => {
-    if (dateInput && !dates.includes(dateInput)) {
+    if (!dateInput) return;
+    const today = new Date();
+    const maxDate = new Date();
+    maxDate.setDate(today.getDate() + 14);
+
+    const inputDate = new Date(dateInput);
+    // Only allow dates within the next 14 days
+    if (inputDate < today || inputDate > maxDate) {
+      setMissingField('dates');
+      setDateStatus('❌ Date must be within the next 14 days.');
+      return;
+    }
+    setDateStatus('');
+    if (!dates.includes(dateInput)) {
       setDates([...dates, dateInput]);
       setDateInput('');
     }
@@ -91,24 +115,9 @@ export default function StudentDashboard() {
     setShowPast(true);
   };
 
-  // Fetch past announcements for the entered access code
-  const fetchPastAnnouncements = async () => {
-    if (!pastAccessCode) return;
-    setLoadingPast(true);
-    const res = await fetch(`/api/announcements/by-access-code?accessCode=${encodeURIComponent(pastAccessCode)}`);
-    const result = await res.json();
-    if (res.ok && Array.isArray(result.announcements)) {
-      setPastAnnouncements(result.announcements);
-    } else {
-      setPastAnnouncements([]);
-      alert(result.error || 'Could not fetch announcements.');
-    }
-    setLoadingPast(false);
-  };
-
   const handleSelectPast = (announcement: any) => {
+    setTitle(announcement.title || '');
     setDescription(announcement.description || '');
-    setDates(Array.isArray(announcement.dates) ? announcement.dates : (announcement.date ? [announcement.date] : []));
     setShowPast(false);
   };
 
@@ -122,7 +131,7 @@ export default function StudentDashboard() {
         setPendingAnnouncements(result.announcements.filter((a: any) => a.approval !== true));
       }
     } catch (err) {
-      setStatus('❌ Failed to fetch announcements.');
+      setAnnouncementStatus('❌ Failed to fetch announcements.');
     }
   };
 
@@ -159,76 +168,78 @@ export default function StudentDashboard() {
           />
           <button type="submit" style={{ alignSelf: 'flex-end' }}>Set Username</button>
         </form>
-        {status && <p style={{ marginTop: 8, color: status.startsWith('✅') ? 'green' : 'red', fontSize: 13 }}>{status}</p>}
+        {usernameStatus && <p style={{ marginTop: 8, color: status.startsWith('✅') ? 'green' : 'red', fontSize: 13 }}>{usernameStatus}</p>}
       </div>
       {/* Main Content */}
-      <hr className='h-[100px]'></hr>
+      <hr className='h-[200px] md:h-[100px] border-0'></hr>
       <div className='max-w-2xl mx-auto p-6 space-y-6'>
-        <h1 className="text-2xl font-bold text-gray-800">Student Dashboard</h1>
+        <h1 className="text-5xl font-bold text-gray-800">Student Dashboard</h1>
+
+        <h2 className="text-2xl text-gray-800">Welcome <strong>{username}!</strong></h2>
     
-        {status && <p style={{ marginTop: '1rem' }}>{status}</p>}
+        {announcementStatus && <p style={{ marginTop: '1rem' }}>{announcementStatus}</p>}
         <div className='bg-white p-5 rounded-2xl shadow space-y-4 border border-gray-200'>
-          <h2 className='text-lg font-semibold text-gray-700'>Submit Announcement</h2>
+          <h2 className='text-lg font-semibold text-gray-700'>Create an Announcement</h2>
           <form
-              onSubmit={async (e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              if (dates.length === 0) {
-                alert('Please add at least one date.');
+              if (!title.trim()) {
+                setMissingField('title');
+                setAnnouncementStatus('❌ Title is required.');
                 return;
               }
+              if (!description.trim()) {
+                setMissingField('description');
+                setAnnouncementStatus('❌ Description is required.');
+                return;
+              }
+              if (dates.length === 0) {
+                setMissingField('dates');
+                setAnnouncementStatus('❌ At least one date is required.');
+                return;
+              }
+              setMissingField(null);
+              setAnnouncementStatus('');
+              setSubmitDisabled(true);
               const res = await fetch('/api/announcements/create', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                  accessCode, // always use the logged-in user's accessCode
+                  accessCode,
+                  title,
                   description,
                   dates,
                 }),
               });
               const result = await res.json();
-              alert(res.ok ? '✅ Announcement(s) submitted' : `❌ ${result.error}`);
+              setAnnouncementStatus(res.ok ? '✅ Announcement(s) submitted' : `❌ ${result.error}`);
+              setTitle('');
               setDescription('');
               setDates([]);
+              if (res.ok) {
+                await refreshAnnouncements(); // <-- Add this line to refresh the list
+              }
+              setTimeout(() => setSubmitDisabled(false), 5000);
             }}
             style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
           >
+            <input
+              type="text"
+              placeholder="Title"
+              className={`w-full border ${missingField === 'title' ? 'border-red-500' : 'border-gray-300'} rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              value={title}
+              onChange={e => setTitle(e.target.value)}
+              required
+            />
             <button type="button" onClick={handleUsePastAnnouncement} className='text-sm text-blue-600 hover:underline'>
               Use Past Announcement
             </button>
             <textarea
-              placeholder="Announcement"
-              className='w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500'
+              placeholder="Write your announcement here..."
+              className={`w-full border ${missingField === 'description' ? 'border-red-500' : 'border-gray-300'} rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500`}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
-              onKeyDown={e => {
-                if ((e.metaKey || e.ctrlKey) && (e.key === 'b' || e.key === 'i')) {
-                  e.preventDefault();
-                  const textarea = e.target as HTMLTextAreaElement;
-                  const start = textarea.selectionStart;
-                  const end = textarea.selectionEnd;
-                  const selected = description.slice(start, end);
-                  let before = description.slice(0, start);
-                  let after = description.slice(end);
-                  let newText = '';
-                  if (e.key === 'b') {
-                    newText = before + '**' + selected + '**' + after;
-                    setDescription(newText);
-                    setTimeout(() => {
-                      textarea.selectionStart = start + 2;
-                      textarea.selectionEnd = end + 2;
-                    }, 0);
-                  }
-                  if (e.key === 'i') {
-                    newText = before + '_' + selected + '_' + after;
-                    setDescription(newText);
-                    setTimeout(() => {
-                      textarea.selectionStart = start + 1;
-                      textarea.selectionEnd = end + 1;
-                    }, 0);
-                  }
-                }
-              }}
             />
             <div className="flex items-center gap-3">
               <input
@@ -246,9 +257,8 @@ export default function StudentDashboard() {
                     setDateInput(new Date().toISOString().split('T')[0]);
                   }
                 }}
-                className="border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className={`border ${missingField === 'dates' ? 'border-red-500' : 'border-gray-300'} rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500`}
               />
-
               <button
                 type="button"
                 onClick={handleAddDate}
@@ -257,24 +267,78 @@ export default function StudentDashboard() {
                 Add Date
               </button>
             </div>
-
-            <div>
-              {dates.map(date => (
-                <span key={date} style={{ marginRight: 8 }}>
-                  {date} <button type="button" onClick={() => handleRemoveDate(date)}>x</button>
+            {missingField === 'dates' && dateStatus && (
+              <div style={{ color: 'red', fontSize: 13, marginBottom: 4 }}>{dateStatus}</div>
+            )}
+            <div className="flex flex-wrap gap-2 mt-2">
+              {dates.map((date) => (
+                <span
+                  key={date}
+                  className="flex items-center bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium"
+                >
+                  {date}
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveDate(date)}
+                    className="ml-2 text-blue-500 hover:text-red-600 font-bold"
+                    title="Remove date"
+                  >
+                    ×
+                  </button>
                 </span>
               ))}
             </div>
-            <button className='bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition' type="submit">Submit Announcement</button>
+
+            <button
+              className='bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition'
+              type="submit"
+              disabled={submitDisabled}
+              style={submitDisabled ? { opacity: 0.6, cursor: 'not-allowed' } : {}}
+            >
+              Submit Announcement
+            </button>
           </form>
         </div>
         {showPast && (
-          <div style={{
-            position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
-            background: 'rgba(0,0,0,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            zIndex: 1000
-          }}>
-            <div style={{ background: 'white', padding: 24, borderRadius: 8, maxHeight: 500, overflowY: 'auto', minWidth: 350 }}>
+          <div
+            style={{
+              position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
+              background: 'rgba(0,0,0,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              zIndex: 1000
+            }}
+            onClick={() => setShowPast(false)} // <-- overlay click closes modal
+          >
+            <div
+              style={{
+                background: 'white',
+                padding: 24,
+                borderRadius: 8,
+                maxHeight: 500,
+                overflowY: 'auto',
+                minWidth: 350,
+                position: 'relative'
+              }}
+              onClick={e => e.stopPropagation()} // <-- prevent modal click from closing
+            >
+              {/* Close button in top right */}
+              <button
+                type="button"
+                onClick={() => setShowPast(false)}
+                style={{
+                  position: 'absolute',
+                  top: 8,
+                  right: 8,
+                  background: 'transparent',
+                  border: 'none',
+                  fontSize: 22,
+                  cursor: 'pointer',
+                  color: '#888',
+                  zIndex: 2, // <-- add this for extra safety
+                }}
+                aria-label="Close"
+              >
+                ×
+              </button>
               <h3>View Past Announcements</h3>
               {loadingPast ? (
                 <p>Loading...</p>
@@ -285,9 +349,12 @@ export default function StudentDashboard() {
                   {pastAnnouncements.map((a, i) => (
                     <li key={i} style={{ marginBottom: 16, borderBottom: '1px solid #eee', paddingBottom: 8 }}>
                       <div>
-                        <strong>{a.description}</strong>
+                        <strong>{a.title || 'No Title'}</strong>
                         <div style={{ fontSize: 13, color: '#666', margin: '4px 0' }}>
                           Dates: {Array.isArray(a.dates) ? a.dates.join(', ') : (a.date || '')}
+                        </div>
+                        <div style={{ fontSize: 13, color: '#666', margin: '4px 0' }}>
+                          {a.description}
                         </div>
                         <button type="button" onClick={() => handleSelectPast(a)}>
                           Use This
@@ -323,6 +390,9 @@ export default function StudentDashboard() {
                   key={i}
                   className="border border-green-200 bg-green-50 rounded-xl p-4 shadow-sm"
                 >
+                  <div className="text-lg font-bold text-green-800 mb-1">
+                    {a.title || <span className="italic text-gray-400">No Title</span>}
+                  </div>
                   <div className="text-gray-700 text-sm">
                     <ReactMarkdown>{a.description}</ReactMarkdown>
                   </div>
@@ -350,6 +420,9 @@ export default function StudentDashboard() {
                   key={i}
                   className="border border-red-200 bg-red-50 rounded-xl p-4 shadow-sm"
                 >
+                  <div className="text-lg font-bold text-red-800 mb-1">
+                    {a.title || <span className="italic text-gray-400">No Title</span>}
+                  </div>
                   <div className="text-gray-700 text-sm">
                     <ReactMarkdown>{a.description}</ReactMarkdown>
                   </div>

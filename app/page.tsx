@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,21 +9,21 @@ const Page = () => {
   const [currentHeroImage, setCurrentHeroImage] = useState("/hero.jpg");
   const [fade, setFade] = useState(true);
 
-    const heroImages = ["/hero.jpg", "/hero3.jpg", "/cw-1.png"];
-  let currentIndex = 0;
+  const heroImages = ["/hero.jpg", "/hero3.jpg", "/cw-1.png"];
+  const currentIndexRef = useRef(0); // <-- useRef for index
 
   useEffect(() => {
     const interval = setInterval(() => {
       setFade(false);
       setTimeout(() => {
-        currentIndex = (currentIndex + 1) % heroImages.length;
-        setCurrentHeroImage(heroImages[currentIndex]);
+        currentIndexRef.current = (currentIndexRef.current + 1) % heroImages.length;
+        setCurrentHeroImage(heroImages[currentIndexRef.current]);
         setFade(true);
       }, 500);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [heroImages.length]);
 
   const images = [
     {
