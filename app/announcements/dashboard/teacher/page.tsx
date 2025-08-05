@@ -118,7 +118,16 @@ useEffect(() => {
         body: JSON.stringify({ accessCode, newUsername }),
       });
       const result = await res.json();
-      setStatus(res.ok ? '✅ Username updated!' : `❌ ${result.error}`);
+      if (res.ok) {
+        setStatus('✅ Username updated!');
+        // Fetch the latest username from the API
+        const userRes = await fetch(`/api/user/by-access-code?accessCode=${encodeURIComponent(accessCode)}`);
+        const userData = await userRes.json();
+        setUsername(userData.username || newUsername); // fallback to newUsername if not returned
+        setNewUsername('');
+      } else {
+        setStatus(`❌ ${result.error}`);
+      }
     } catch (err) {
       setStatus('❌ Failed to update username.');
     }
