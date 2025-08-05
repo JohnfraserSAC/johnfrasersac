@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { requireRole } from '@/lib/checkAuth';
 import ReactMarkdown from 'react-markdown';
 
+export const dynamic = 'force-dynamic';
+
 export default function StudentDashboard() {
   const [accessCode, setAccessCode] = useState('');
   const [newUsername, setNewUsername] = useState('');

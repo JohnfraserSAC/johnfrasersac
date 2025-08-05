@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { requireRole } from '@/lib/checkAuth';
 import clubs from '@/utils/clubs';
 
+export const dynamic = 'force-dynamic';
+
 export default function AdminDashboard() {
   const [users, setUsers] = useState([]);
   const [status, setStatus] = useState('');
