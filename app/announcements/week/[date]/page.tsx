@@ -3,9 +3,6 @@ import { notFound } from 'next/navigation';
 import { format, parseISO } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 
-function trimTitle(title: string) {
-  return title.slice(12);
-}
 
 export default async function AnnouncementsForDatePage({ params }: { params: { date: string } }) {
   const client = await clientPromise;
@@ -34,7 +31,7 @@ export default async function AnnouncementsForDatePage({ params }: { params: { d
         <ul className='space-y-6'>
           {announcements.map((a) => (
             <li key={a._id.toString()} className='border p-4 rounded shadow'>
-              <h2 className='text-2xl font-semibold'>{trimTitle(String(a.title))}</h2>
+              <h2 className='text-2xl font-semibold'>{a.title}</h2>
               <ReactMarkdown>{a.description}</ReactMarkdown>
               <p className='text-sm text-gray-600'>Club: {a.club}</p>
             </li>

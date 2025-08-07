@@ -3,6 +3,7 @@ import { parseISO, startOfWeek, addDays, format } from 'date-fns';
 import Link from 'next/link';
 
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+export const revalidate = 0;
 
 function getTorontoOffset(date: Date) {
   const toronto = new Date(date.toLocaleString('en-US', { timeZone: 'America/Toronto' }));
@@ -21,22 +22,31 @@ export default async function AnnouncementsWeekPage() {
   const startStr = weekStart.toISOString().split('T')[0];
   const endStr = weekEnd.toISOString().split('T')[0];
 
-  const torontoNow = new Date(now.toLocaleString('en-US', { timeZone: 'America/Toronto' }));
-  const todayDateStr = torontoNow.toISOString().split('T')[0];
+  // Get current Toronto time properly
+  const torontoTime = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/Toronto',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  }).formatToParts(now);
 
-  // Build 8:30 AM Toronto time for today
-  const today830Toronto = new Date(
-    `${todayDateStr}T08:30:00${torontoNow.toISOString().slice(23, 29)}`
-  );
+  const torontoDateStr = `${torontoTime.find(p => p.type === 'year')?.value}-${torontoTime.find(p => p.type === 'month')?.value}-${torontoTime.find(p => p.type === 'day')?.value}`;
+  const torontoHour = parseInt(torontoTime.find(p => p.type === 'hour')?.value || '0');
+  const torontoMinute = parseInt(torontoTime.find(p => p.type === 'minute')?.value || '0');
 
   // Only show announcements up to today (after 8:30am), or up to yesterday (before 8:30am)
   let lastAllowedDate: string;
-  if (torontoNow < today830Toronto) {
+  if (torontoHour < 8 || (torontoHour === 8 && torontoMinute < 30)) {
     // Before 8:30am: only show up to yesterday
-    lastAllowedDate = format(addDays(torontoNow, -1), 'yyyy-MM-dd');
+    const yesterday = new Date(now);
+    yesterday.setDate(yesterday.getDate() - 1);
+    lastAllowedDate = yesterday.toISOString().split('T')[0];
   } else {
     // After 8:30am: show up to today
-    lastAllowedDate = todayDateStr;
+    lastAllowedDate = torontoDateStr;
   }
 
   const dateFilter: any = {

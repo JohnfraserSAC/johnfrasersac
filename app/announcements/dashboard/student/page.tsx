@@ -1,10 +1,25 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { requireRole } from '@/lib/checkAuth';
 import ReactMarkdown from 'react-markdown';
+import gsap from 'gsap';
 
 export const dynamic = 'force-dynamic';
+
+function isAnnouncementStillValid(dates: string[]): boolean {
+  const now = new Date();
+  for (const dateStr of dates) {
+    const date = new Date(dateStr + 'T00:00:00');
+    const oneWeekLater = new Date(date);
+    oneWeekLater.setDate(date.getDate() + 7);
+    if (oneWeekLater >= now) {
+      return true; // at least one date is still within range
+    }
+  }
+  return false;
+}
+
 
 export default function StudentDashboard() {
   const [accessCode, setAccessCode] = useState('');
@@ -24,6 +39,44 @@ export default function StudentDashboard() {
   const [title, setTitle] = useState('');
   const [missingField, setMissingField] = useState<string | null>(null);
   const [submitDisabled, setSubmitDisabled] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [showSettingsContent, setShowSettingsContent] = useState(false);
+  const settingsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = settingsRef.current;
+    if (!el) return;
+
+    if (settingsOpen) {
+      setShowSettingsContent(true); // Show content before animating open
+      gsap.fromTo(
+        el,
+        { width: 56, height: 56, padding: 0, borderRadius: 28 },
+        {
+          width: 260,
+          height: 'auto',
+          padding: '1rem',
+          borderRadius: 8,
+          duration: 0.5,
+          ease: 'power2.out',
+          onComplete: () => {
+            setShowSettingsContent(true);
+          }
+        }
+      );
+    } else {
+      // Hide content AFTER animation
+      gsap.to(el, {
+        width: 56,
+        height: 56,
+        padding: 0,
+        borderRadius: 28,
+        duration: 0.4,
+        ease: 'power2.in',
+        onComplete: () => setShowSettingsContent(false), // <-- move here
+      });
+    }
+  }, [settingsOpen]);
 
   useEffect(() => {
     if (!accessCode) return;
@@ -87,16 +140,30 @@ export default function StudentDashboard() {
       setUsernameStatus(`❌ ${result.error}`);
     }
   };
+    
+  function getLocalDateString(date: Date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
 
   const handleAddDate = () => {
     if (!dateInput) return;
     const today = new Date();
-    const maxDate = new Date();
+    today.setHours(0, 0, 0, 0); // Local midnight
+    const maxDate = new Date(today);
     maxDate.setDate(today.getDate() + 14);
+    maxDate.setHours(23, 59, 59, 999);
 
-    const inputDate = new Date(dateInput);
-    // Only allow dates within the next 14 days
-    if (inputDate < today || inputDate > maxDate) {
+    const inputDate = new Date(dateInput + 'T00:00:00'); // Local midnight
+
+    if (inputDate < today) {
+      setMissingField('dates');
+      setDateStatus('❌ Date cannot be in the past.');
+      return;
+    }
+    if (inputDate > maxDate) {
       setMissingField('dates');
       setDateStatus('❌ Date must be within the next 14 days.');
       return;
@@ -143,45 +210,102 @@ export default function StudentDashboard() {
   }, [accessCode]);
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '500px', margin: 'auto' }}>
-      {/* Settings Bar */}
-      <div style={{
-        position: 'absolute',
-        top: 100,
-        right: 24,
-        background: '#f5f5f5',
-        borderRadius: 8,
-        padding: '1rem',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-        minWidth: 220,
-        zIndex: 10,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-end'
-      }}>
-        <strong style={{ marginBottom: 8 }}>Settings</strong>
-        <form onSubmit={handleUsernameChange} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', width: '100%' }}>
-          <input
-            placeholder="New Username"
-            value={newUsername}
-            onChange={(e) => setNewUsername(e.target.value)}
-            required
-            style={{ width: '100%' }}
-          />
-          <button type="submit" style={{ alignSelf: 'flex-end' }}>Set Username</button>
-        </form>
-        {usernameStatus && <p style={{ marginTop: 8, color: status.startsWith('✅') ? 'green' : 'red', fontSize: 13 }}>{usernameStatus}</p>}
-      </div>
-      {/* Main Content */}
-      <hr className='h-[200px] md:h-[100px] border-0'></hr>
-      <div className='max-w-2xl mx-auto p-6 space-y-6'>
-        <h1 className="text-5xl font-bold text-gray-800">Student Dashboard</h1>
+    <div className='w-full'>
+      <div className='gap-y-4 text-white custom-background-4 flex justify-center items-center flex-col text-center pt-40 w-full py-8'>
+        <h1 className="text-5xl font-bold ">Student Dashboard</h1>
 
-        <h2 className="text-2xl text-gray-800">Welcome <strong>{username}!</strong></h2>
+        <h2 className="text-2xl ">Welcome <strong>{username}!</strong></h2>
+      </div>
+
+      {/* settings bar */}
+      <div
+        ref={settingsRef}
+        style={{
+          position: 'absolute',
+          top: 100,
+          right: 24,
+          background: '#f5f5f5',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+          zIndex: 10,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-end',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          overflow: 'hidden',
+          minWidth: 0,
+          transition: 'box-shadow 0.3s'
+        }}
+        onClick={e => {
+          if (!settingsOpen) setSettingsOpen(true);
+          else e.stopPropagation(); // Prevent click-through when open
+        }}
+      >
+        {!settingsOpen ? (
+          <span style={{ fontSize: 32, margin: 'auto' }} title="Open Settings">⚙️</span>
+        ) : (
+          showSettingsContent && (
+            <>
+              <button
+                type="button"
+                onClick={e => { e.stopPropagation(); setSettingsOpen(false); }}
+                style={{
+                  position: 'absolute',
+                  top: 4,
+                  right: 4,
+                  width: 44,
+                  height: 44,
+                  background: 'transparent',
+                  border: 'none',
+                  fontSize: 28,
+                  cursor: 'pointer',
+                  color: '#888',
+                  zIndex: 2,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: 22,
+                  transition: 'background 0.2s'
+                }}
+                aria-label="Close"
+                onMouseOver={e => (e.currentTarget.style.background = '#eee')}
+                onMouseOut={e => (e.currentTarget.style.background = 'transparent')}
+              >
+                ×
+              </button>
+              <p className='font-bold mt-8 mb-4'>Settings</p>
+              <form
+                onSubmit={e => { e.stopPropagation(); handleUsernameChange(e); }}
+                style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', width: '100%' }}
+              >
+                <input
+                  placeholder="New Username"
+                  value={newUsername}
+                  onChange={(e) => setNewUsername(e.target.value)}
+                  required
+                  style={{ width: '100%' }}
+                />
+                <button type="submit" style={{ alignSelf: 'flex-end' }}>Set Username</button>
+              </form>
+              {usernameStatus && (
+                <p style={{
+                  marginTop: 8,
+                  color: usernameStatus.startsWith('✅') ? 'green' : 'red',
+                  fontSize: 13
+                }}>{usernameStatus}</p>
+              )}
+            </>
+          )
+        )}
+      </div>
+      
+      {/* Main Content */}
+      <hr className='md:h-[100px] border-0'></hr>
+      <div className='mx-auto p-6 space-y-6 md:w-10/12'>
     
         {announcementStatus && <p style={{ marginTop: '1rem' }}>{announcementStatus}</p>}
         <div className='bg-white p-5 rounded-2xl shadow space-y-4 border border-gray-200'>
-          <h2 className='text-lg font-semibold text-gray-700'>Create an Announcement</h2>
+          <h2 className='md:text-3xl text-lg font-semibold text-gray-700'>Create an Announcement</h2>
           <form
             onSubmit={async (e) => {
               e.preventDefault();
@@ -225,20 +349,22 @@ export default function StudentDashboard() {
             }}
             style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
           >
-            <input
-              type="text"
-              placeholder="Title"
-              className={`w-full border ${missingField === 'title' ? 'border-red-500' : 'border-gray-300'} rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500`}
-              value={title}
-              onChange={e => setTitle(e.target.value)}
-              required
-            />
-            <button type="button" onClick={handleUsePastAnnouncement} className='text-sm text-blue-600 hover:underline'>
-              Use Past Announcement
-            </button>
+            <div className='md:flex md:justify-between'>
+              <input
+                type="text"
+                placeholder="Title"
+                className={`md:w-1/2 w-full border ${missingField === 'title' ? 'border-red-500' : 'border-gray-300'} rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                value={title}
+                onChange={e => setTitle(e.target.value)}
+                required
+              />
+              <button type="button" onClick={handleUsePastAnnouncement} className='text-sm md:text-xl text-blue-600 hover:underline md:mt-0 mt-3'>
+                Use Past Announcement
+              </button>
+            </div>
             <textarea
               placeholder="Write your announcement here..."
-              className={`w-full border ${missingField === 'description' ? 'border-red-500' : 'border-gray-300'} rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`md:h-[200px] w-full border ${missingField === 'description' ? 'border-red-500' : 'border-gray-300'} rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500`}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
@@ -256,7 +382,9 @@ export default function StudentDashboard() {
                 })()}
                 onFocus={() => {
                   if (!dateInput) {
-                    setDateInput(new Date().toISOString().split('T')[0]);
+                    const tomorrow = new Date();
+                    tomorrow.setDate(tomorrow.getDate() + 1);
+                    setDateInput(tomorrow.toISOString().split('T')[0]);
                   }
                 }}
                 className={`border ${missingField === 'dates' ? 'border-red-500' : 'border-gray-300'} rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500`}
@@ -376,17 +504,17 @@ export default function StudentDashboard() {
             onClick={refreshAnnouncements}
             className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:underline hover:text-blue-700 transition-colors"
           >
-            <span role="img" aria-label="refresh">🔄</span> Refresh Announcements
+            <p className='md:text-xl'><span role="img" aria-label="refresh">🔄</span> Refresh Announcements</p>
           </button>
         </div>
 
         {/* Approved Announcements Section */}
         <div className="mt-10">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">Approved Announcements</h2>
+          <h2 className="text-xl font-semibold text-gray-800 mb-4 md:text-3xl">Approved Announcements</h2>
           {approvedAnnouncements.length === 0 ? (
             <p className="text-gray-500 italic">No approved announcements.</p>
           ) : (
-            <ul className="space-y-4">
+            <ul className="space-y-4 md:grid-cols-3 md:grid md:gap-x-4">
               {approvedAnnouncements.map((a, i) => (
                 <li
                   key={i}
@@ -412,11 +540,11 @@ export default function StudentDashboard() {
 
         {/* Pending Announcements Section */}
         <div className="mt-10">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">Announcements Waiting for Approval</h2>
+          <h2 className="text-xl font-semibold text-gray-800 mb-4 md:text-3xl">Announcements Waiting for Approval</h2>
           {pendingAnnouncements.length === 0 ? (
             <p className="text-gray-500 italic">No announcements waiting for approval.</p>
           ) : (
-            <ul className="space-y-4">
+            <ul className="space-y-4 md:grid md:grid-cols-3 md:gap-x-4">
               {pendingAnnouncements.map((a, i) => (
                 <li
                   key={i}
