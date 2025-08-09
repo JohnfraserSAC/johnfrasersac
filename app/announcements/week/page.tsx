@@ -82,7 +82,7 @@ export default async function AnnouncementsWeekPage() {
       <div className='text-white custom-background-4 flex justify-center items-center flex-col text-center pt-40 w-full py-8'>
         <div className='mb-12 text-center flex flex-col justify-center items-center container'>
             <h1 className='text-4xl mb-3 lg:text-6xl font-bold'>Weekly Announcements</h1>
-            <p className='w-7/12 text-lg mb-6'>Check out this weeks announcements at john fraser!</p>
+            <p className='w-7/12 text-lg mb-6'>Check out this weeks announcements at John Fraser!</p>
         </div>
     </div>
       <div className='py-8 container mx-auto flex flex-col items-center justify-center text-center gap-y-8'>

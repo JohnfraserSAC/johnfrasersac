@@ -186,9 +186,12 @@ useEffect(() => {
                 key={a._id}
                 className="border border-gray-300 rounded p-4 shadow-sm bg-white"
               >
-                <p className="font-semibold">{a.title}</p>
-                <div className="text-gray-700">
-                  <ReactMarkdown>{a.description}</ReactMarkdown>
+                <div className='flex flex-col gap-y-1'>
+                  <p className="font-semibold">{a.title}</p>
+                  <div className="text-gray-700">
+                    <ReactMarkdown>{a.description}</ReactMarkdown>
+                  </div>
+                  <p className='text-gray-400 text-sm'>Date: {a.date}</p>
                 </div>
                 <button
                   onClick={() => handleApprove(a._id)}
@@ -213,9 +216,12 @@ useEffect(() => {
               key={a._id}
               className="border border-green-300 bg-green-50 rounded p-4 shadow-sm"
             >
-              <p className="font-semibold">{a.title}</p>
-              <div className="text-gray-700">
-                <ReactMarkdown>{a.description}</ReactMarkdown>
+              <div className='flex flex-col gap-y-1'>
+                <p className="font-semibold">{a.title}</p>
+                <div className="text-gray-700">
+                  <ReactMarkdown>{a.description}</ReactMarkdown>
+                </div>
+                <p className='text-gray-400 text-sm'>Date: {a.date}</p>
               </div>
               <button
                 onClick={() => handleUnapprove(a._id)}

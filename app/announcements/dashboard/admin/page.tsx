@@ -250,11 +250,12 @@ export default function AdminDashboard() {
         style={{ margin: '0.5rem 0', width: 300 }}
       />
       <div style={{ maxHeight: 350, overflowY: 'auto', border: '1px solid #ccc', borderRadius: 6 }}>
-        <table style={{ width: '100%', minWidth: 800, borderCollapse: 'collapse', tableLayout: 'fixed' }}>
+        <table style={{ width: '100%', minWidth: 1000, borderCollapse: 'collapse', tableLayout: 'fixed' }}>
           <thead style={{ background: '#f5f5f5', position: 'sticky', top: 0 }}>
             <tr>
-              <th style={{ width: 220 }}>Title</th>
+              <th style={{ width: 200 }}>Title</th>
               <th>Description</th>
+              <th style={{ width: 150 }}>Date to be Posted</th>
               <th style={{ width: 120 }}>Status</th>
               <th style={{ width: 220 }}>Actions</th>
             </tr>
@@ -264,6 +265,9 @@ export default function AdminDashboard() {
               <tr key={a._id}>
                 <td style={{ wordBreak: 'break-word' }}>{a.title}</td>
                 <td style={{ wordBreak: 'break-word' }}>{a.description}</td>
+                <td style={{ fontSize: '0.9em' }}>
+                  {a.date}
+                </td>
                 <td>
                   {a.approval ? '✅ Approved' : '❌ Not Approved'}
                 </td>
@@ -291,7 +295,7 @@ export default function AdminDashboard() {
             ))}
             {filteredAnnouncements.length === 0 && (
               <tr>
-                <td colSpan={4} style={{ textAlign: 'center', color: '#888' }}>
+                <td colSpan={5} style={{ textAlign: 'center', color: '#888' }}>
                   No announcements found.
                 </td>
               </tr>
