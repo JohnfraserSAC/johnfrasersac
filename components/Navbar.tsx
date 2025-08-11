@@ -45,7 +45,7 @@ export default function Navbar() {
               />
             </Link>
           </div>
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <div className="ml-10 flex items-baseline space-x-4">
               {links.map((link) => (
                 <Link
@@ -64,7 +64,7 @@ export default function Navbar() {
               <More />
             </div>
           </div>
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -81,7 +81,7 @@ export default function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="flex w-full mt-5 md:hidden ">
+        <div className="flex w-full mt-5 lg:hidden ">
           <div className="space-y-1 rounded-xl bg-[#1c3b6a] px-2 pb-3 pt-2 sm:px-3">
             {links.map((link) => (
               <Link

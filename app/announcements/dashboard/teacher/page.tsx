@@ -134,11 +134,11 @@ useEffect(() => {
   };
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '500px', margin: 'auto' }}>
+    <div className="w-full">
       {/* Settings Bar */}
       <div style={{
-        position: 'absolute',
-        top: 100,
+        position: 'fixed',
+        top: 150,
         right: 24,
         background: '#f5f5f5',
         borderRadius: 8,
@@ -163,78 +163,96 @@ useEffect(() => {
         </form>
         {status && <p style={{ marginTop: 8, color: status.startsWith('✅') ? 'green' : 'red', fontSize: 13 }}>{status}</p>}
       </div>
-      <hr className='h-[200px] md:h-[100px] border-0'></hr>
-      <h1 className="text-5xl font-bold mb-4">Teacher Dashboard</h1>
-      <h2 className="text-2xl text-gray-800 mb-6">Welcome <strong>{username}</strong>!</h2>
+      {/* <hr className='h-[200px] md:h-[100px] border-0'></hr> */}
+
+      <div className="text-white custom-background-4 w-full gap-y-4 flex justify-center items-center flex-col text-center pt-40 py-8 mb-8">
+        <h1 className="text-5xl font-bold mb-4">Teacher Dashboard</h1>
+        <h2 className="text-2xl mb-6">Welcome <strong>{username}</strong>!</h2>
+      </div>
 
       {status && <p className="mt-4 text-green-600">{status}</p>}
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4">Unapproved Announcements</h2>
-
+      <div className="w-full mb-8 px-2 gap-x-2 flex flex-col place-items-center">
+      
+      <h2 className="text-2xl text-center font-semibold mb-4">Unapproved Announcements</h2>
       {announcements.length > 0 ? (
-        <>
+        <div className="w-full flex justify-center">
           <button
             onClick={handleApproveAll}
             className="mb-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
           >
             Approve All
           </button>
+        </div>
+        ): <></>}
 
-          <ul className="space-y-4">
+        { announcements. length > 0 ? (
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 md:w-4/5 lg:grid-cols-3 xl:grid-cols-4 h-min gap-2">
             {announcements.map((a: any) => (
-              <li
+              <div
                 key={a._id}
-                className="border border-gray-300 rounded p-4 shadow-sm bg-white"
+                className="border-[1px] border-gray-200 rounded overflow-hidden bg-red-50"
               >
-                <div className='flex flex-col gap-y-1'>
-                  <p className="font-semibold">{a.title}</p>
-                  <div className="text-gray-700">
+                <div className='flex flex-col'>
+                    <div className="flex place-items-start">
+                        <p className=" p-2 h-full w-full font-bold text-red-800">{a.title}</p>
+                        <div className="pr-2 pt-2">
+                            <button
+                                onClick={() => handleApprove(a._id)}
+                                className="px-3 py-1 bg-green-500/80 text-white rounded hover:bg-green-600/80"
+                            >
+                                Approve
+                            </button>
+                        </div>
+                    </div>
+                  <div className="text-gray-700 p-2">
                     <ReactMarkdown>{a.description}</ReactMarkdown>
                   </div>
-                  <p className='text-gray-400 text-sm'>Date: {a.date}</p>
+                  <p className='text-gray-400 text-sm p-2'>To be read on: {a.date}</p>
                 </div>
-                <button
-                  onClick={() => handleApprove(a._id)}
-                  className="mt-2 px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
-                >
-                  Approve
-                </button>
-              </li>
+                
+              </div>
             ))}
-          </ul>
-        </>
+          </div>
       ) : (
         <p className="text-gray-500">No pending announcements.</p>
       )}
-
-      <h2 className="text-2xl font-semibold mt-10 mb-4">Approved Announcements</h2>
+      
+      <h2 className="text-2xl text-center font-semibold my-4">Approved Announcements</h2>
 
       {approvedAnnouncements.length > 0 ? (
-        <ul className="space-y-4">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 md:w-4/5 lg:grid-cols-3 xl:grid-cols-4 h-min gap-2">
           {approvedAnnouncements.map((a: any) => (
-            <li
-              key={a._id}
-              className="border border-green-300 bg-green-50 rounded p-4 shadow-sm"
-            >
-              <div className='flex flex-col gap-y-1'>
-                <p className="font-semibold">{a.title}</p>
-                <div className="text-gray-700">
-                  <ReactMarkdown>{a.description}</ReactMarkdown>
-                </div>
-                <p className='text-gray-400 text-sm'>Date: {a.date}</p>
-              </div>
-              <button
-                onClick={() => handleUnapprove(a._id)}
-                className="mt-2 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+            <div
+                key={a._id}
+                className="border-[1px] border-gray-200 rounded overflow-hidden bg-green-50"
               >
-                Unapprove
-              </button>
-            </li>
+                <div className='flex flex-col'>
+                    <div className="flex place-items-start">
+                  <p className=" p-2 h-full w-full font-bold text-green-800">{a.title}</p>
+                        <div className="pr-2 pt-2">
+                            <button
+                        onClick={() => handleUnapprove(a._id)}
+                        className="px-3 py-1 bg-red-600/80 text-white rounded hover:bg-red-700/80"
+                    >
+                        Unapprove
+                    </button>
+                        </div>
+                    </div>
+                  <div className="text-gray-700 p-2">
+                    <ReactMarkdown>{a.description}</ReactMarkdown>
+                  </div>
+                  <p className='text-gray-400 text-sm p-2'>To be read on: {a.date}</p>
+                </div>
+                
+              </div>
+            
           ))}
-        </ul>
+        </div>
       ) : (
         <p className="text-gray-500">No approved announcements.</p>
       )}
+      </div>
     </div>
   );
 }
