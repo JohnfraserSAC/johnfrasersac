@@ -39,9 +39,6 @@ export default function ReaderDashboard() {
             e.currentTarget.title = "Mark as Unread"
             e.currentTarget.parentElement.parentElement.style.backgroundColor = "#F0FDF4";
             e.currentTarget.style.borderColor = "green";
-            e.currentTarget.onmouseenter = (ev: any) => {
-                // ev.currentTarget.style.backgroundColor = "#FFFFFF"
-            }
             setNumUnread(numUnread!-1);
         }
         else {
@@ -50,9 +47,6 @@ export default function ReaderDashboard() {
             e.currentTarget.title = "Mark as Read"
             e.currentTarget.parentElement.parentElement.style.backgroundColor = "#FDF2F2";
             e.currentTarget.style.borderColor = "red";
-            e.currentTarget.onmouseenter = (ev: any) => {
-                // ev.currentTarget.style.backgroundColor = "#FFFFFF"
-            }
             setNumUnread(numUnread!+1);
         }
     }
