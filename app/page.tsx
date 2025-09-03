@@ -63,11 +63,11 @@ const Page = () => {
                 John Fraser Student Council
               </h1>
               <p className="mb-8 text-xl text-white">
-                Run By Students, For Students. Made with passion and heart
+                Our Applcations for Honourary Members are currently open! Make sure to submit them by <strong>September 8th, by 11:59 PM</strong>!
               </p>
               <div className="flex flex-col items-start lg:items-center sm:flex-row">
-                <Link href="/opportunities" className="mb-4 sm:mb-0 sm:mr-4">
-                  <button className="button-2">Get Involved</button>
+                <Link href="https://apply.johnfrasersac.com" className="mb-4 sm:mb-0 sm:mr-4">
+                  <button className="button-2">Apply Now!</button>
                 </Link>
                 <Link
                   href="/announcements"
