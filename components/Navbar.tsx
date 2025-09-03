@@ -17,6 +17,21 @@ const links = [
 ];
 
 export default function Navbar() {
+    const appOpenDate = new Date(2025, 8, 3, 8, 0, 0).getTime();
+    const appCloseDate = new Date(2025, 8, 8, 23, 59, 59).getTime();
+    const [appStage, setAppStage] = useState<0 | 1 | 2>(0);
+
+    // 0 -> apps are not open yet
+    // 1 -> apps are open
+    // 2 -> apps are closed
+    const [timeLeft, setTimeLeft] = useState({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+    });
+    const [now, setNow] = useState<Date>();
+
   const [isOpen, setIsOpen] = useState(false);
   const [logoSrc, setLogoSrc] = useState("/WSAC-Logo.png");
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,6 +42,41 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+//   useEffect(() => {
+//     const now = new Date().getTime();
+//   }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+        const now = new Date().getTime();
+        let difference;
+        if (now < appOpenDate) {
+            difference = appOpenDate - now;
+            setAppStage(0);
+        } else if (now < appCloseDate) {
+            difference = appCloseDate - now;
+            setAppStage(1);
+        } else {
+            difference = 0;
+            setAppStage(2);
+        }
+        
+        if (difference <= 0) {
+            clearInterval(interval);
+            setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        } else {
+            setTimeLeft({
+                days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+                hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+                seconds: Math.floor((difference % (1000 * 60)) / 1000)
+            })
+        }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [appOpenDate, appCloseDate]);
 
   return (
     <nav
@@ -102,6 +152,27 @@ export default function Navbar() {
           </div>
         </div>
       )}
+
+      <div className="mt-4 w-full py-2 bg-[#1C3B6A] flex flex-col place-items-center text-white font-semibold text-center border-y-[1px] border-y-yellow-400">
+        <div className="">
+            {
+                appStage == 0 ? "GET READY!" : appStage == 1 ? "APPLY!" : "Honourary applications have closed."
+            }
+        </div>
+        <div className="">
+            {
+                appStage != 2 ? `${timeLeft.days} day(s), ${timeLeft.hours} hour(s), ${timeLeft.minutes} minute(s), ${timeLeft.seconds} second(s)` : ""
+            }
+        </div>
+        <div>
+            {
+                appStage == 0 ? "until applications OPEN!" : appStage == 1 ? "until applications CLOSE!" : ""
+            }
+        </div>
+        <div>
+            <a target="_blank" href="https://apply.johnfrasersac.com/" className="text-yellow-400 hover:text-yellow-500 underline">SAC Application Portal</a>
+        </div>
+      </div>
     </nav>
   );
 }

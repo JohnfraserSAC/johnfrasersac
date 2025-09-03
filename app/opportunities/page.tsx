@@ -10,8 +10,8 @@ const Page = () => {
     <main className='overflow-hidden'>
       {/* Header */}
       <div 
-        className='custom-background-4 flex flex-col justify-center items-center text-center py-30 pt-10' 
-        style={{ height: '50.3333vh' }}
+        className='custom-background-4 flex flex-col justify-center items-center text-center pb-20 pt-60' 
+        // style={{ height: '50.3333vh' }}
       >
         <div className='container w-11/12 text-white'>  
           <h1 className='font-bold lg:text-6xl text-[40px] mb-4'>SAC Opportunities</h1>

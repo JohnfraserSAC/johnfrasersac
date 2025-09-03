@@ -293,10 +293,10 @@ const page = () => {
   return (
     <main>
       <div
-        className="custom-background-4 text-white flex flex-col lg:justify-between justify-center items-center"
-        style={{ height: "90.33vh" }}
+        className="custom-background-4 text-white flex flex-col lg:justify-between justify-center items-center pt-52"
+        // style={{ height: "90.33vh" }}
       >
-        <div className="text-center lg:mt-32 flex flex-col justify-center items-center lg:w-5/12 my-8">
+        <div className="text-center flex flex-col justify-center items-center lg:w-5/12 my-8">
           <h1 className="lgtext-7xl text-5xl font-semibold mb-4">
             Meet Our Team
           </h1>

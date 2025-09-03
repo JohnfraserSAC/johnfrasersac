@@ -113,7 +113,7 @@ export default function AdminDashboard() {
 
   return (
     <div style={{ padding: '2rem', maxWidth: '1100px', margin: 'auto' }}>
-      <hr className='h-[200px] md:h-[100px] border-0'></hr>
+      <hr className='h-[225px] md:h-[125] border-0'></hr>
       <h1>Admin Dashboard</h1>
       {status && <p style={{ margin: '1rem 0', color: 'green' }}>{status}</p>}
 

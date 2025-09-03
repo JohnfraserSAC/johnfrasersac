@@ -45,7 +45,7 @@ const Page = () => {
   return (
     <main className="w-full">
       {/* Hero Section */}
-      <section className="relative flex min-h-screen items-center md:pb-30 py-40">
+      <section className="relative flex min-h-screen items-center md:pb-30 pb-40 pt-60 md:pt-40">
         <div className="absolute inset-0 z-0">
           <Image
             src="/hero-bg.png"

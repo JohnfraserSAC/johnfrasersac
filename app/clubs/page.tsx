@@ -40,7 +40,7 @@ const Page = () => {
 
   return (
     <main className="flex flex-col justify-center items-center min-h-screen bg-gray-100">
-      <div className="custom-background-4 w-full px-auto text-center py-20 lg:pt-40">
+      <div className="custom-background-4 w-full px-auto text-center pb-20 pt-60">
         <div className='container mx-auto'>
           <h1 className="text-3xl lg:text-6xl font-bold mb-5 text-white">Clubs</h1>
           <p className="text-lg lg:w-6/12 mx-auto text-gray-300 mb-5">

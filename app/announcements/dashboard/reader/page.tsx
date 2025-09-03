@@ -53,7 +53,7 @@ export default function ReaderDashboard() {
 
     return (
         <div className="w-full">
-            <div className="text-white custom-background-4 w-full gap-y-4 flex justify-center items-center flex-col text-center pt-40 py-8 mb-8">
+            <div className="text-white custom-background-4 w-full gap-y-4 flex justify-center items-center flex-col text-center pt-60 py-8 mb-8">
                 <h1 className="text-5xl font-bold mb-4">Reader Dashboard</h1>
                 <h2 className="text-2xl">Welcome <strong>Reader</strong>!</h2>
             </div>

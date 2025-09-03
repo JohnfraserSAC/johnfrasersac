@@ -53,7 +53,7 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
     return (
         <main className=''>
             <BootstrapClient/>
-                <div className='text-white custom-background-4 flex justify-center items-center flex-col text-center pt-40 w-full py-8'>
+                <div className='text-white custom-background-4 flex justify-center items-center flex-col text-center pt-64 w-full py-8'>
                     <div className='mb-12 text-center flex flex-col justify-center items-center container'>
                         <h1 className='text-4xl mb-3 lg:text-6xl font-bold'>Announcements</h1>
                         <p className='w-7/12 text-lg mb-6'>Check here for all up to date new at John Fraser! Join our Google Classroom if you never want to miss an event.</p>

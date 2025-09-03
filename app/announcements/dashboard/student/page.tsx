@@ -211,7 +211,7 @@ export default function StudentDashboard() {
 
   return (
     <div className='w-full'>
-      <div className='gap-y-4 text-white custom-background-4 flex justify-center items-center flex-col text-center pt-40 w-full py-8'>
+      <div className='gap-y-4 text-white custom-background-4 flex justify-center items-center flex-col text-center pt-60 w-full py-8'>
         <h1 className="text-5xl font-bold ">Student Dashboard</h1>
 
         <h2 className="text-2xl ">Welcome <strong>{username}!</strong></h2>
@@ -222,7 +222,7 @@ export default function StudentDashboard() {
         ref={settingsRef}
         style={{
           position: 'absolute',
-          top: 100,
+          top: 275,
           right: 24,
           background: '#f5f5f5',
           boxShadow: '0 2px 8px rgba(0,0,0,0.06)',

@@ -138,7 +138,7 @@ useEffect(() => {
       {/* Settings Bar */}
       <div style={{
         position: 'fixed',
-        top: 150,
+        top: 250,
         right: 24,
         background: '#f5f5f5',
         borderRadius: 8,
@@ -165,7 +165,7 @@ useEffect(() => {
       </div>
       {/* <hr className='h-[200px] md:h-[100px] border-0'></hr> */}
 
-      <div className="text-white custom-background-4 w-full gap-y-4 flex justify-center items-center flex-col text-center pt-40 py-8 mb-8">
+      <div className="text-white custom-background-4 w-full gap-y-4 flex justify-center items-center flex-col text-center pt-60 py-8 mb-8">
         <h1 className="text-5xl font-bold mb-4">Teacher Dashboard</h1>
         <h2 className="text-2xl mb-6">Welcome <strong>{username}</strong>!</h2>
       </div>

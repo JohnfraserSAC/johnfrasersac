@@ -30,7 +30,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="max-w-sm mx-auto mt-36 p-6 bg-white shadow-md rounded-xl border border-gray-200 my-12">
+    <div className="max-w-sm mx-auto mt-60 p-6 bg-white shadow-md rounded-xl border border-gray-200 my-12">
       <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">Login</h2>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
