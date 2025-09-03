@@ -441,6 +441,12 @@ const clubs = [
         description: "The purpose of RClub is to create a safe, inclusive environment where like-minded car enthusiasts can come together to learn more about automobiles on a smaller scale. Firstly, as you may know, many students at John Fraser were not able to take the auto tech courses due to the excessive volume. This poses a problem as students feel excluded and separated from their school body simply because their interests were not fulfilled. In this way, the RClub will work to solve the problem as students are will be given the opportunity to join a club similar to their desired auto course. For the academic year 2024-2025, the goal of the RClub is to teach lessons and material that educates students about the functions of an RC car, similar to a full sized vehicle. Moreover, students will benefit from joining the RClub as we will be working with risk-free RC (Remote Control) cars rather than street cars. This is significant as safety is a top priority.  ",
         insta:'https://www.instagram.com/jfss.rclub/',
         image: null
+    } ,{
+        id: 67,
+        name: 'JFSS SAC',
+        description: "The John Fraser Student Activity Council is the council that runs all of the school's activities! We also manage this website.",
+        insta:'https://www.instagram.com/johnfrasersac/',
+        image: null
     } ,
 ];
 
