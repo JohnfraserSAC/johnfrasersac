@@ -1,116 +1,113 @@
-import type { Metadata } from 'next';
+import clientPromise from '@/lib/mongodb';
+import { parseISO, startOfWeek, addDays, format } from 'date-fns';
 import Link from 'next/link';
-import { parseISO, getDay } from 'date-fns';
 
-const API_URL = process.env.NEXT_PUBLIC_SHEETDB_ENDPOINT_URL;
+const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+export const revalidate = 0;
 
-export const metadata: Metadata = {
-    title: 'Announcements',
-};
-
-interface Announcement {
-    id: number;
-    slug: string;
-    title: string;
-    content: string;
-    date: string;
+function getTorontoOffset(date: Date) {
+  const toronto = new Date(date.toLocaleString('en-US', { timeZone: 'America/Toronto' }));
+  return (date.getTime() - toronto.getTime()) / 60000;
 }
 
-// getting all of the data from the sheetdb (once on deployment)
-async function getAllAnnouncements(searchQuery: string = ''): Promise<Announcement[]> {
-    if (!API_URL) {
-        throw new Error('API URL is not defined');
-    }
+export default async function AnnouncementsWeekPage() {
+  const client = await clientPromise;
+  const db = client.db();
 
-    const response = await fetch(API_URL);
-    if (!response.ok) {
-        throw new Error('Failed to fetch announcements');
-    }
-    let announcements: Announcement[] = await response.json();
+  const now = new Date();
+  const weekStart = startOfWeek(now, { weekStartsOn: 1 }); // Monday
+  const weekEnd = addDays(weekStart, 4); // Friday
 
-    // sorting algorithm to display originally (by date)
-    if (searchQuery) {
-        announcements = announcements.filter(announcement =>
-            announcement.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            announcement.content.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-    }
+  // Format dates as YYYY-MM-DD
+  const startStr = weekStart.toISOString().split('T')[0];
+  const endStr = weekEnd.toISOString().split('T')[0];
 
-    announcements.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  // Get current Toronto time properly
+  const torontoTime = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/Toronto',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  }).formatToParts(now);
 
-    return announcements;
-}
+  const torontoDateStr = `${torontoTime.find(p => p.type === 'year')?.value}-${torontoTime.find(p => p.type === 'month')?.value}-${torontoTime.find(p => p.type === 'day')?.value}`;
+  const torontoHour = parseInt(torontoTime.find(p => p.type === 'hour')?.value || '0');
+  const torontoMinute = parseInt(torontoTime.find(p => p.type === 'minute')?.value || '0');
 
-// Function to group announcements by day of the week (Monday to Friday)
-function groupAnnouncementsByDay(announcements: Announcement[]) {
-    const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-    const grouped: { [key: string]: Announcement[] } = {};
+  // Only show announcements up to today (after 8:30am), or up to yesterday (before 8:30am)
+  let lastAllowedDate: string;
+  if (torontoHour < 8 || (torontoHour === 8 && torontoMinute < 30)) {
+    // Before 8:30am: only show up to yesterday
+    const yesterday = new Date(now);
+    yesterday.setDate(yesterday.getDate() - 1);
+    lastAllowedDate = yesterday.toISOString().split('T')[0];
+  } else {
+    // After 8:30am: show up to today
+    lastAllowedDate = torontoDateStr;
+  }
 
-    daysOfWeek.forEach(day => {
-        grouped[day] = [];
-    });
+  const dateFilter: any = {
+    $gte: startStr,
+    $lte: lastAllowedDate,
+  };
 
-    announcements.forEach(announcement => {
-        const date = parseISO(announcement.date); // Parse date string to Date object using date-fns
-        const dayIndex = getDay(date); // Get day of the week as an index (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
-        console.log(`Date: ${announcement.date}, Day Index: ${dayIndex}`); // Log the date and day index
-        if (dayIndex >= 1 && dayIndex <= 5) { // Only include Monday to Friday
-            const dayName = daysOfWeek[dayIndex - 1]; // Map index to day name
-            if (!grouped[dayName].length || new Date(announcement.date) > new Date(grouped[dayName][0].date)) {
-                grouped[dayName] = [announcement]; // Replace with the most recent announcement
-            }
-        }
-    });
+  const announcements = await db
+    .collection('announcements')
+    .find({
+      approval: true,
+      date: dateFilter,
+    })
+    .toArray();
 
-    return grouped;
-}
+  // Group by day string (YYYY-MM-DD)
+  const grouped: Record<string, any[]> = {};
+  announcements.forEach((a) => {
+    if (!grouped[a.date]) grouped[a.date] = [];
+    grouped[a.date].push(a);
+  });
 
-export default async function AnnouncementsPage({ searchParams }: { searchParams: { search?: string } }) {
-    const searchQuery = searchParams.search || '';
-    const announcements: Announcement[] = await getAllAnnouncements(searchQuery);
-    const groupedAnnouncements = groupAnnouncementsByDay(announcements);
+  // Map day names to dates for the week
+  const weekDates = Array.from({ length: 5 }, (_, i) => addDays(weekStart, i));
+  const dayNameAndDate = weekDates.map((date, i) => ({
+    name: daysOfWeek[i],
+    dateStr: date.toISOString().split('T')[0],
+    display: format(date, 'MMMM do'),
+  }));
 
-    return (
-        <main>
-            <div className='text-white custom-background-4 flex justify-center items-center flex-col text-center pt-40 w-full py-8'>
-                    <div className='mb-12 text-center flex flex-col justify-center items-center container'>
-                        <h1 className='text-4xl mb-3 lg:text-6xl font-bold'>Weekly Announcements</h1>
-                        <p className='w-7/12 text-lg mb-6'>Check out this weeks announcements at john fraser!</p>
-                    </div>
+  return (
+    <main>
+      <div className='text-white custom-background-4 flex justify-center items-center flex-col text-center pt-40 w-full py-8'>
+        <div className='mb-12 text-center flex flex-col justify-center items-center container'>
+            <h1 className='text-4xl mb-3 lg:text-6xl font-bold'>Weekly Announcements</h1>
+            <p className='w-7/12 text-lg mb-6'>Check out this weeks announcements at John Fraser!</p>
+        </div>
+    </div>
+      <div className='py-8 container mx-auto flex flex-col items-center justify-center text-center gap-y-8'>
+        <div className='rounded-md w-[600px] shadow-lg'>
+          {dayNameAndDate.map(({ name, dateStr, display }) => (
+            <div key={name} className='flex border-t-2 border-black border-l-2 last:border-b-2 border-r-2'>
+              <h3 className='w-1/4 border-r-2 border-black'>{name}</h3>
+              <div className='w-full flex items-center justify-center'>
+                {grouped[dateStr] && grouped[dateStr].length > 0 ? (
+                  <Link href={`/announcements/week/${dateStr}`}>
+                    <p className='underline-offset-0 font-semibold text-lg text-blue-600 hover:text-blue-700 hover:underline transition duration-200 cursor-pointer'>
+                      {display} Announcements ({grouped[dateStr].length})
+                    </p>
+                  </Link>
+                ) : (
+                  <span className='text-gray-400'>Come back tomorrow!</span>
+                )}
+              </div>
             </div>
-            <div className="py-8 container mx-auto flex flex-col items-center justify-center text-center gap-y-8">
-                <div className=' rounded-md w-[600px] shadow-lg'>
-                    <div className=''>
-                        {Object.keys(groupedAnnouncements).map(day => (
-                            <div key={day} className=' flex border-t-2 border-black border-l-2 last:border-b-2 border-r-2'>
-                                <h3 className='w-1/4 border-r-2 border-black'>{day}</h3>
-                                <div className='w-full'>
-                                    {groupedAnnouncements[day].map((announcement) => (
-                                        <li
-                                            key={announcement.id}
-                                            className="w-full flex justify-between items-center hover:bg-gray-50 transition duration-150"
-                                        >
-                                            <div className='w-full flex justify-evenly items-center'>
-                                                <Link href={`/announcements/week/${announcement.slug}`}>
-                                                    <p className="underline-offset-0 font-semibold text-lg text-blue-600 hover:text-blue-700 hover:underline transition duration-200">
-                                                        {announcement.title}
-                                                    </p>
-                                                </Link>
-                                                <p className="text-gray-500 text-sm">
-                                                    {announcement.date}
-                                                </p>
-                                            </div>  
-                                        </li>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <Link href='/announcements/all'>
-                            <button className='button-5'>View All Announcements</button>
-                    </Link>
-            </div>
-        </main>
-    );
+          ))}
+        </div>
+        <Link href='/announcements/all'>
+          <button className='button-5'>View All Announcements</button>
+        </Link>
+      </div>
+    </main>
+  );
 }
