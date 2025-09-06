@@ -50,16 +50,19 @@ const ExecutiveInfo: React.FC<ExecutiveInfoProps> = ({ name, role, image, descri
   return (
     <div className="flex flex-col items-center justify-center">
     <div className="relative inline-block">
-      <Image
-        ref={imageRef}
-        src={image}
-        width={100}
-        height={100}
-        alt="Executive"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        className="w-40 h-40 rounded-full"
-      />
+      <div className="w-40 h-40 overflow-hidden rounded-full">
+        <Image
+          ref={imageRef}
+          src={image || '/team/unknown.jpg'}
+          width={160}
+          height={160}
+          alt="Executive"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className="w-full h-full object-cover object-center"
+          style={{ objectPosition: 'center 20%' }}
+        />
+      </div>
       <div
         ref={infoBoxRef}
         className="absolute top-1/2 left-1/2 w-12 h-12 bg-black bg-opacity-80 text-white opacity-0 pointer-events-none transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center text-center p-2 box-border"

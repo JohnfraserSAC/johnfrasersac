@@ -124,12 +124,12 @@ const Page = () => {
             </p>
             <div className="flex flex-col justify-between sm:flex-row">
               <div className="mb-6 sm:mb-0">
-                <p className="font-bold">Co-president</p>
-                <p>Aleena Ali</p>
+                <p className="font-bold">Vice President</p>
+                <p>David Chen</p>
               </div>
               <div>
-                <p className="font-bold">Co-president</p>
-                <p>Cody Doan</p>
+                <p className="font-bold">President</p>
+                <p>Hamza Saleh</p>
               </div>
             </div>
           </div>

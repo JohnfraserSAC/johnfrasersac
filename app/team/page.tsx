@@ -5,107 +5,121 @@ import ExecutiveInfo from "@/components/ExecutiveInfo";
 const teamMembers = [
   {
     id: 1,
-    name: "Aleena Ali",
+    name: "Hamza Saleh",
     role: "President",
-    image: "/team/execs/aleena-ali.jpg",
+    image: "/team/execs/hamza-saleh.jpeg",
     description:
-      "Hi Jags! I’m Aleena, one of your Co-Presidents for this year :) The last 3 years on SAC have been amazing and we can’t wait to introduce you all to all of the amazing events this year!",
+      "",
   },
   {
     id: 2,
-    name: "Cody Doan",
+    name: "David Chen",
     role: "President",
-    image: "/team/execs/cody-doan.jpg",
+    image: "/team/execs/david-chen.jpg",
     description:
-      "Hey everyone! I'm Cody, one of your Co-Presidents this year! After three years on SAC, I'm excited about the amazing events we have planned and look forward to making this year truly memorable for all of us!",
+      "",
   },
   {
     id: 3,
-    name: "Shashvati Deshmukh",
+    name: "Ananya Sithique",
     role: "Secretary",
-    image: "/team/execs/shashvati-deshmukh.jpg",
+    image: "/team/execs/ananya-sithique.jpeg",
     description: "",
   },
   {
     id: 4,
-    name: "Nikhil Khanna",
+    name: "Amrita Rajaram",
     role: "Treasurer",
-    image: "/team/execs/nikhil-khanna.jpg",
+    image: "/team/execs/amrita-rajaram.jpg",
     description:
-      "Hey everyone!  I’m Nikhil, your treasurer for this year.  I’m super excited to work with the student body and SAC to ensure our events are as fun as possible (while staying in budget 🤑)!!!",
+      "",
   },
   {
     id: 5,
-    name: "Amrita Rajaram",
+    name: "Jhanvi Patel",
     role: "Clubs Liaison",
-    image: "/team/execs/amrita-rajaram.jpg",
+    image: "/team/execs/jhanvi-patel.jpg",
     description:
-      "Hi everyone! I'm Amrita and your club liaison this year! If you're interested in anything clubs-related or want some info/clarity on any club matter reach out to me through email or Instagram! Very excited to see what all the clubs accomplish this year!",
+      "",
   },
   {
     id: 6,
-    name: "Arya Holmukhe",
+    name: "Sohum Padhye",
     role: "Technology Liaison",
-    image: "/team/execs/arya-holmukhe.jpg",
+    image: "/team/execs/sohum-padhye.jpg",
     description: "",
   },
-  {
+    {
     id: 7,
-    name: "Akshat Chopra",
-    role: "General Executive",
-    image: "/team/execs/akshat-chopra.jpg",
+    name: "Yang Xue",
+    role: "Technology Liaison",
+    image: "/team/execs/yang-xue.jpg",
     description: "",
   },
   {
     id: 8,
-    name: "Ronia Puliyelil",
+    name: "Shaurya Dedhia",
+    role: "General Executive",
+    image: "/team/execs/shaurya-dedhia.jpg",
+    description: "",
+  },
+  {
+    id: 9,
+    name: "Arjita Chaudhary",
     role: "Arts Liaison",
-    image: "/team/execs/ronia-puliyelil.jpg",
+    image: "/team/execs/arjita-chaudhary.jpeg",
     description: "",
   },
 
   {
-    id: 9,
-    name: "Hamza Saleh",
-    role: "Athletics Liaison",
-    image: "/team/execs/hamza-saleh.jpg",
-    description: "",
-  },
-  {
     id: 10,
-    name: "Inesh Haque",
-    role: "Community Outreach",
-    image: "/team/execs/inesh-haque.jpg",
+    name: "Nadine Mughal",
+    role: "Athletics Liaison",
+    image: "/team/execs/nadine-mughal.jpeg",
     description: "",
   },
   {
     id: 11,
-    name: "Bismaad Kalra",
-    role: "Social Convenor",
-    image: "/team/execs/bismaad-kalra.jpg",
+    name: "Arshaan Thind",
+    role: "Community Outreach",
+    image: "/team/execs/arshaan-thind.jpeg",
     description: "",
   },
   {
     id: 12,
-    name: "Cindy Lee",
-    role: "Photography Executive",
-    image: "/team/execs/cindy-lee.jpg",
+    name: "Tianna Lim",
+    role: "Social Convenor",
+    image: "/team/execs/tianna-lim.jpg",
     description: "",
   },
   {
     id: 13,
-    name: "Kirpa Chandi",
-    role: "Promotions Officer",
-    image: "/team/execs/kirpa-chandi.jpg",
+    name: "Justin Deng",
+    role: "Photography Executive",
+    image: "/team/execs/justin-deng.jpg",
+    description: "",
+  },
+    {
+    id: 14,
+    name: "Salahuddin Siddiqui",
+    role: "Photography Executive",
+    image: "/team/execs/salahuddin-siddiqui.jpg",
     description: "",
   },
   {
-    id: 14,
-    name: "Adolina Kiflay",
+    id: 15,
+    name: "Grabielle Caroo",
     role: "Promotions Officer",
-    image: "/team/execs/adolina-kiflay.jpg",
+    image: "/team/execs/gabrielle-carroo.jpg",
+    description: "",
+  },
+  {
+    id: 16,
+    name: "Rasleen Kaur",
+    role: "Promotions Officer",
+    image: "/team/execs/rasleen-kaur.png",
     description:
-      "Hey jags! I’m Adolina Kiflay and I’m one of your promotions officer this year and I’m so excited to make new and engaging promo with all of you!",
+      "",
   },
 ];
 
@@ -362,7 +376,7 @@ const page = () => {
       </div>
 
       {/* Grade reps sections */}
-      <div>
+      {/* <div>
         <div className="w-full flex flex-col justify-center items-center">
           <div className="w-full flex justify-center items-center flex-col">
             <p className="tracking-widest font-light">
@@ -384,7 +398,7 @@ const page = () => {
       </div>
 
       {/* Honorouries section */}
-      <div>
+      {/* <div>
         <div className="w-full flex flex-col justify-center items-center">
           <div className="w-full flex justify-center items-center flex-col">
             <p className="tracking-widest font-light">
@@ -403,7 +417,7 @@ const page = () => {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
     </main>
   );
 };
