@@ -195,7 +195,7 @@ const Page = () => {
             </Link>
           </div>
           <div className="flex flex-col items-center justify-center space-y-10 sm:flex-row sm:space-x-10 sm:space-y-0">
-            {["Aleena Ali", "Cody Doan"].map((name, index) => (
+            {["Hamza Saleh", "David Chen"].map((name, index) => (
               <div
                 key={index}
                 className="relative h-80 w-64 overflow-hidden rounded-lg bg-gray-100 shadow-md"
@@ -209,7 +209,7 @@ const Page = () => {
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
                   <p className="font-bold text-white">{name}</p>
                   <p className="text-white">
-                    {index === 0 ? "Co-president" : "Co-president"}
+                    {index === 0 ? "President" : "Vice President"}
                   </p>
                 </div>
               </div>
