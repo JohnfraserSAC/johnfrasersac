@@ -7,7 +7,7 @@ const teamMembers = [
     id: 1,
     name: "Hamza Saleh",
     role: "President",
-    image: "/team/execs/hamza-saleh.jpeg",
+    image: "/team/execs/hamza-saleh.jpg",
     description:
       "",
   },

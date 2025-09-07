@@ -6,7 +6,7 @@ import Link from "next/link";
 const links = [
   { 
     name: "Photos", 
-    href: "https://drive.google.com/drive/folders/1WIpAVouRSgXtycP7XPadHCjcF38iH1uD?usp=drive_link" 
+    href: "https://drive.google.com/drive/folders/14Bg6JuPVyGwGI986iwQs9gJBBzn3kjah?usp=sharing" 
   },
   { 
     name: "Published Meeting Agendas", 
