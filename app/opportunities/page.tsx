@@ -22,7 +22,7 @@ const Page = () => {
       </div>
 
       {/* Terry Fox Walk */}
-
+{/* 
       <main>
         <div>
           <p>Terry Fox Day holds a profound significance in the hearts of Canadians and, increasingly, people around the world. This annual observance, typically celebrated on the second Sunday in September, serves as a powerful reminder of the enduring legacy of Terry Fox, a true hero who exemplified the spirit of determination, resilience, and selflessness.</p>
@@ -39,7 +39,7 @@ const Page = () => {
 <p>Terry Fox Day is a time to reflect on the incredible impact one individual can have on the world. It's a day to remember that no obstacle is insurmountable when fueled by a sense of purpose and the determination to make a difference. Terry's courage and resilience continue to inspire countless individuals to overcome their own challenges and contribute to causes they hold dear.</p>
 <p>Moreover, this day serves as a call to action, encouraging people to continue Terry Fox's work by supporting cancer research and other noble causes. The funds raised through Terry Fox Runs held on this day have been instrumental in advancing medical research, leading to breakthroughs in the fight against cancer.</p>
 <p>In essence, Terry Fox Day underscores the importance of empathy, community, and the pursuit of a better world. It stands as a tribute to a young man who, though he lost his battle with cancer, sparked a movement that endures to this day. Through his selflessness, courage, and determination, Terry Fox reminds us all that we have the power to change the world, one step at a time.</p>
-      </main>
+      </main> */}
 
 
 
