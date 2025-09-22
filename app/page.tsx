@@ -62,8 +62,8 @@ const Page = () => {
               <h1 className="mb-6 text-4xl font-bold text-white lg:text-6xl">
                 John Fraser Student Council
               </h1>
-              <p className="mb-8 text-xl text-white">
-                Our Applcations for Grade Reps are currently open! Make sure to submit them by <strong>September 23rd, by 8:00 PM</strong>!
+              <p className="mb-8 text-xl text-white text-balance">
+                Our applications for Grade Representatives are currently open! Make sure to submit them by <strong>September 23rd, 8:00 PM</strong>!
               </p>
               <div className="flex flex-col items-start lg:items-center sm:flex-row">
                 <Link href="https://apply.johnfrasersac.com" className="mb-4 sm:mb-0 sm:mr-4">
