@@ -21,33 +21,27 @@ const Page = () => {
         </div>
       </div>
 
-      {/* Twinkle Links Section */}
-      <div className='mx-auto container flex-col lg:flex-row flex justify-center items-center my-8'>
-        <div className='w-11/12 lg:w-3/4 lg:mx-4'>
-          <h1 className='font-semibold text-2xl w-8/12 lg:w-9/12 lg:text-4xl lg:font-semibold'>Charity Week</h1>
-          <div className="images-line lg:my-4 lg:w-1/12">
-            <div className="image" style={{ backgroundImage: "url('/image.svg')" }}></div>
-            <div className="image" style={{ backgroundImage: "url('/image.svg')" }}></div>
-            <div className="image" style={{ backgroundImage: "url('/image.svg')" }}></div>
-            <div className="image" style={{ backgroundImage: "url('/image.svg')" }}></div>
-          </div>
-          <p className='mb-4 lg:text-lg lg:w-full'>
-          <i>Charity Week</i> at John Fraser is an exciting school-wide event where every class joins forces 
-          to create unique booths, raising funds for a meaningful cause. As the biggest and most anticipated event of the year,
-           it combines community spirit, creativity, and fun—all for charity!
-          </p>
-          <p className='mb-8 italic lg:w-1/2'>
-            Sign up your class for Charity Week by filling out the form below!
-          </p>
-          <div className='mb-8 w-full flex justify-center items-center lg:justify-normal lg:items-start'>
-            <Link href={'https://docs.google.com/forms/d/13M6Kk5zegFMl1KroGXiJufdH8yMgulVi06epb8nnz0M/edit?pli=1'}>
-              <button className='button-2'>
-                <p>Charity week proposal form</p>
-              </button>
-            </Link>
-          </div>
+      {/* Terry Fox Walk */}
+
+      <main>
+        <div>
+          <p>Terry Fox Day holds a profound significance in the hearts of Canadians and, increasingly, people around the world. This annual observance, typically celebrated on the second Sunday in September, serves as a powerful reminder of the enduring legacy of Terry Fox, a true hero who exemplified the spirit of determination, resilience, and selflessness.</p>
+          <Image
+            src='/opportunities/terry-fox1.jpg'
+            alt='Terry Fox Picture 1'
+            width={800}
+            height={400}
+            className='my-8 mx-auto rounded-lg shadow-lg'
+          />
         </div>
-      </div>
+
+<p>Terry Fox's journey, known as the Marathon of Hope, began in 1980 when he set out to run across Canada to raise funds and awareness for cancer research. His mission was deeply personal, as he himself battled cancer and lost a leg to the disease. Undeterred by the physical challenges he faced, Terry's unwavering commitment to his cause inspired a nation and ignited a global movement.</p>
+<p>Terry Fox Day is a time to reflect on the incredible impact one individual can have on the world. It's a day to remember that no obstacle is insurmountable when fueled by a sense of purpose and the determination to make a difference. Terry's courage and resilience continue to inspire countless individuals to overcome their own challenges and contribute to causes they hold dear.</p>
+<p>Moreover, this day serves as a call to action, encouraging people to continue Terry Fox's work by supporting cancer research and other noble causes. The funds raised through Terry Fox Runs held on this day have been instrumental in advancing medical research, leading to breakthroughs in the fight against cancer.</p>
+<p>In essence, Terry Fox Day underscores the importance of empathy, community, and the pursuit of a better world. It stands as a tribute to a young man who, though he lost his battle with cancer, sparked a movement that endures to this day. Through his selflessness, courage, and determination, Terry Fox reminds us all that we have the power to change the world, one step at a time.</p>
+      </main>
+
+
 
       {/* Other sections */}
 

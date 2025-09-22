@@ -63,7 +63,7 @@ const Page = () => {
                 John Fraser Student Council
               </h1>
               <p className="mb-8 text-xl text-white">
-                Our Applcations for Honourary Members are currently open! Make sure to submit them by <strong>September 8th, by 11:59 PM</strong>!
+                Our Applcations for Grade Reps are currently open! Make sure to submit them by <strong>September 23rd, by 8:00 PM</strong>!
               </p>
               <div className="flex flex-col items-start lg:items-center sm:flex-row">
                 <Link href="https://apply.johnfrasersac.com" className="mb-4 sm:mb-0 sm:mr-4">

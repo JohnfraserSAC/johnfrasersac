@@ -41,3 +41,33 @@
 
 
 
+
+// Twinkle Links!
+
+    //   {/* Twinkle Links Section */}
+    //   <div className='mx-auto container flex-col lg:flex-row flex justify-center items-center my-8'>
+    //     <div className='w-11/12 lg:w-3/4 lg:mx-4'>
+    //       <h1 className='font-semibold text-2xl w-8/12 lg:w-9/12 lg:text-4xl lg:font-semibold'>Charity Week</h1>
+    //       <div className="images-line lg:my-4 lg:w-1/12">
+    //         <div className="image" style={{ backgroundImage: "url('/image.svg')" }}></div>
+    //         <div className="image" style={{ backgroundImage: "url('/image.svg')" }}></div>
+    //         <div className="image" style={{ backgroundImage: "url('/image.svg')" }}></div>
+    //         <div className="image" style={{ backgroundImage: "url('/image.svg')" }}></div>
+    //       </div>
+    //       <p className='mb-4 lg:text-lg lg:w-full'>
+    //       <i>Charity Week</i> at John Fraser is an exciting school-wide event where every class joins forces 
+    //       to create unique booths, raising funds for a meaningful cause. As the biggest and most anticipated event of the year,
+    //        it combines community spirit, creativity, and fun—all for charity!
+    //       </p>
+    //       <p className='mb-8 italic lg:w-1/2'>
+    //         Sign up your class for Charity Week by filling out the form below!
+    //       </p>
+    //       <div className='mb-8 w-full flex justify-center items-center lg:justify-normal lg:items-start'>
+    //         <Link href={'https://docs.google.com/forms/d/13M6Kk5zegFMl1KroGXiJufdH8yMgulVi06epb8nnz0M/edit?pli=1'}>
+    //           <button className='button-2'>
+    //             <p>Charity week proposal form</p>
+    //           </button>
+    //         </Link>
+    //       </div>
+    //     </div>
+    //   </div>
