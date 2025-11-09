@@ -1,58 +1,34 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BootstrapClient } from "@/components/BootstrapClient";
-import type { Metadata } from 'next';
 import Link from 'next/link';
 
-require('dotenv').config()
 
-const API_URL = process.env.NEXT_PUBLIC_SHEETDB_ENDPOINT_URL;
-
-export const metadata: Metadata = {
-    title: 'Announcements',
-};
-
-interface Announcement {
-    id: number;
-    slug: string;
-    title: string;
-    content: string;
-    date: string;
-}
-
-// getting all of the data from the sheetdb (once on deployment)
-async function getAllAnnouncements(searchQuery: string = ''): Promise<Announcement[]> {
-    if (!API_URL) {
-        throw new Error('API URL is not defined');
-    }
-
-    const response = await fetch(API_URL);
-    if (!response.ok) {
-        throw new Error('Failed to fetch announcements');
-    }
-    let announcements: Announcement[] = await response.json();
-
-    // sorting algorithm to display originally (by date)
-    if (searchQuery) {
-        announcements = announcements.filter(announcement =>
-            announcement.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            announcement.content.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-    }
-
-    announcements.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-    // return top 5 announcements
-    return announcements.slice(0, 5);
-}
-
-export default async function AnnouncementsPage({ searchParams }: { searchParams: { search?: string } }) {
-    const searchQuery = searchParams.search || '';
-    const announcements: Announcement[] = await getAllAnnouncements(searchQuery);
+export default async function AnnouncementsPage() {
 
     return (
         <main className=''>
-            <BootstrapClient/>
+            <div className='text-white custom-background-4 flex justify-center items-center flex-col text-center pt-40 w-full py-8 min-h-screen'>
+                <div className='mb-12 text-center flex flex-col justify-center items-center container'>
+                    {/* Maintenance Icon */}
+                    <div className='text-6xl mb-6'>
+                        🔧
+                    </div>
+                    
+                    <h1 className='text-4xl mb-6 lg:text-6xl font-bold'>Under Maintenance</h1>
+                    
+                    <p className='w-8/12 lg:w-6/12 text-lg mb-8 opacity-90'>
+                        Please check back soon for all the latest John Fraser news and events.
+                    </p>
+                    
+                    <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
+                        <Link href='/'>
+                            <button className='button-5'>Return to Home</button>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+            {/* <BootstrapClient/>
                 <div className='text-white custom-background-4 flex justify-center items-center flex-col text-center pt-40 w-full py-8'>
                     <div className='mb-12 text-center flex flex-col justify-center items-center container'>
                         <h1 className='text-4xl mb-3 lg:text-6xl font-bold'>Announcements</h1>
@@ -66,7 +42,7 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
                             </Link>
                         </div>
                         
-                    </div>
+                    </div> */}
 
                     {/* Carousel */}
                     {/* <div id="carouselExampleIndicators" className="carousel slide lg: w-7/12 container" data-bs-ride="carousel">
@@ -106,7 +82,6 @@ export default async function AnnouncementsPage({ searchParams }: { searchParams
                     </button>
                 </div> */}
 
-            </div>
         </main>
     );
 }

@@ -22,25 +22,44 @@ const Page = () => {
       </div>
 
       {/* Terry Fox Walk */}
-{/* 
-      <main>
-        <div>
-          <p>Terry Fox Day holds a profound significance in the hearts of Canadians and, increasingly, people around the world. This annual observance, typically celebrated on the second Sunday in September, serves as a powerful reminder of the enduring legacy of Terry Fox, a true hero who exemplified the spirit of determination, resilience, and selflessness.</p>
-          <Image
-            src='/opportunities/terry-fox1.jpg'
-            alt='Terry Fox Picture 1'
-            width={800}
-            height={400}
-            className='my-8 mx-auto rounded-lg shadow-lg'
+
+
+       <div className='mx-auto container flex-col lg:flex-row flex justify-center items-center my-8'>
+         <div className='lg:w-7/12 lg:flex lg:justify-center lg:items-center'>
+           <Image
+            src='/opportunities/mosaic-lunch.jpg'
+            alt='Mosaic lunch'
+            width={500}
+            height={300}
+            className='mb-8 lg:w-[700px] lg:h-auto'
           />
         </div>
-
-<p>Terry Fox's journey, known as the Marathon of Hope, began in 1980 when he set out to run across Canada to raise funds and awareness for cancer research. His mission was deeply personal, as he himself battled cancer and lost a leg to the disease. Undeterred by the physical challenges he faced, Terry's unwavering commitment to his cause inspired a nation and ignited a global movement.</p>
-<p>Terry Fox Day is a time to reflect on the incredible impact one individual can have on the world. It's a day to remember that no obstacle is insurmountable when fueled by a sense of purpose and the determination to make a difference. Terry's courage and resilience continue to inspire countless individuals to overcome their own challenges and contribute to causes they hold dear.</p>
-<p>Moreover, this day serves as a call to action, encouraging people to continue Terry Fox's work by supporting cancer research and other noble causes. The funds raised through Terry Fox Runs held on this day have been instrumental in advancing medical research, leading to breakthroughs in the fight against cancer.</p>
-<p>In essence, Terry Fox Day underscores the importance of empathy, community, and the pursuit of a better world. It stands as a tribute to a young man who, though he lost his battle with cancer, sparked a movement that endures to this day. Through his selflessness, courage, and determination, Terry Fox reminds us all that we have the power to change the world, one step at a time.</p>
-      </main> */}
-
+        <div className='w-11/12 lg:w-5/12 lg:mx-4'>
+          <h1 className='font-semibold text-2xl w-8/12 lg:w-9/12 lg:text-4xl lg:font-semibold'>Mosaic Lunch</h1>
+          <div className="images-line lg:my-4 lg:w-1/12">
+            <div className="image" style={{ backgroundImage: "url('/image.svg')" }}></div>
+            <div className="image" style={{ backgroundImage: "url('/image.svg')" }}></div>
+            <div className="image" style={{ backgroundImage: "url('/image.svg')" }}></div>
+            <div className="image" style={{ backgroundImage: "url('/image.svg')" }}></div>
+          </div>
+          <div className=''>
+            <p className='mb-8 font-semibold text-lg lg:text-xl'>Sign up now!</p>
+            <p className='mb-3 lg:text-lg lg:w-11/12'>
+              On Wednesday, November 20th, get ready for the most exciting cultural event of the year at John Fraser &ndash; Mosaic Lunch! 
+              In the cafeteria, check out the cultural booths and performances! This is your chance to experience the diverse heritage, 
+              passion, and talents with the whole school community, whether it&rsquo;s through delicious food, traditional crafts, or 
+              a unique performance. Don&apos;t forget to wear your traditional attire to proudly showcase your cultural heritage!
+            </p>
+            {/* <p className='mb-8 lg:text-lg lg:w-9/12'>
+              Make sure to buy tickets using SchoolCashOnline in the Jag store on Nov. 25th, and 26th and in the Cafeteria on 28th. 
+              Using these tickets you can enjoy and purchase a delightful selection of food and goods!
+            </p> */}
+            <div className='mb-8 w-full flex justify-center items-center lg:justify-normal lg:items-start'>
+              {/* Buttons for sign-up links can go here */}
+            </div>
+          </div>
+        </div>
+      </div>
 
 
       {/* Other sections */}
