@@ -87,7 +87,7 @@ const Page = () => {
                 className="flex justify-between items-center cursor-pointer"
                 onClick={() => toggleClub(club.id)}
               >
-                <h2 className="text-xl font-semibold text-gray-800">{club.name}</h2>
+                <h2 className="text-2xl font-semibold text-gray-800">{club.name}</h2>
                 <span className="text-gray-500">
                   <motion.span
                     animate={{ rotate: activeClubId === club.id ? 540 : 0 }}
@@ -111,13 +111,8 @@ const Page = () => {
                     className="overflow-hidden mt-4"
                   >
                     <p className="text-gray-600 mb-4">{club.description}</p>
-                    {club.insta && (
-                      <Link href={club.insta} target="_blank">
-                        <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
-                          Learn More
-                        </button>
-                      </Link>
-                    )}
+                    <h1 className='font-bold text-xl'>How To Contact the Club</h1>
+                    <p>{club.contact}</p>
                   </motion.div>
                 )}
               </AnimatePresence>
