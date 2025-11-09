@@ -1,5 +1,17 @@
 import { MongoClient } from 'mongodb';
 
+const uri = process.env.MONGODB_URI;
+
+if (!uri) {
+  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+}
+
+const client = new MongoClient(uri);
+const clientPromise = client.connect();
+
+// Default export for the client promise
+export default clientPromise;
+
 export async function POST(req: { json: () => PromiseLike<{ accessCode: any; }> | { accessCode: any; }; }) {
   try {
     const { accessCode } = await req.json();
@@ -14,17 +26,10 @@ export async function POST(req: { json: () => PromiseLike<{ accessCode: any; }> 
       );
     }
 
-    // Direct connection for debugging
-    const uri = process.env.MONGODB_URI;
-    if (!uri) {
-      throw new Error('MONGODB_URI not found');
-    }
-
-    const client = new MongoClient(uri);
-    await client.connect();
+    // Use the shared client connection
+    const client = await clientPromise;
     const db = client.db('schoolPortal');
     const user = await db.collection('accounts').findOne({ accessCode });
-    await client.close();
 
     if (!user) {
       return new Response(
