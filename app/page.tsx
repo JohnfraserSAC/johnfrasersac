@@ -63,7 +63,7 @@ const Page = () => {
                 John Fraser Student Council
               </h1>
               <p className="mb-8 text-xl text-white text-pretty">
-                The official website of John Fraser Secondary School's student activity council.
+                {"The official website of John Fraser Secondary School's student activity council."}
               </p>
               <div className="flex flex-col items-start lg:items-center sm:flex-row">
                 {/* <Link href="https://apply.johnfrasersac.com" className="mb-4 sm:mb-0 sm:mr-4">
