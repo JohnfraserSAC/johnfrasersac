@@ -126,156 +126,174 @@ const teamMembers = [
 const gradeReps = [
   {
     id: 1,
-    name: "Shaurya Dedhia",
+    name: "Dory Haider",
     role: "Grade 9 Rep.",
-    image: "/team/grade-reps/shaurya-dedhia.jpg",
+    image: "/team/grade-reps/dory.jpg",
   },
   {
     id: 2,
-    name: "Akshath Suresh",
+    name: "Kirat Chopra",
     role: "Grade 10 Rep.",
-    image: "/team/grade-reps/akshath-suresh.jpg",
+    image: "/team/grade-reps/kirat.jpg",
   },
   {
     id: 3,
-    name: "Tianna Lim",
+    name: "Eshaal Cheema",
     role: "Grade 11 Rep.",
-    image: "/team/unknown.jpg",
+    image: "/team/grade-reps/eshaal.jpg",
   },
   {
     id: 4,
-    name: "Eshal Siddiqi",
+    name: "Inesh Haque",
     role: "Grade 12 Rep.",
-    image: "/team/grade-reps/eshal-siddiqi.jpg",
+    image: "/team/grade-reps/inesh.jpg",
   },
 ];
 
 const honouraries = [
   {
-    id: 1,
-    name: "Aaradhana Vijaykrishnan",
-    role: "Honoroury",
-    image: "/team/honorouries/aaradhana-vijaykrishnan.jpg",
-  },
-  {
     id: 2,
-    name: "Abdelrahman",
+    name: "Alissa Roy",
     role: "Honoroury",
-    image: "/team/honorouries/abdelrahman.jpg",
+    image: "/team/honorouries/alissa.jpg",
   },
   {
     id: 3,
-    name: "Ananya Sithique Hasan",
+    name: "Angad Gupta",
     role: "Honoroury",
-    image: "/team/honorouries/ananya-sithique-hasan.jpg",
+    image: "/team/honorouries/angad.jpg",
   },
   {
     id: 4,
-    name: "Anthony Doan",
+    name: "Athang Deshmukh",
     role: "Honoroury",
-    image: "/team/honorouries/anthony-doan.jpg",
+    image: "/team/honorouries/athang.jpg",
   },
   {
     id: 5,
-    name: "Arjun Garg",
+    name: "Cayden Janjua",
     role: "Honoroury",
-    image: "/team/honorouries/arjun-garg.jpg",
+    image: "/team/honorouries/cayden.jpg",
   },
   {
     id: 6,
-    name: "Arshaan Thind",
+    name: "Eshaal",
     role: "Honoroury",
-    image: "/team/honorouries/arshaan-thind.jpg",
+    image: "/team/honorouries/eshaal.jpg",
   },
   {
     id: 7,
-    name: "David Chen",
+    name: "Eshal",
     role: "Honoroury",
-    image: "/team/honorouries/david-chen.jpg",
+    image: "/team/honorouries/eshal.jpg",
   },
   {
     id: 8,
-    name: "Isabelle Ng",
+    name: "Gwendolen",
     role: "Honoroury",
-    image: "/team/honorouries/isabelle-ng.jpg",
+    image: "/team/honorouries/gwen.jpg",
   },
   {
     id: 9,
-    name: "Jamie Chen",
+    name: "Hanzalah Vayani",
     role: "Honoroury",
-    image: "/team/honorouries/jamie-chen.jpg",
+    image: "/team/honorouries/hanzalah.jpg",
   },
   {
     id: 10,
-    name: "Justin Deng",
+    name: "Harshad",
     role: "Honoroury",
-    image: "/team/honorouries/justin-deng.jpg",
+    image: "/team/honorouries/harshad.jpg",
   },
   {
     id: 11,
-    name: "Muhammad Syed",
+    name: "Himaja",
     role: "Honoroury",
-    image: "/team/honorouries/muhammad-yed.jpg",
+    image: "/team/honorouries/himaja.jpg",
   },
   {
     id: 12,
-    name: "Nadine Mughal",
+    name: "Isabelle",
     role: "Honoroury",
-    image: "/team/honorouries/nadine-mughal.jpg",
+    image: "/team/honorouries/isabelle.jpg",
   },
   {
     id: 13,
-    name: "Nolan Lee",
+    name: "Julie",
     role: "Honoroury",
-    image: "/team/honorouries/nolan-lee.jpg",
+    image: "/team/honorouries/julie.jpg",
   },
   {
     id: 14,
-    name: "Sami Khan",
+    name: "Lavikaa Sreeskumar",
     role: "Honoroury",
-    image: "/team/honorouries/sami-khan.jpg",
+    image: "/team/honorouries/lavikaa.jpg",
   },
   {
     id: 15,
-    name: "Shanvir Sidhu",
+    name: "Maymun",
     role: "Honoroury",
-    image: "/team/honorouries/shanvir-sidhu.jpg",
+    image: "/team/honorouries/maymun.jpg",
   },
   {
     id: 16,
-    name: "Sophia Chen",
+    name: "Musifrah",
     role: "Honoroury",
-    image: "/team/honorouries/sophia-chen.jpg",
+    image: "/team/honorouries/musifrah.jpg",
   },
   {
     id: 17,
-    name: "Inaaya Rohail",
+    name: "Navya",
     role: "Honoroury",
-    image: "/team/honorouries/inaaya-rohail.jpg",
+    image: "/team/honorouries/navya.jpg",
   },
   {
     id: 18,
-    name: "Manahil",
+    name: "Nikhil",
     role: "Honoroury",
-    image: "/team/unknown.jpg",
+    image: "/team/honorouries/nikhil.jpg",
   },
   {
     id: 19,
-    name: "Yang Xue",
+    name: "Noah",
     role: "Honoroury",
-    image: "/team/unknown.jpg",
+    image: "/team/honorouries/noah.jpg",
   },
   {
     id: 20,
-    name: "Rania Amin",
+    name: "Rahaf",
     role: "Honoroury",
-    image: "/team/honorouries/rania-amin.jpg",
+    image: "/team/honorouries/rahaf.jpg",
   },
   {
     id: 21,
-    name: "Jhanvi Patel ",
+    name: "Sarah Haider",
     role: "Honoroury",
-    image: "/team/unknown.jpg",
+    image: "/team/honorouries/sarah.jpg",
+  },
+    {
+    id: 22,
+    name: "Shanvir Sidhu",
+    role: "Honoroury",
+    image: "/team/honorouries/shanvir.jpg",
+  },
+    {
+    id: 23,
+    name: "Shining",
+    role: "Honoroury",
+    image: "/team/honorouries/shining.jpg",
+  },
+    {
+    id: 24,
+    name: "Teddy",
+    role: "Honoroury",
+    image: "/team/honorouries/teddy.jpg",
+  },
+  {
+    id: 25,
+    name: "Yasmine",
+    role: "Honoroury",
+    image: "/team/honorouries/yasmine.jpg",
   },
 ];
 
@@ -376,7 +394,7 @@ const page = () => {
       </div>
 
       {/* Grade reps sections */}
-      {/* <div>
+      <div>
         <div className="w-full flex flex-col justify-center items-center">
           <div className="w-full flex justify-center items-center flex-col">
             <p className="tracking-widest font-light">
@@ -398,7 +416,7 @@ const page = () => {
       </div>
 
       {/* Honorouries section */}
-      {/* <div>
+      <div>
         <div className="w-full flex flex-col justify-center items-center">
           <div className="w-full flex justify-center items-center flex-col">
             <p className="tracking-widest font-light">
@@ -417,7 +435,7 @@ const page = () => {
             ))}
           </div>
         </div>
-      </div> */}
+      </div>
     </main>
   );
 };
