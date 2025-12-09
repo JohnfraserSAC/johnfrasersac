@@ -59,19 +59,19 @@ const Page = () => {
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-between lg:flex-row space-y-10 lg:space-y-0 lg:space-x-10">
             <div className="lg:w-5/12">
-              <h1 className="mb-6 text-4xl font-bold text-white lg:text-6xl">
+              <h1 className="mb-6 text-4xl font-bold text-white lg:text-6xl text-balance">
                 John Fraser Student Council
               </h1>
-              <p className="mb-8 text-xl text-white">
-                Mosaic Lunch will be on <strong>Thursday, November 20th</strong>!
+              <p className="mb-8 text-xl text-white text-pretty">
+                {"The official website of John Fraser Secondary School's student activity council."}
               </p>
               <div className="flex flex-col items-start lg:items-center sm:flex-row">
-                <Link href="https://apply.johnfrasersac.com" className="mb-4 sm:mb-0 sm:mr-4">
+                {/* <Link href="https://apply.johnfrasersac.com" className="mb-4 sm:mb-0 sm:mr-4">
                   <button className="button-2">Apply Now!</button>
-                </Link>
+                </Link> */}
                 <Link
                   href="/announcements"
-                  className="text-white hover:underline ml-2"
+                  className="text-white no-underline hover:underline ml-2"
                 >
                   View Announcements &rarr;
                 </Link>
