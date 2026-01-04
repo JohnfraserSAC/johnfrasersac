@@ -14,7 +14,7 @@ const teamMembers = [
   {
     id: 2,
     name: "David Chen",
-    role: "President",
+    role: "Vice-President",
     image: "/team/execs/david-chen.jpg",
     description:
       "",
@@ -49,7 +49,7 @@ const teamMembers = [
     image: "/team/execs/sohum-padhye.jpg",
     description: "",
   },
-    {
+  {
     id: 7,
     name: "Yang Xue",
     role: "Technology Liaison",
@@ -70,7 +70,6 @@ const teamMembers = [
     image: "/team/execs/arjita-chaudhary.jpeg",
     description: "",
   },
-
   {
     id: 10,
     name: "Nadine Mughal",
@@ -99,7 +98,7 @@ const teamMembers = [
     image: "/team/execs/justin-deng.jpg",
     description: "",
   },
-    {
+  {
     id: 14,
     name: "Salahuddin Siddiqui",
     role: "Photography Executive",
@@ -265,19 +264,19 @@ const honouraries = [
     role: "Honourary",
     image: "/team/honorouries/sarah.jpg",
   },
-    {
+  {
     id: 21,
     name: "Shanvir Sidhu",
     role: "Honourary",
     image: "/team/honorouries/shanvir.jpg",
   },
-    {
+  {
     id: 22,
     name: "Shining",
     role: "Honourary",
     image: "/team/honorouries/shining.jpg",
   },
-    {
+  {
     id: 23,
     name: "Teddy",
     role: "Honourary",
@@ -336,7 +335,7 @@ const page = () => {
           alt="meet the team image"
           width={1000}
           height={700}
-          className="rounded-3xl mb-4"
+          className="rounded-3xl mb-32"
         />
       </div>
 
@@ -372,6 +371,7 @@ const page = () => {
           <div className="w-full flex justify-center items-center flex-col">
             <p className="tracking-widest font-light">MEET THE...</p>
             <h1 className="font-medium text-4xl mt-4">Executive Team</h1>
+            <h2 className="font-small text-m mt-4">Hover to view their roles!</h2>
           </div>
           <div className="lg:grid lg:grid-cols-4 lg:gap-x-32 lg:gap-y-12 flex flex-col justify-center items-center gap-y-8 my-8">
             {teamMembers.map((member) => (
