@@ -19,8 +19,8 @@ const ExecutiveInfo: React.FC<ExecutiveInfoProps> = ({ name, role, image, descri
     // GSAP HANDLER
     const tl = gsap.timeline();
     tl.to(infoBoxRef.current, {
-      width: '220px',
-      height: '300px',
+      width: '200px',
+      height: '200px',
       borderRadius: '15px',
       opacity: 1,
       duration: 0.2,
@@ -65,12 +65,11 @@ const ExecutiveInfo: React.FC<ExecutiveInfoProps> = ({ name, role, image, descri
         </div>
         <div
           ref={infoBoxRef}
-          className="absolute top-1/2 left-1/2 w-12 h-12 bg-black bg-opacity-80 text-white opacity-0 pointer-events-none transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center text-center p-2 box-border"
+          className="absolute top-1/2 left-1/2 bg-black bg-opacity-80 text-white opacity-0 pointer-events-none -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center text-center p-2 box-border"
         >
-          <div className="flex flex-col justify-evenly h-40">
+          <div className="flex flex-col justify-evenly h-20">
             <div>
-              <h3 className="opacity-0 font-semibold text-xl">{name}</h3>
-              <p className="opacity-0">{role}</p>
+              <p className="opacity-0 font-semibold text-xl">{role}</p>
             </div>
             <p className="opacity-0">{description}</p>
           </div>
@@ -78,7 +77,6 @@ const ExecutiveInfo: React.FC<ExecutiveInfoProps> = ({ name, role, image, descri
       </div>
       <div className="text-center mt-4">
         <h3 className="font-semibold text-xl">{name}</h3>
-        <p>{role}</p>
       </div>
     </div>
   );
