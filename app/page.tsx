@@ -256,7 +256,7 @@ const Page = () => {
               All photos taken by John Fraser&apos;s SAC are available on our
               Google Drive!.
             </p>
-            <Link href="https://drive.google.com/drive/folders/14Bg6JuPVyGwGI986iwQs9gJBBzn3kjah?usp=drive_link">
+            <Link href="https://drive.google.com/drive/folders/14Bg6JuPVyGwGI986iwQs9gJBBzn3kjah?usp=drive_link" target="_blank" rel="noopener noreferrer">
               <button className="button-2">See Photos</button>
             </Link>
           </div>
