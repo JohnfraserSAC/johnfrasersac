@@ -79,9 +79,8 @@ const Page = () => {
             </div>
             <div className="lg:w-1/2">
               <div
-                className={` transition-opacity duration-500 ${
-                  fade ? "opacity-100" : "opacity-0"
-                }`}
+                className={` transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"
+                  }`}
               >
                 <Image
                   src={currentHeroImage}
@@ -231,16 +230,16 @@ const Page = () => {
               >
                 <Link href={image.link} target="_blank" rel="noopener noreferrer">
                   <Image
-                      src={
-                        hoveredImage === image.id
-                          ? image.colored
-                          : image.grayscale
-                      }
-                      height={140}
-                      width={140}
-                      alt={image.alt}
-                      className="transition-opacity duration-300"
-                    />
+                    src={
+                      hoveredImage === image.id
+                        ? image.colored
+                        : image.grayscale
+                    }
+                    height={140}
+                    width={140}
+                    alt={image.alt}
+                    className="transition-opacity duration-300"
+                  />
                 </Link>
               </div>
             ))}
@@ -254,10 +253,10 @@ const Page = () => {
           <div className="mb-20">
             <h2 className="mb-4 text-3xl font-bold">Say Cheese!</h2>
             <p className="mb-6 text-xl">
-              You can now see any photos taken by John Fraser&apos;s SAC on
-              our website.
+              All photos taken by John Fraser&apos;s SAC are available on our
+              Google Drive!.
             </p>
-            <Link href="https://johnfrasersac.com/photos/">
+            <Link href="https://drive.google.com/drive/folders/14Bg6JuPVyGwGI986iwQs9gJBBzn3kjah?usp=drive_link">
               <button className="button-2">See Photos</button>
             </Link>
           </div>
