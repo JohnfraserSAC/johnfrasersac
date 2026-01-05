@@ -11,7 +11,7 @@ Our John Fraser Student Council official website! With new and improved features
 
 ### Prerequisites
 
-- **Node.js**: Version 20.17.0 or higher.
+- **Node.js**: Version 20.17.0 or higher
 
 ### Installation
 
