@@ -163,6 +163,7 @@ export default function AdminDashboard() {
                     <option value="student">Student</option>
                     <option value="teacher">Teacher</option>
                     <option value="admin">Admin</option>
+                    <option value="reader">Reader</option>
                   </select>
                 </td>
                 <td>
@@ -222,6 +223,7 @@ export default function AdminDashboard() {
           <option value="student">Student</option>
           <option value="teacher">Teacher</option>
           <option value="admin">Admin</option>
+          <option value="reader">Reader</option>
         </select>
         <select
           value={newUser.club}
