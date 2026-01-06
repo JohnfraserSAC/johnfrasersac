@@ -7,6 +7,29 @@ Our John Fraser Student Council official website! With new and improved features
 - **Frontend:** [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), [GSAP](https://greensock.com/gsap/)
 - **Database:** SheetDB (storing all of our announcements)
 
+## Workspace Setup
+
+### Prerequisites
+
+- **Node.js**: Version 20.17.0 or higher
+
+### Installation
+
+1.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+### Running the Project
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
 ## Contributing
 
 If you'd like to contribute to the project, follow these steps:
