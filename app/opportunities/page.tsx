@@ -20,7 +20,7 @@ const OPPORTUNITIES: Opportunity[] = [
     title: 'Semi-Formal',
     date: 'Upcoming… Feb 12, 2026',
     description: 'Mark your calendars Jags! Semi Formal is happening on February 12 at the NUVO event space and the theme is… Winter Wonderland!!',
-    imageSrc: '/opportunities/Semi.jpg',
+    imageSrc: '/opportunities/Semi.JPG',
     imageAlt: 'Semi Formal',
   },
   {
