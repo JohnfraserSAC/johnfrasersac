@@ -7,8 +7,6 @@ Our John Fraser Student Council official website! With new and improved features
 - **Frontend:** [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), [GSAP](https://greensock.com/gsap/)
 - **Database:** SheetDB (storing all of our announcements)
 
-## Workspace Setup
-
 ### Prerequisites
 
 - **Node.js**: Version 20.17.0 or higher
