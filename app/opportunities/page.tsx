@@ -18,9 +18,9 @@ const OPPORTUNITIES: Opportunity[] = [
   {
     id: 1,
     title: 'Semi-Formal',
-    date: 'Upcoming… Feb 12, 2026',
-    description: 'Mark your calendars Jags! Semi Formal is happening on February 12 at the NUVO event space and the theme is… Winter Wonderland!!',
-    imageSrc: '/opportunities/Semi.JPG',
+    date: 'Feb 12, 2026 @ NUVO Event Space from 6:00 - 9:30 PM',
+    description: 'Semi-Formal tickets are NOW AVAILABLE on School Cash Online for $62 + SCO fee! Starting Tuesday, February 3rd, tickets will then be on sale for the regular price of $65 + SCO fee, so get yours before it\'s too late! Experience an unforgettable night at our highly anticipated Semi Formal event filled with dancing, a delicious dinner buffet, music by DJ Andi, unlimited non-alcoholic drinks from the bar, and an unlimited photo booth to capture all the memories! This year\'s theme will be "WINTER WONDERLAND"!',
+    imageSrc: '/opportunities/Semi.jpg',
     imageAlt: 'Semi Formal',
   },
   {
