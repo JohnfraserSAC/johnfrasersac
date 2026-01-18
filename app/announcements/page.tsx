@@ -8,27 +8,7 @@ export default async function AnnouncementsPage() {
 
     return (
         <main className=''>
-            <div className='text-white custom-background-4 flex justify-center items-center flex-col text-center pt-40 w-full py-8 min-h-screen'>
-                <div className='mb-12 text-center flex flex-col justify-center items-center container'>
-                    {/* Maintenance Icon */}
-                    <div className='text-6xl mb-6'>
-                        🔧
-                    </div>
-                    
-                    <h1 className='text-4xl mb-6 lg:text-6xl font-bold'>Under Maintenance</h1>
-                    
-                    <p className='w-8/12 lg:w-6/12 text-lg mb-8 opacity-90'>
-                        Please check back soon for all the latest John Fraser news and events.
-                    </p>
-                    
-                    <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
-                        <Link href='/'>
-                            <button className='button-5'>Return to Home</button>
-                        </Link>
-                    </div>
-                </div>
-            </div>
-            {/* <BootstrapClient/>
+            <BootstrapClient/>
                 <div className='text-white custom-background-4 flex justify-center items-center flex-col text-center pt-40 w-full py-8'>
                     <div className='mb-12 text-center flex flex-col justify-center items-center container'>
                         <h1 className='text-4xl mb-3 lg:text-6xl font-bold'>Announcements</h1>
@@ -42,7 +22,7 @@ export default async function AnnouncementsPage() {
                             </Link>
                         </div>
                         
-                    </div> */}
+                    </div>
 
                     {/* Carousel */}
                     {/* <div id="carouselExampleIndicators" className="carousel slide lg: w-7/12 container" data-bs-ride="carousel">
@@ -82,6 +62,7 @@ export default async function AnnouncementsPage() {
                     </button>
                 </div> */}
 
+            </div>
         </main>
     );
 }
