@@ -1,6 +1,4 @@
 import React from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
-import { BootstrapClient } from "@/components/BootstrapClient";
 import Link from 'next/link';
 
 
@@ -8,7 +6,6 @@ export default async function AnnouncementsPage() {
 
     return (
         <main className=''>
-            <BootstrapClient/>
                 <div className='text-white custom-background-4 flex justify-center items-center flex-col text-center pt-40 w-full py-8'>
                     <div className='mb-12 text-center flex flex-col justify-center items-center container'>
                         <h1 className='text-4xl mb-3 lg:text-6xl font-bold'>Announcements</h1>

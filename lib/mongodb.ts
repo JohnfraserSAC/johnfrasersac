@@ -6,8 +6,25 @@ if (!uri) {
   throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
 }
 
-const client = new MongoClient(uri);
-const clientPromise = client.connect();
+let clientPromiseInternal: Promise<MongoClient> | null = null;
+
+function getClientPromise() {
+  if (!clientPromiseInternal) {
+    const client = new MongoClient(uri);
+    clientPromiseInternal = client.connect().catch((error) => {
+      clientPromiseInternal = null;
+      throw error;
+    });
+  }
+
+  return clientPromiseInternal;
+}
+
+const clientPromise: PromiseLike<MongoClient> = {
+  then(onfulfilled, onrejected) {
+    return getClientPromise().then(onfulfilled, onrejected);
+  },
+};
 
 // Default export for the client promise
 export default clientPromise;

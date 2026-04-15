@@ -11,7 +11,7 @@ export async function DELETE(req) {
   }
 
   const client = await clientPromise;
-  const db = client.db();
+  const db = client.db('schoolPortal');
 
   // Try ObjectId delete first
   let result = await db.collection('accounts').deleteOne({ _id: new ObjectId(id) });

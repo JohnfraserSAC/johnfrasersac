@@ -12,7 +12,7 @@ export async function PATCH(req) {
   if (club) updateFields.club = club;
 
   const client = await clientPromise;
-  const db = client.db();
+  const db = client.db('schoolPortal');
 
   const result = await db.collection('accounts').updateOne(
     { _id: new ObjectId(_id) },

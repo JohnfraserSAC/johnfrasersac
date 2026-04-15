@@ -7,22 +7,27 @@ import clubs from '@/utils/clubs';
 export const dynamic = 'force-dynamic';
 
 export default function AdminDashboard() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<any[]>([]);
   const [status, setStatus] = useState('');
   const [editing, setEditing] = useState<Record<string, any>>({});
-  const [announcements, setAnnouncements] = useState([]);
+  const [announcements, setAnnouncements] = useState<any[]>([]);
   const [newUser, setNewUser] = useState({ username: '', accessCode: '', role: 'student', club: '' });
   const [createStatus, setCreateStatus] = useState('');
   const [userSearch, setUserSearch] = useState('');
   const [announcementSearch, setAnnouncementSearch] = useState('');
 
   const fetchAnnouncements = async () => {
-    const res = await fetch('/api/announcements/all');
-    const data = await res.json();
-    setAnnouncements(data);
+    try {
+      const res = await fetch('/api/announcements/all');
+      const data = await res.json();
+      setAnnouncements(Array.isArray(data) ? data : []);
+    } catch {
+      setAnnouncements([]);
+      setStatus('❌ Failed to load announcements.');
+    }
   };
 
-  const handleDelete = async (id: string) => {
+  const handleDelete = async (id: string): Promise<void> => {
     await fetch('/api/announcements/delete', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -38,9 +43,14 @@ export default function AdminDashboard() {
   }, []);
 
   const fetchUsers = async () => {
-    const res = await fetch('/api/admin/users');
-    const data = await res.json();
-    setUsers(data);
+    try {
+      const res = await fetch('/api/admin/users');
+      const data = await res.json();
+      setUsers(Array.isArray(data) ? data : []);
+    } catch {
+      setUsers([]);
+      setStatus('❌ Failed to load users.');
+    }
   };
 
   const handleChange = (id: string, field: string, value: string) => {
@@ -104,9 +114,14 @@ export default function AdminDashboard() {
   };
 
   // NEW: Filtered lists
-  const filteredUsers = users.filter((u: any) =>
-    u.username?.toLowerCase().includes(userSearch.toLowerCase())
-  );
+  const normalizedUserSearch = userSearch.trim().toLowerCase();
+  const filteredUsers = users.filter((u: any) => {
+    if (!normalizedUserSearch) return true;
+
+    return [u.username, u.accessCode, u.role, u.club]
+      .filter(Boolean)
+      .some((value: string) => value.toLowerCase().includes(normalizedUserSearch));
+  });
   const filteredAnnouncements = announcements.filter((a: any) =>
     a.title?.toLowerCase().includes(announcementSearch.toLowerCase())
   );
@@ -119,6 +134,9 @@ export default function AdminDashboard() {
 
       {/* USERS TABLE */}
       <h2>Accounts</h2>
+      <button onClick={fetchUsers} style={{ marginBottom: '0.5rem' }}>
+        Refresh Users
+      </button>
       <input
         type="text"
         placeholder="Search users by username..."
@@ -143,6 +161,7 @@ export default function AdminDashboard() {
                 <td>
                   <input
                     defaultValue={user.username || ''}
+                    placeholder="No username"
                     onChange={(e) => handleChange(user._id, 'username', e.target.value)}
                     style={{ width: '95%' }}
                   />

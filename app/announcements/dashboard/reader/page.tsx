@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 export const dynamic = 'force-dynamic';
 
 // CHANGE to true for deploy and false for deploy
-const ENABLE_TODAY_DATE_FILTER = false;
-const ENABLE_WEEKDAY_GROUP_VIEW = true;
+const ENABLE_TODAY_DATE_FILTER = true;
+const ENABLE_WEEKDAY_GROUP_VIEW = false;
 const WEEKDAY_ORDER = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 export default function ReaderDashboard() {
