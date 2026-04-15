@@ -6,11 +6,13 @@ if (!uri) {
   throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
 }
 
+const mongoUri = uri;
+
 let clientPromiseInternal: Promise<MongoClient> | null = null;
 
 function getClientPromise() {
   if (!clientPromiseInternal) {
-    const client = new MongoClient(uri);
+    const client = new MongoClient(mongoUri);
     clientPromiseInternal = client.connect().catch((error) => {
       clientPromiseInternal = null;
       throw error;
